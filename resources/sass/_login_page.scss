@@ -1,0 +1,49 @@
+
+.form-card-title {
+    background-color: #2d2d2d;
+    border-radius: 20px;
+}
+
+.img-logo-size{
+    width: 70px;
+    height: 70px;
+}
+
+
+.kopenas-logo-size{
+    width: 100px;
+    height: 100px;
+    object-fit: scale-down;
+}
+
+.login-btn{
+    background-color: #efcc37;
+    color: #ffff;
+    border-radius: 20px;
+    min-width: 200px;
+}
+
+.text-color{
+    color: #efcc37;
+}
+
+.custom-tab.active {
+    background: transparent;
+    color: white;
+    border-bottom: 5px solid yellow;
+    border-radius: 0px;
+}
+
+@media (max-width: 576px) {
+    .guests-card {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .guests-card {
+        max-width: 560px;
+        margin: 0 auto;
+    }
+}
