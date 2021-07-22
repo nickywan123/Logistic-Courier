@@ -12,7 +12,8 @@
     {{-- <a href="{{route('toyyibpay-create')}}"><i class="fa fa-credit-card mr-2"></i>TOPUP CREDIT</a> --}}
     <a href="{{route('topup.index')}}"><i class="fa fa-credit-card mr-2"></i>TOPUP CREDIT</a>
     <a href="{{route('finance.index')}}"><i class="fa fa-book mr-2"></i>FINANCE REPORT</a>
-    <a href="{{route('easyparcel-checkRate')}}"><i class="fa fa-book mr-2"></i>Rates</a>
+    {{-- <a href="{{route('easyparcel-makingOrder')}}"><i class="fa fa-book mr-2"></i>EasyParcel API</a>
+    <a href="{{route('easyparcel-rateChecking')}}"><i class="fa fa-book mr-2"></i>Rate Checking API</a> --}}
     <a class="mt-4" href="{{ route('logout') }}"
         onclick="event.preventDefault();
         document.getElementById('logout-form').submit();">
