@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
 
          //$this->call(RatesTableSeeder::class);
         // $this->call(LocationsTableSeeder::class);
-         //$this->call(CouriersTableSeeder::class);
+         $this->call(CouriersTableSeeder::class);
          //$this->call(CouriersImagesTableSeeder::class);
          //$this->call(StatusTableSeeder::class);
     }

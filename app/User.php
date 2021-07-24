@@ -47,6 +47,13 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the user contact associated with the user
+     */
+    public function userContact(){
+        return $this->hasOne(UserContact::class,'user_id');
+    }
+
+    /**
      * Get the orders associated with the user
      */
     public function orders(){

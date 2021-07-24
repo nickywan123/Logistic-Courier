@@ -64,7 +64,9 @@ Route::post('toyyibpay-callback','ToyyibpayController@callback')->name('toyyibpa
 /**
  * Easy Parcel
  */
-Route::get('easyparcel-checkRate','EasyParcelController@checkRates')->name('easyparcel-checkRate');
+Route::get('easyparcel-makingOrder','EasyParcelController@makingOrder')->name('easyparcel-makingOrder');
+
+Route::get('easyparcel-rateChecking','EasyParcelController@rateChecking')->name('easyparcel-rateChecking');
 
 /**
  * FINANCE REPORT

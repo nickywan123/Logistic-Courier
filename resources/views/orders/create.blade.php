@@ -13,7 +13,7 @@
           @csrf
           <div class="form-row">
             <div class="form-group col-md-7">
-                <input type="text" class="form-control @error('schedule_type') is-invalid @enderror" value="Regular order" style="border-radius:20px;" id="scheduleType" name="schedule_type" readonly >
+                <input type="text" class="form-control @error('schedule_type') is-invalid @enderror" value="Dropoff" style="border-radius:20px;" id="scheduleType" name="schedule_type" readonly >
                 @error('schedule_type')
                  <small class="form-text text-danger">{{ $message }}</small>
                 @enderror
@@ -30,6 +30,22 @@
 
               </select>
               @error('hub')
+              <small class="form-text text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-7">
+                <input type="text"  placeholder="Content(e.g:book)" value="{{ old('content') }}" class="form-control @error('content') is-invalid @enderror" style="border-radius:20px;" name="content" id="content" >
+              @error('content')
+              <small class="form-text text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-7">
+                <input type="text"  placeholder="Value of Content(e.g-10)" value="{{ old('value_content') }}" class="form-control @error('value_content') is-invalid @enderror" style="border-radius:20px;" name="value_content" id="value_content" >
+              @error('value_content')
               <small class="form-text text-danger">{{ $message }}</small>
               @enderror
             </div>
@@ -142,7 +158,7 @@
           </div>
           <div class="form-row">
             <div class="form-group col-md-8">
-                <input type="email"  placeholder="Recipient Email(optional)" value="{{ old('recipient_email') }}" class="form-control @error('recipient_email') is-invalid @enderror" style="border-radius:20px;" name="recipient_email" id="recipientEmail"  >
+                <input type="email"  placeholder="Recipient Email" value="{{ old('recipient_email') }}" class="form-control @error('recipient_email') is-invalid @enderror" style="border-radius:20px;" name="recipient_email" id="recipientEmail"  >
               @error('recipient_email')
               <small class="form-text text-danger">{{ $message }}</small>
               @enderror
@@ -236,7 +252,7 @@ $("#order-form").validate({
         maxlength: 15
       },
       recipient_email: {
-          //required: true,
+          required: true,
           email: true
       }
    
@@ -247,6 +263,13 @@ $("#order-form").validate({
       },
       hub:{
            required:"Please choose a hub"
+      },
+      content: {
+         required: "Please enter name of content"
+      },
+      value_content : {
+         required:"Please enter value of content",
+         digits:"Content value should be in number",
       },
       pick_up_date:{
            required:"Please select a pick up date"
@@ -288,7 +311,7 @@ $("#order-form").validate({
          maxlength: "Contact number length must be smaller than 15"
       },
       recipient_email: {
-         // required: "Please enter email",
+          required: "Please enter recipient's email",
           email: "Email is not valid"
       }
   }
@@ -299,6 +322,8 @@ $('#order-btn').click(function() {
 if (
     $("#order-form").validate().element('#scheduleType') &&
     $("#order-form").validate().element('#hub') &&
+    $("#order-form").validate().element('#content') &&
+    $("#order-form").validate().element('#value_content') &&
     $("#order-form").validate().element('#pickupDate') &&
     $("#order-form").validate().element('#pickupTime') &&
     $("#order-form").validate().element('#weight') &&
@@ -309,8 +334,8 @@ if (
     $("#order-form").validate().element('#deliveryDate') &&
     $("#order-form").validate().element('#deliveryTime') &&
     $("#order-form").validate().element('#recipientName') &&
-    $("#order-form").validate().element('#recipientContactNumber') 
-   // && $("#order-form").validate().element('#recipientEmail') 
+    $("#order-form").validate().element('#recipientContactNumber') &&
+    $("#order-form").validate().element('#recipientEmail') 
    
 ) {
     //show modal if validation passes

@@ -89,7 +89,7 @@ class ToyyibpayController extends Controller
         $response = request()->all();
         Log::info($response);
         Log::info('This is user id:'.$request->get('user_id'));
-        Log::info('!!!!!!!!!!!!!');
+        Log::info('!!!!!!!!!!!!!!!');
 
         if($request->status == 1){
         //store transaction details
