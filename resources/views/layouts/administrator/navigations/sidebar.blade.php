@@ -2,21 +2,15 @@
     <a href="{{route('dashboard.index')}}">
      <img style="width: 100px; height:100px;"  src="{{asset('/images/logo/fuiyoh_hub.png')}}" alt="fuiyoh_logo">   
     </a>
-    <p class="text-white dashboard-text">DASHBOARD</p>
+    <p class="text-white" style="font-size:20px;">ADMIN DASHBOARD</p>
     {{-- <a href="#" class="mt-4"><i class="fa fa-plus mr-2"></i>CREATE ORDER</a> --}}
-    <button type="button" class="btn create-order-btn pl-1" data-toggle="modal" data-target="#createOrder">
-     <i class="fa fa-plus mr-1"></i>CREATE ORDER     
-    </button>
-    <a href="{{route('order.show')}}"><i class="fa fa-clock-o mr-2"></i>ORDER HISTORY</a>
-    <a href="#"><i class="fa fa-user-o mr-2"></i>FUIYOH CREW</a>
-    {{-- <a href="{{route('toyyibpay-create')}}"><i class="fa fa-credit-card mr-2"></i>TOPUP CREDIT</a> --}}
-    <a href="{{route('topup.index')}}"><i class="fa fa-credit-card mr-2"></i>TOPUP CREDIT</a>
-    <a href="{{route('finance.index')}}"><i class="fa fa-book mr-2"></i>FINANCE REPORT</a>
-    @hasrole('administrator')
-    <a href="{{route('admin.index')}}"><i class="fa fa-book mr-2"></i>Admin Dashboard</a>
-    @endhasrole
-    {{-- <a href="{{route('easyparcel-makingOrder')}}"><i class="fa fa-book mr-2"></i>EasyParcel API</a>
-    <a href="{{route('easyparcel-rateChecking')}}"><i class="fa fa-book mr-2"></i>Rate Checking API</a> --}}
+    {{-- <button type="button" class="btn create-order-btn pl-1" data-toggle="modal" data-target="#createOrder">
+     <i class="fa fa-plus mr-1"></i>TEST 123    
+    </button> --}}
+
+    <a href="{{route('admin.index')}}"><i class="fa fa-user-circle-o mr-2"></i>List of Users</a>
+    <a href="{{route('admin.index.rates')}}"><i class="fa fa-money mr-2"></i>Check rates</a>
+    <a href="{{route('dashboard.index')}}"><i class="fa fa-home mr-2"></i>Fuiyoh Hub Dashboard</a>
     <a class="mt-4" href="{{ route('logout') }}"
         onclick="event.preventDefault();
         document.getElementById('logout-form').submit();">
@@ -29,7 +23,7 @@
 </div>
 
  <!-- Modal -->
-<div class="modal fade" id="createOrder" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+{{-- <div class="modal fade" id="createOrder" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content modal-content-height">
         <div class="modal-header" style="background-color: 	#D0D0D0">
@@ -48,4 +42,4 @@
         </div>
       </div>
     </div>
-</div>
+</div> --}}

@@ -14,7 +14,7 @@ class Rate extends Model
     }
 
     // belongs to a location(penisular or sabah/sarawak)
-    public function locations(){
+    public function location(){
        return $this->belongsTo(Location::class);
     }
 

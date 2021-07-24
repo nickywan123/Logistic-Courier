@@ -73,3 +73,12 @@ Route::get('easyparcel-rateChecking','EasyParcelController@rateChecking')->name(
  */
 
  Route::get('/dashboard/finance-report','FinanceController@index')->name('finance.index');
+
+
+ /**
+  * Administrator 
+  */
+
+  Route::get('/administrator','Administrator\AdministratorController@index')->name('admin.index');
+
+  Route::get('/administrator/rates','Administrator\AdministratorController@getRates')->name('admin.index.rates');
