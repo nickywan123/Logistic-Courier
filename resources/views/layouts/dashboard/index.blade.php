@@ -89,29 +89,6 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="box bg-light">
-                            <div class="box-header">
-                                <h5 class="box-title">Total Referral</h5>
-                                <div class="box-controls pull-right">
-                                    <button class="btn btn-sm btn-outline-info" href="#">Show More</button>
-                                </div>
-                            </div>
-                            <div class="box-body">
-                                <div class="row">
-                                    <div class="col-6"><i data-feather="user-plus"></i></div>
-                                    <div class="col-6 text-end">
-                                        <h3 class="mb-0 font-600">0</h3>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="d-grid">
-                                    <a href="{{ route('topup.index') }}" class="btn btn-yellow-hub">Refer a friend</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
             </div>

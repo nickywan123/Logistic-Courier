@@ -40,6 +40,14 @@
                     <span class="text">Finance Report</span>
                 </a>
             </li>
+            @hasrole('administrator')
+            <li>
+                <a href="{{ route('admin.index') }}">
+                    <span class="icon"><i data-feather="arrow-right-circle"></i></span>
+                    <span class="text">Admin Dashboard</span>
+                </a>
+            </li>
+            @endhasrole
 
             {{--<li>--}}
             {{--    <a href="{{ route('easyparcel-makingOrder') }}">--}}

@@ -13409,6 +13409,7 @@ body {
 .sidebar-menu li > a > .icon {
     width:3.15rem;
     padding-right: .8rem;
+    text-align: center;
 }
 .sidebar-menu li > a > .text {
     padding-top:.15rem;
