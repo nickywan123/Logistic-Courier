@@ -1,141 +1,123 @@
 @extends('layouts.dashboard.app')
 
+@section('page_title', 'Dashboard')
+
 @section('content')
-     
-<div class="row">
-  <div class="col-12 col-md-10 offset-md-1">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item active text-dark" aria-current="page">Dashboard</li>
-        </ol>
-    </nav>
-  </div> 
-</div>
-<div class="row">
-    <div class="col-12 col-md-10 offset-md-1">
-        <div class="alert alert-warning border-dark alert-dismissible fade show" role="alert">
-            <strong class="fs-18">Notice:</strong>
-            <strong>Pick up and deliveries will remain as usual</strong> during the FMCO period <a href="http://covid-19.moh.gov.my/faqsop/sop-perintah-kawalan-pergerakan-diperketatkan-pkpd-emco" target="_blank" class="border_bottom_dotted"><strong>except for areas under EMCO</strong></a>. Kindly ensure the <strong>address booked is available for pick up/delivery. Facemask is prohibited for international delivery</strong> for all couriers at the moment.
-            Kindly expect <strong>slight delay in pick up and delivery</strong> due to the restricted operation hour and high parcel volume during this pandemic period. Stay safe and stay home.
+
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+            <!-- box start -->
+            <div class="p-lg-30 p-md-30 p-sm-30 p-10">
+
+                <h2 class="title-section">Dashboard</h2>
+
+                <div class="alert alert-warning" role="alert">
+                    <p class="mb-0"><span class="font-700">Notice:</span> <span class="font-700">Pick up and deliveries will remain as usual</span> during the FMCO period <a href="http://covid-19.moh.gov.my/faqsop/sop-perintah-kawalan-pergerakan-diperketatkan-pkpd-emco" target="_blank" class="font-700">except for areas under EMCO</a>. Kindly ensure the <span class="font-700">address booked is available for pick up/delivery. Facemask is prohibited for international delivery</span> for all couriers at the moment. Kindly expect <span class="font-700">slight delay in pick up and delivery</span> due to the restricted operation hour and high parcel volume during this pandemic period. Stay safe and stay home.</p>
+                </div>
+
+                <hr class="my-30">
+
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="box bg-light">
+                            <div class="box-header">
+                                <h5 class="box-title">Credit Balance</h5>
+                                <div class="box-controls pull-right">
+                                    <button class="btn btn-sm btn-outline-info" href="#">Show More</button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-6"><i data-feather="dollar-sign"></i></div>
+                                    <div class="col-6 text-end">
+                                        <h3 class="mb-0 font-600">RM {{$user->userInfo->credit}}</h3>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="d-grid">
+                                    <a href="{{ route('topup.index') }}" class="btn btn-yellow-hub">Top Up Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="box bg-light">
+                            <div class="box-header">
+                                <h5 class="box-title">Total Delivered</h5>
+                                <div class="box-controls pull-right">
+                                    <button class="btn btn-sm btn-outline-info" href="#">Show More</button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-6"><i data-feather="truck"></i></div>
+                                    <div class="col-6 text-end">
+                                        <h3 class="mb-0 font-600">{{ $total_delivered }}</h3>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="d-grid">
+                                    <a href="{{ route('order.index') }}" class="btn btn-yellow-hub">Create a new order</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="box bg-light">
+                            <div class="box-header">
+                                <h5 class="box-title">Total Orders</h5>
+                                <div class="box-controls pull-right">
+                                    <button class="btn btn-sm btn-outline-info" href="#">Show More</button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-6"><i data-feather="list"></i></div>
+                                    <div class="col-6 text-end">
+                                        <h3 class="mb-0 font-600">{{ $user->orders->count() }}</h3>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="d-grid">
+                                    <a href="{{ route('order.show') }}" class="btn btn-yellow-hub">View Orders</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="box bg-light">
+                            <div class="box-header">
+                                <h5 class="box-title">Total Referral</h5>
+                                <div class="box-controls pull-right">
+                                    <button class="btn btn-sm btn-outline-info" href="#">Show More</button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-6"><i data-feather="user-plus"></i></div>
+                                    <div class="col-6 text-end">
+                                        <h3 class="mb-0 font-600">0</h3>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="d-grid">
+                                    <a href="{{ route('topup.index') }}" class="btn btn-yellow-hub">Refer a friend</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- box end -->
+
         </div>
     </div>
-</div>
-
-<div class="row mt-3" style="border-bottom: 2px solid grey">
-    <div class="col-12 col-md-10">
-     <h5 class="text-uppercase text-center">Summary</h5>
-    </div>
-</div>
-
-<div class="row mt-3">
-    <div class="col-md-4">
-        <div class="card border-radius-card shadow" >
-            <div class="card-body" style="height: 150px;">
-                <div class="row">
-                 <div class="col-6 col-md-6">
-                 <h4 class="card-title " style="font-weight:bold; font-size:13pt;">Credit Balance</h4>
-                 </div>
-                 <div class="col-6 col-md-6">
-                  <p class="card-title " style="float: right; color:#ffcc00;">Show more</p>
-                 </div>
-                </div>
-             
-               <div class="row">
-                <div class="col-1 col-md-1 ml-4">
-                    <i class="fa fa-usd fa-3x" aria-hidden="true"></i>
-                </div>
-                <div class="col-7 col-md-7 ml-4 mt-2" style="line-height: 20px;">   
-                 <p class="card-title " style="font-weight:bold; font-size:20pt;">RM {{$user->userInfo->credit}} </p>
-                 <a type="button" class="btn btn-primary" href="{{route('topup.index')}}">Top Up Now</a>
-                </div>
-               </div> 
-            </div>
-          </div>  
-    </div>
-    <div class="col-md-4">
-        <div class="card border-radius-card shadow" >
-            <div class="card-body" style="height: 150px;">
-                <div class="row">
-                 <div class="col-6 col-md-6">
-                 <h4 class="card-title " style="font-weight:bold; font-size:13pt;">Total Delivered</h4>
-                 </div>
-                 <div class="col-6 col-md-6">
-                  <p class="card-title " style="float: right; color:#ffcc00;">Show more</p>
-                 </div>
-                </div>
-             
-               <div class="row">
-                <div class="col-1 col-md-1 ml-4">
-                    <i class="fa fa-truck fa-3x" aria-hidden="true"></i>
-                </div>
-                <div class="col-7 col-md-7 ml-4 mt-2" style="line-height: 20px;">   
-                 <p class="card-title " style="font-weight:bold; font-size:20pt;">{{$total_delivered}}</p>
-                 <a type="button" class="btn btn-primary" href="{{route('order.index')}}">Create a new order</a>
-                </div>
-               </div> 
-            </div>
-        </div>  
-    </div>
-    <div class="col-md-4">
-        <div class="card border-radius-card shadow" >
-            <div class="card-body" style="height: 150px;">
-                <div class="row">
-                 <div class="col-6 col-md-6">
-                 <h4 class="card-title " style="font-weight:bold; font-size:13pt;">Total Orders</h4>
-                 </div>
-                 <div class="col-6 col-md-6">
-                  <p class="card-title " style="float: right; color:#ffcc00;">Show more</p>
-                 </div>
-                </div>
-             
-               <div class="row">
-                <div class="col-1 col-md-1 ml-4">
-                    <i class="fa fa-list fa-3x" aria-hidden="true"></i>
-                </div>
-                <div class="col-7 col-md-7 ml-4 mt-2" style="line-height: 20px;">   
-                 <p class="card-title " style="font-weight:bold; font-size:20pt;">{{$user->orders->count()}}</p>
-                 <a type="button" class="btn btn-primary" href="{{route('order.show')}}">View Orders</a>
-                </div>
-               </div> 
-            </div>
-        </div>  
-    </div>  
-</div>
-
-
-<div class="row mt-3">
-    <div class="col-md-4">
-        <div class="card border-radius-card shadow" >
-            <div class="card-body" style="height: 150px;">
-                <div class="row">
-                 <div class="col-6 col-md-6">
-                 <h4 class="card-title " style="font-weight:bold; font-size:13pt;">Total Referral</h4>
-                 </div>
-                 <div class="col-6 col-md-6">
-                  <p class="card-title " style="float: right; color:#ffcc00;">Show more</p>
-                 </div>
-                </div>
-             
-               <div class="row">
-                <div class="col-1 col-md-1 ml-4">
-                    <i class="fa fa-user-plus fa-3x" aria-hidden="true"></i>
-                </div>
-                <div class="col-7 col-md-7 ml-4 mt-2" style="line-height: 20px;">   
-                 <p class="card-title " style="font-weight:bold; font-size:20pt;">0</p>
-                 <a type="button" class="btn btn-primary" href="{{route('topup.index')}}">Refer a friend</a>
-                </div>
-               </div> 
-            </div>
-          </div>  
-    </div>  
-</div>
-
-
-
-<style>
-.border-radius-card{
-     border-radius: 15px;
-}
-</style>
 
 @endsection

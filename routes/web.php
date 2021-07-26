@@ -73,3 +73,10 @@ Route::get('easyparcel-rateChecking','EasyParcelController@rateChecking')->name(
  */
 
  Route::get('/dashboard/finance-report','FinanceController@index')->name('finance.index');
+
+
+ Route::get('checkview', function (){
+     return view('payments.failed', [
+         'errorMessage' => true
+     ]);
+ });

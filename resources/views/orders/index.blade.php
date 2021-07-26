@@ -1,61 +1,72 @@
 @extends('layouts.dashboard.app')
 
+@section('page_title', 'Regular Order')
+
 @section('content')
 
+    <div class="row">
+        <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
 
-<div class="row">
-    <div class="offset-1 col-8">
-        <h4 style="font-weight: 700">Regular Order</h4>
-        <p>Please fill in parcel details:</p>
-        <form method="POST" action="{{route('order.quotation')}}">
-          @csrf
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <select class="form-control custom-select @error('parcel_weight') is-invalid @enderror" name="parcel_weight" style="border-radius:20px;" id="parcel_weight" required>
-                <option disabled="" value="" selected>Weight (kg)</option>
-                @foreach($weights as $weight)
-                <option value="{{$weight->weight}}">{{$weight->weight}}</option>
-                @endforeach
-              </select>
-              @error('parcel_weight')
-              <small class="form-text text-danger">{{ $message }}</small>
-              @enderror
+            <div class="p-lg-30 p-md-30 p-sm-30 p-10">
+                <h2 class="title-section">Regular Order</h2>
+                <p class="subtitle-section">Please fill in the parcel details:</p>
+
+                <form action="{{ route('order.quotation') }}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <select class="form-select rounded-pill px-20 @error('parcel_weight') is-invalid @enderror" name="parcel_weight" id="parcel_weight" required>
+                            <option selected>Weight (kg)</option>
+                            @foreach($weights as $weight)
+                                <option value="{{$weight->weight}}">{{$weight->weight}}</option>
+                            @endforeach
+                        </select>
+                        @error('parcel_weight')
+                        <div class="ps-25 invalid-feedback d-block">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select rounded-pill px-20 @error('parcel_size') is-invalid @enderror" name="parcel_size" id="parcel_size" required>
+                            <option selected="selected">Parcel Size</option>
+                            <option>Box Size</option>
+                            <option>Rectangular Size</option>
+                        </select>
+                        @error('parcel_size')
+                        <div class="ps-25 invalid-feedback d-block">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="row">
+                        <div class="col-md mb-3">
+                            <input type="text" class="form-control rounded-pill px-20 @error('postcode_pickup') is-invalid @enderror" placeholder="Postcode Pickup" name="postcode_pickup" id="postcode_pickup" value="{{ old('postcode_pickup') }}" required>
+                            @error('postcode_pickup')
+                            <div class="ps-25 invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="col-md mb-3">
+                            <input type="text" class="form-control rounded-pill px-20 @error('postcode_delivery') is-invalid @enderror" placeholder="Postcode Delivery" name="postcode_delivery" id="postcode_delivery" value="{{ old('postcode_delivery') }}" required>
+                            @error('postcode_delivery')
+                            <div class="ps-25 invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="submit" class="btn btn-success rounded-pill px-30" value="Proceed">
+                        </div>
+                    </div>
+                </form>
+
             </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <select class="form-control custom-select @error('parcel_size') is-invalid @enderror" name="parcel_size"  style="border-radius:20px;" id="parcel_size" required>
-                <option disabled="" value="" selected="selected">Parcel Size</option>
-                <option>Box Size</option>
-                <option>Rectangular Size</option>
-              </select>
-              @error('parcel_size')
-              <small class="form-text text-danger">{{ $message }}</small>
-              @enderror
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-3">
-                <input type="text"  placeholder="Postcode Pickup" value="{{ old('postcode_pickup') }}" class="form-control @error('postcode_pickup') is-invalid @enderror" style="border-radius:20px;" name="postcode_pickup" id="postcode_pickup" required>
-                @error('postcode_pickup')
-                 <small class="form-text text-danger">{{ $message }}</small>
-                @enderror
-            </div>
-            <div class="form-group col-md-3">
-                <input type="text" placeholder="Postcode Delivery" value="{{ old('postcode_delivery') }}" class="form-control @error('postcode_delivery') is-invalid @enderror" style="border-radius:20px;" name="postcode_delivery" id="postcode_delivery"  required>
-                @error('postcode_delivery')
-                 <small class="form-text text-danger">{{ $message }}</small>
-                @enderror
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group offset-md-3">
-                <button type="submit" id="submit" class="btn proceed-button" style="min-width: 200px;">Proceed</button>  
-            </div>   
-          </div>      
-        </form>
+
+        </div>
     </div>
-</div>
 
 @endsection
 
