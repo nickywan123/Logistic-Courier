@@ -13,7 +13,9 @@ use App\UserInfo;
 use Carbon\Carbon;
 use App\OrderDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
 
 class OrderController extends Controller
 {
@@ -154,6 +156,8 @@ class OrderController extends Controller
         $validated = $request->validate([
             'rate' => 'required',
             'hub' => 'required',
+            'content' => 'required',
+            'value_content' => 'required',
             'pick_up_date' => 'required',
             'pick_up_time' => 'required',
             'weight' => 'required',
@@ -166,21 +170,142 @@ class OrderController extends Controller
             'recipient_name' => 'required',
             'recipient_contact_number' => 'required'         
         ]);
-
+        $sender = User::find(auth()->id());
         $rate_id = Rate::find($request->rate);
         $cost = $rate_id->cost;
         $credit = UserInfo::where('user_id',auth()->id())->first();
         $credit_balance = $credit->credit;
+
+        //get the rate checking to obtain the service id from EasyParcel
+        $postparam_rate = array(
+            'api'	=> config('easyparcel.key'),
+            'bulk'	=> array(
+            array(
+            'pick_code'	=> '58200',
+            'pick_state'	=> 'png',
+            'pick_country'	=> 'MY',
+            'send_code'	=> $request->postcode,
+            'send_state'	=> $request->state,
+            'send_country'	=> 'MY',
+            'weight'	=> '2',
+            'width'	=> '',
+            'length'	=> '',
+            'height'	=> '',
+            'date_coll'	=> '',
+            ),
+            ),
+            'exclude_fields'	=> array(
+            'rates.*.pickup_point',
+            )
+            );
+
+            $url = "https://demo.connect.easyparcel.my/?ac=EPRateCheckingBulk";
+
+            $response = Http::asForm()->post($url,$postparam_rate);
+
+            $collection = collect($response->json()['result'][0]['rates']);
+
+            $filtered = $collection->where('courier_id',$rate_id->courier->courier_id)->first();
+           
+            if(!$filtered){
+                dd('No available courier at this time. Please select a different courier.');
+            }
+
+            //dd($filtered['service_id']);
+
+        // Create order in Easy Parcel
+        $postparam = array(
+            'api'	=> config('easyparcel.key'),
+            'bulk'	=> array(
+            array(
+            'weight'	=> $rate_id->weight,
+            'width'	=> '',
+            'length'	=> '',
+            'height'	=> '',
+            'content'	=> $request->content,
+            'value'	=> $request->value_content,
+            'service_id'	=> $filtered['service_id'],
+            'pick_point'	=> '',
+            'pick_name'	=> $sender->name,
+            'pick_company'	=> '',
+            'pick_contact'	=> $sender->userContact->contact_num,
+            'pick_mobile'	=> '',
+            'pick_addr1'	=> 'hub address',
+            'pick_addr2'	=> '',
+            'pick_addr3'	=> '',
+            'pick_addr4'	=> '',
+            'pick_city'	=> 'hub_city',
+            'pick_state'	=> 'hub_state',
+            'pick_code'	=> '58200',
+            'pick_country'	=> 'MY',
+            'send_point'	=> '',
+            'send_name'	=> $request->recipient_name,
+            'send_company'	=> '',
+            'send_contact'	=> $request->recipient_contact_number,
+            'send_mobile'	=> '',
+            'send_addr1'	=> $request->recipient_address,
+            'send_addr2'	=> '',
+            'send_addr3'	=> '',
+            'send_addr4'	=> '',
+            'send_city'	=> $request->city,
+            'send_state'	=> $request->state,
+            'send_code'	=> $request->postcode,
+            'send_country'	=> 'MY',
+            'collect_date'	=> $request->delivery_date,
+            'sms'	=> '0',
+            'send_email'	=> $request->recipient_email,
+            'hs_code'	=> '',
+            'REQ_ID'	=> '',
+            'reference'	=> '',
+            ),
+            ),
+            );
+
+            $url = "https://demo.connect.easyparcel.my/?ac=EPSubmitOrderBulk";
+
+            $response = Http::asForm()->post($url,$postparam);
+            
+            if($response['result'][0]['status'] !='Success'){
+                dd($response['result'][0]['remarks']);
+               
+            }
+            Log::info('WEEEEEEEEEEEEE........');
+             Log::info($response->json());
+            // dd($response->json());
+
+            // return $response;
+
+            //Make order payment in Easy Parcel
+
+           $postparam_order_payment = array(
+            'api'	=> config('easyparcel.key'),
+            'bulk'	=> array(
+            array(
+            'order_no'	=> $response['result'][0]['order_number'],
+            ),
+            ),
+            );
+
+            $order_payment_url = "https://demo.connect.easyparcel.my/?ac=EPPayOrderBulk";
+
+            $order_payment_response = Http::asForm()->post($order_payment_url,$postparam_order_payment);
+            Log::info($order_payment_response);
+            //dd($order_payment_response->json());
+            //check payment order is fully paid
+            if($order_payment_response['result'][0]['messagenow'] == 'Insufficient Credit'){
+                dd('Insufficient credit in Easy Parcel');
+            }
+
+
         //check if sufficient credit
         if($credit_balance > $cost){
             //deduct the credit
             $credit->credit = $credit_balance - $cost;
             $credit->save();
 
-            $poSequence = Order::all()->count() + 1;
 
             $order = new Order();
-            $order->order_number =  'PO' . Carbon::now()->format('Y') . Carbon::now()->format('m') . '-' . str_pad($poSequence, 6, "0", STR_PAD_LEFT);
+            $order->order_number = $order_payment_response['result'][0]['orderno'];
             $order->user_id = auth()->id();
             $order->courier_id = $rate_id->courier_id;
             $order->amount = $cost;

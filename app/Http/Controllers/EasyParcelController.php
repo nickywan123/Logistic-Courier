@@ -9,37 +9,103 @@ use Illuminate\Support\Facades\Log;
 class EasyParcelController extends Controller
 {
     //
-    public function checkRates(){
+    public function makingOrder(){
 
-        $option = array(
-            'api'	=> 'EP-tBRjE5Vpz',
+         // create order in Easy Parcel
+         $postparam = array(
+            'api'	=> config('easyparcel.key'),
+            'bulk'	=> array(
+            array(
+            'weight'	=> '2',
+            'width'	=> '',
+            'length'	=> '',
+            'height'	=> '',
+            'content'	=> 'xxxx',
+            'value'	=> '1',
+            'service_id'	=> 'EP-CS023',
+            'pick_point'	=> '',
+            'pick_name'	=> 'John Doe',
+            'pick_company'	=> 'Sdn Bhd',
+            'pick_contact'	=> '0123456789',
+            'pick_mobile'	=> '0123456789',
+            'pick_addr1'	=> 'ppppp46/7 adfa',
+            'pick_addr2'	=> '',
+            'pick_addr3'	=> '',
+            'pick_addr4'	=> '',
+            'pick_city'	=> 'city',
+            'pick_state'	=> 'kul',
+            'pick_code'	=> '47000',
+            'pick_country'	=> 'MY',
+            'send_point'	=> '',
+            'send_name'	=> 'Sender Name',
+            'send_company'	=> '',
+            'send_contact'	=> '0122134567',
+            'send_mobile'	=> '',
+            'send_addr1'	=> 'ssssadsasdst test',
+            'send_addr2'	=> '',
+            'send_addr3'	=> '',
+            'send_addr4'	=> '',
+            'send_city'	=> 'send city',
+            'send_state'	=> 'sg',
+            'send_code'	=> '58200',
+            'send_country'	=> 'MY',
+            'collect_date'	=> '2021-07-23',
+            'sms'	=> '0',
+            'send_email'	=> 'xxxx@hotmail.com',
+            'hs_code'	=> '',
+            'REQ_ID'	=> '',
+            'reference'	=> '',
+            ),
+            ),
+            );
+          
+
+            $url = "https://connect.easyparcel.my/?ac=EPSubmitOrderBulk";
+
+            $response = Http::asForm()->post($url,$postparam);
+
+            Log::info('<!!!!!!--------------------------------!!!!!!>');
+            Log::info($response);
+            //dd($response->json());
+            //dd($response['result'][0]['order_number']);
+           // dd($response['api_status']);
+
+           $postparam_order_payment = array(
+            'api'	=> config('easyparcel.key'),
+            'bulk'	=> array(
+            array(
+            'order_no'	=> $response['result'][0]['order_number'],
+            ),
+            ),
+            );
+
+            $order_payment_url = "https://connect.easyparcel.my/?ac=EPPayOrderBulk";
+
+            $order_payment_response = Http::asForm()->post($order_payment_url,$postparam_order_payment);
+            Log::info($order_payment_response);
+            return $order_payment_response;
+
+    }
+
+
+    public function rateChecking(){
+
+        $postparam = array(
+            'api'	=> config('easyparcel.key'),
             'bulk'	=> array(
             array(
             'pick_code'	=> '58200',
-            'pick_state'	=> 'kul',
+            'pick_state'	=> 'png',
             'pick_country'	=> 'MY',
             'send_code'	=> '47000',
-            'send_state'	=> 'sgr',
+            'send_state'	=> 'kul',
             'send_country'	=> 'MY',
-            'weight'	=> '1',
-            'width'	=> '0',
-            'length'	=> '0',
-            'height'	=> '0',
-            'date_coll'	=> '2017-11-08',
-            )
-            // array(
-            // 'pick_code'	=> '',
-            // 'pick_state'	=> '',
-            // 'pick_country'	=> '',
-            // 'send_code'	=> '',
-            // 'send_state'	=> '',
-            // 'send_country'	=> '',
-            // 'weight'	=> '',
-            // 'width'	=> '',
-            // 'length'	=> '',
-            // 'height'	=> '',
-            // 'date_coll'	=> '',
-            // ),
+            'weight'	=> '2',
+            'width'	=> '',
+            'length'	=> '',
+            'height'	=> '',
+            'date_coll'	=> '',
+            ),
             ),
             'exclude_fields'	=> array(
             'rates.*.pickup_point',
@@ -48,10 +114,12 @@ class EasyParcelController extends Controller
 
             $url = "https://demo.connect.easyparcel.my/?ac=EPRateCheckingBulk";
 
-            $response = Http::asForm()->post($url,$option);
-            Log::info('<!!!!!!--------------------------------!!!!!!>');
-            Log::info($response);
-            return $response;
+            $response = Http::asForm()->post($url,$postparam);
+
+            $collection = collect($response->json()['result'][0]['rates']);
+
+            $filtered = $collection->where('courier_id',"EP-CR03")->first();
+            dd($filtered['service_id']);
 
     }
 }

@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-         // Users table.
+         //Users table.
          $user = new User;
          $user->name = 'Nicholas';
          $user->email = 'nicholaswan21@hotmail.com';
@@ -27,6 +27,23 @@ class UsersTableSeeder extends Seeder
          $userInfo->user_id = $user->id;
          $userInfo->credit = 150.20;
          $userInfo->save();
+
+
+         //Create an admin account
+         $user = new User;
+         $user->name = 'Administrator';
+         $user->email = 'administrator@email.com';
+         $user->password = Hash::make('administrator123');
+         $user->email_verified_at = '2020-03-28 12:12:40';
+         $user->save();
+
+         $userInfo = new UserInfo();
+         $userInfo->user_id = $user->id;
+         $userInfo->credit = 100.00;
+         $userInfo->save();
+
+         $user->assignRole('customer');
+         $user->assignRole('administrator');
  
     }
 }

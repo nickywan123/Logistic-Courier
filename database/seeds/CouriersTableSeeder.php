@@ -13,11 +13,13 @@ class CouriersTableSeeder extends Seeder
     public function run()
     {
         Courier::create([
-            'name' => 'POS LAJU'
+            'name' => 'POS LAJU',
+            'courier_id' => 'EP-CR0A'
         ]);
 
         Courier::create([
-            'name' => 'J&T Express'
+            'name' => 'J&T Express',
+            'courier_id' => 'EP-CR0DP'
         ]);
 
         Courier::create([
@@ -25,19 +27,23 @@ class CouriersTableSeeder extends Seeder
         ]);
 
         Courier::create([
-            'name' => 'DHL'
+            'name' => 'DHL Express',
+            'courier_id' => 'EP-CR0C'
         ]);
 
         Courier::create([
-            'name' => 'CJ LOGISTICS'
+            'name' => 'CJ LOGISTICS',
+            'courier_id' => 'EP-CR0Z'
         ]);
 
         Courier::create([
-            'name' => 'PGEON'
+            'name' => 'PGEON',
+            'courier_id' => 'EP-CR0O'
         ]);
 
         Courier::create([
-            'name' => 'ARAMEX'
+            'name' => 'ARAMEX',
+            'courier_id' => 'EP-CR03'
         ]);
 
         Courier::create([

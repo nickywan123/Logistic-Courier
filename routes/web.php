@@ -64,10 +64,21 @@ Route::post('toyyibpay-callback','ToyyibpayController@callback')->name('toyyibpa
 /**
  * Easy Parcel
  */
-Route::get('easyparcel-checkRate','EasyParcelController@checkRates')->name('easyparcel-checkRate');
+Route::get('easyparcel-makingOrder','EasyParcelController@makingOrder')->name('easyparcel-makingOrder');
+
+Route::get('easyparcel-rateChecking','EasyParcelController@rateChecking')->name('easyparcel-rateChecking');
 
 /**
  * FINANCE REPORT
  */
 
  Route::get('/dashboard/finance-report','FinanceController@index')->name('finance.index');
+
+
+ /**
+  * Administrator 
+  */
+
+  Route::get('/administrator','Administrator\AdministratorController@index')->name('admin.index');
+
+  Route::get('/administrator/rates','Administrator\AdministratorController@getRates')->name('admin.index.rates');
