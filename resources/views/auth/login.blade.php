@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'Login')
+
 @section('content')
 
 
-    <section class="bg-img-network d-flex align-items-center">
+    <section class="vhscreen bg-img-network d-flex align-items-center">
         <div class="container py-110">
             <div class="row">
 
@@ -28,7 +30,7 @@
                                             <span class="input-group-text" id="username"><i data-feather="user"></i></span>
                                             <input class="form-control @error('email') is-invalid @enderror" type="email" name="email" id="email" placeholder="Your email address">
                                             @error('email')
-                                            <div class="ps-25 invalid-feedback d-block">
+                                            <div class="invalid-feedback d-block">
                                                 {{ $message }}
                                             </div>
                                             @enderror

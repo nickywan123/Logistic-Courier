@@ -31,7 +31,7 @@
                 <nav class="wsmenu clearfix">
                     <ul class="wsmenu-list">
                         @guest
-                        <li aria-haspopup="true"><a href="#">Home</a></li>
+                        <li aria-haspopup="true"><a href="{{ url('/') }}">Home</a></li>
                         <li aria-haspopup="true"><a href="#">Services</a></li>
                         <li aria-haspopup="true"><a href="#">FAQs</a></li>
                         <li aria-haspopup="true"><a href="#">Outlet</a></li>
@@ -70,3 +70,17 @@
         </div>
     </div>
 </header>
+
+{{--@if (Route::has('login'))--}}
+{{--    <div class="top-right links">--}}
+{{--        @auth--}}
+{{--            <a href="{{ url('/home') }}">Home</a>--}}
+{{--        @else--}}
+{{--            <a href="{{ route('login') }}">Login</a>--}}
+
+{{--            @if (Route::has('register'))--}}
+{{--                <a href="{{ route('register') }}">Register</a>--}}
+{{--            @endif--}}
+{{--        @endauth--}}
+{{--    </div>--}}
+{{--@endif--}}

@@ -16,7 +16,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title> :: {{ config('app.name', 'Fuiyoh Hub') }}</title>
+    <title>@yield('title') :: {{ config('app.name', 'Fuiyoh Hub') }}</title>
 
     <!--  Vendor  -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
