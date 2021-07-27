@@ -23,7 +23,7 @@ class AdministratorController extends Controller
     }
 
     public function getRates(){
-        $rates = Rate::paginate(20);
+        $rates = Rate::all();
         return view('administrator.rates.index')->with('rates',$rates);
     }
 }

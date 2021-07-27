@@ -1,75 +1,72 @@
-<nav class="navbar navbar-expand-md navbar-light bg-color-navbar">
-    <div class="container">
-        <a class="navbar-brand" href="{{ url('/login') }}">
-            <p style="font-size:18px; color:#blue; font-weight:bold; font-style:italic;">
-             <img style="width: 50px; height:50px;"  src="{{asset('/images/logo/fuiyoh_hub.png')}}" alt="fuiyoh_logo">   
-            </p>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
-
-            </ul>
-
-            <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Authentication Links -->
-                @guest
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href=#>Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href=#>Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href=#>FAQs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href=#>Outlet</a>
-                    </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link text-light" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    @endif --}}
-                    <li class="nav-item ml-5">
-                        <a href="#" class="nav-link"><i class="fa fa-user-o" style="color:#efcc37 "></i></a>
-                    </li>
-                    <li class="nav-item ml-2">
-                        <a href="#" class="nav-link"><i class="fa fa fa-search" style="color: white"></i></a>
-                    </li>
-                    <li class="nav-item ml-2">
-                        <a href="#" class="nav-link"><i class="fa fa-phone" style="color:white"></i></a>
-                    </li>
-                @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+<header>
+   <!-- Mobile Header -->
+   <div class="wsmobileheader clearfix ">
+      <a id="wsnavtoggle" class="wsanimated-arrow"><span></span></a>
+      <span class="smllogo"><img src="{{ asset('assets/images/dashboard-logo.png') }}" width="80" alt="" /></span>
+      <div class="wssearch clearfix">
+          <i class="wsopenmenuic" data-feather="search"></i>
+          <i class="wsclosemenuic" data-feather="x"></i>
+          <div class="wssearchform clearfix">
+              <form>
+                  <input type="text" placeholder="Search Here">
+              </form>
+          </div>
+      </div>
+   </div>
+    <!-- Mobile Header -->
+    <div class="wsmainfull clearfix bg-dark-fuiyoh">
+        <div class="container">
+            <div class="wsmainwp clearfix">
+                <div class="desktoplogo"><a href="{{ url('/') }}"><img src="{{ asset('assets/images/dashboard-logo.png') }}" alt=""></a></div>
+                <div class="wssearch wssearchdesktop clearfix">
+                    <i class="wsopenmenuic" data-feather="search"></i>
+                    <i class="wsclosemenuic" data-feather="x"></i>
+                    <div class="wssearchform clearfix">
+                        <form>
+                            <input type="text" placeholder="Search Here">
+                        </form>
+                    </div>
+                </div>
+                <!--Main Menu HTML Code-->
+                <nav class="wsmenu clearfix">
+                    <ul class="wsmenu-list">
+                        @guest
+                        <li aria-haspopup="true"><a href="#">Home</a></li>
+                        <li aria-haspopup="true"><a href="#">Services</a></li>
+                        <li aria-haspopup="true"><a href="#">FAQs</a></li>
+                        <li aria-haspopup="true"><a href="#">Outlet</a></li>
+                        <li aria-haspopup="true">
+                            <a href="{{ route('login') }}" class="wssignlinktop">
+                                <i data-feather="user"></i>
                             </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                @endguest
-            </ul>
+                        </li>
+                        <li aria-haspopup="true">
+                            <a href="tel:1234567890" class="wsheadphoneno">
+                                <i data-feather="phone"></i>
+                            </a>
+                        </li>
+                        @else
+                        <li aria-haspopup="true">
+                            <a href="#">{{ Auth::user()->name }}</a>
+                            <ul class="sub-menu">
+                                <li aria-haspopup="true">
+                                    <a href="{{ route('dashboard.index') }}">Dashboard</a>
+                                </li>
+                                <li aria-haspopup="true">
+                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                        @endguest
+                    </ul>
+                </nav>
+                <!--Menu HTML Code-->
+            </div>
         </div>
     </div>
-</nav>
-
-
+</header>

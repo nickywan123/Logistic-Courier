@@ -1,24 +1,24 @@
 @extends('layouts.dashboard.app')
 
 @section('content')
-<div class="container" style="position: relative; min-height: 85vh;">
-    <div class="card container" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
-        <div class="card-body">
-            <h1 class="text-center">
-                Oops, looks like something went wrong. Please try gain.
-            </h1>
-            <h3 class="text-center">
-                Failed to process your payment.
-            </h3>
-            <div class="text-center mt-3">
-                <a class="btn btn-primary" href="{{route('topup.index')}}">Try Again</a>
-            </div>
-            <div class="mt-3">
-                <p class="text-center">
-                    Error: {{$errorMessage}}
-                </p>
+
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="p-lg-30 p-md-30 p-sm-30 p-10">
+
+                <div class="card text-white bg-danger py-30">
+                    <div class="card-body text-center">
+                        <h4 class="font-700 mb-20">Oops, looks like something went wrong. Please try again.</h4>
+                        <h4 class="font-700 mb-20">Failed to process your payment.</h4>
+                        <p class="text-center">
+                            <a class="btn btn-yellow-hub px-20 rounded-pill" href="{{ route('topup.index') }}">Try Again</a>
+                        </p>
+                        <p class="mb-0">Error: {{ $errorMessage }}</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-</div>
+
 @endsection

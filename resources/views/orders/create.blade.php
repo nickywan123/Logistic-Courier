@@ -2,179 +2,191 @@
 
 @section('content')
 
-<form method="POST" action="{{route('order.store')}}" id="order-form">
-<div class="row">
-    <div class="offset-1 col-5">
-        {{-- <div class="row">
-            <h4 style="font-weight: 700">Regular Order : xxxx</h4>
-        </div> --}}
-        <h4 style="font-weight: 700;margin-top:3rem;">Pick-up Location</h4> 
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-          @csrf
-          <div class="form-row">
-            <div class="form-group col-md-7">
-                <input type="text" class="form-control @error('schedule_type') is-invalid @enderror" value="Dropoff" style="border-radius:20px;" id="scheduleType" name="schedule_type" readonly >
-                @error('schedule_type')
-                 <small class="form-text text-danger">{{ $message }}</small>
-                @enderror
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-7">
-              <select class="form-control custom-select @error('hub') is-invalid @enderror" name="hub" style="border-radius:20px;" id="hub" >
-                <option disabled selected>Choose a hub</option>
-               
-                <option value="xxx">FUIYOH HUB KAJANG</option>
-                <option value="xxx">FUIYOH HUB SG BULOH</option>
-                <option value="xxx">FUIYOH HUB KAJANG</option>
+            <div class="p-lg-30 p-md-30 p-sm-30 p-10">
+                <h2 class="title-section">Regular Order</h2>
+                <p class="subtitle-section">Enter pick-up location & delivery location</p>
 
-              </select>
-              @error('hub')
-              <small class="form-text text-danger">{{ $message }}</small>
-              @enderror
+                <form action="{{ route('order.store') }}" method="POST" id="order-form" class="row">
+                    @csrf
+                    <div class="col-md-6">
+                        <h3 class="title-section">Pick-up Location</h3>
+
+                        <div class="mb-3">
+                            <input type="text" class="form-control rounded-pill px-20 @error('schedule_type') is-invalid @enderror" id="scheduleType" name="schedule_type" value="Dropoff" readonly>
+                            @error('schedule_type')
+                            <div class="ps-25 invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select rounded-pill px-20 @error('hub') is-invalid @enderror" name="hub" id="hub" >
+                                <option disabled selected>Choose a hub</option>
+                                <option value="xxx">FUIYOH HUB KAJANG</option>
+                                <option value="xxx">FUIYOH HUB SG BULOH</option>
+                                <option value="xxx">FUIYOH HUB KAJANG</option>
+                            </select>
+                            @error('hub')
+                            <div class="ps-25 invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control rounded-pill px-20 @error('content') is-invalid @enderror" id="content" name="content" value="{{ old('content') }}" placeholder="Content(e.g:book)">
+                            @error('content')
+                            <div class="ps-25 invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control rounded-pill px-20 @error('value_content') is-invalid @enderror" id="value_content" name="value_content" value="{{ old('value_content') }}" placeholder="Value of Content(e.g-10)">
+                            @error('value_content')
+                            <div class="ps-25 invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control rounded-pill px-20 @error('pick_up_date') is-invalid @enderror" id="pickupDate" name="pick_up_date" value="{{ old('pick_up_date') }}" autocomplete="off" placeholder="Pick-up date">
+                                @error('pick_up_date')
+                                <div class="ps-25 invalid-feedback d-block">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control rounded-pill px-20 @error('pick_up_time') is-invalid @enderror" id="pickupTime" name="pick_up_time" value="{{ old('pick_up_time') }}" autocomplete="off" placeholder="Pick-up time">
+                                @error('pick_up_time')
+                                <div class="ps-25 invalid-feedback d-block">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="hidden" value="{{ $rate->id }}" name="rate">
+                            <input type="text" class="form-control rounded-pill px-20 @error('weight') is-invalid @enderror" value="{{$rate->weight}}" name="weight" id="weight" readonly>
+                            @error('weight')
+                            <div class="ps-25 invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control rounded-3 px-20" name="delivery_note" id="" placeholder="Delivery Note (optional)"></textarea>
+                            @error('delivery_note')
+                            <div class="ps-25 invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h3 class="title-section">Delivery Location</h3>
+
+                        <div class="mb-3">
+                            <input type="text" class="form-control rounded-pill px-20 @error('recipient_address') is-invalid @enderror" id="recipientAddress" name="recipient_address" value="{{ old('recipient_address') }}" placeholder="Recipient Address">
+                            @error('recipient_address')
+                            <div class="ps-25 invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control rounded-pill px-20 @error('city') is-invalid @enderror" id="city" name="city" value="{{ $city }}" placeholder="City" readonly>
+                            @error('city')
+                            <div class="ps-25 invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control rounded-pill px-20 @error('state') is-invalid @enderror" id="state" name="state" value="{{ $state->name }}" placeholder="State" readonly>
+                            @error('state')
+                            <div class="ps-25 invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control rounded-pill px-20 @error('postcode') is-invalid @enderror" id="postcode" name="postcode" value="{{$postcode_delivery}}" placeholder="Postcode" readonly>
+                            @error('postcode')
+                            <div class="ps-25 invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control rounded-pill px-20 @error('delivery_date') is-invalid @enderror" id="deliveryDate" name="delivery_date" value="{{ old('delivery_date') }}" autocomplete="off" placeholder="Delivery Date">
+                            @error('delivery_date')
+                            <div class="ps-25 invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select rounded-pill px-20 @error('delivery_time') is-invalid @enderror" id="deliveryTime" name="delivery_time" autocomplete="off" >
+                                <option disabled selected>Delivery time</option>
+                                <option value="xxx">9.00AM - 11.00AM</option>
+                                <option value="xxx">11.00AM - 1.00PM</option>
+                                <option value="xxx">1.00PM - 3.00PM</option>
+                                <option value="xxx">3.00PM - 5.00PM</option>
+                            </select>
+                            @error('delivery_time')
+                            <div class="ps-25 invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <input type="text"class="form-control rounded-pill px-20 @error('recipient_name') is-invalid @enderror" id="recipientName" name="recipient_name" value="{{ old('recipient_name') }}" placeholder="Recipient Name">
+                            @error('recipient_name')
+                            <div class="ps-25 invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control rounded-pill px-20 @error('recipient_contact_number') is-invalid @enderror" id="recipientContactNumber" name="recipient_contact_number" value="{{ old('recipient_contact_number') }}" placeholder="Recipient Contact Number (e.g 0135672839)">
+                            @error('recipient_contact_number')
+                            <div class="ps-25 invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control rounded-pill px-20 @error('recipient_email') is-invalid @enderror" id="recipientEmail" name="recipient_email" value="{{ old('recipient_email') }}" placeholder="Recipient Email">
+                            @error('recipient_email')
+                            <div class="ps-25 invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input id="order-btn" type="submit" class="btn btn-yellow-hub rounded-pill px-30" value="Proceed">
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
             </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-7">
-                <input type="text"  placeholder="Content(e.g:book)" value="{{ old('content') }}" class="form-control @error('content') is-invalid @enderror" style="border-radius:20px;" name="content" id="content" >
-              @error('content')
-              <small class="form-text text-danger">{{ $message }}</small>
-              @enderror
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-7">
-                <input type="text"  placeholder="Value of Content(e.g-10)" value="{{ old('value_content') }}" class="form-control @error('value_content') is-invalid @enderror" style="border-radius:20px;" name="value_content" id="value_content" >
-              @error('value_content')
-              <small class="form-text text-danger">{{ $message }}</small>
-              @enderror
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-7">
-                <input type="text"  placeholder="Pick-up date" value="{{ old('pick_up_date') }}" class="form-control @error('pick_up_date') is-invalid @enderror" style="border-radius:20px;" name="pick_up_date" id="pickupDate" autocomplete="off" >
-              @error('pick_up_date')
-              <small class="form-text text-danger">{{ $message }}</small>
-              @enderror
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-7">
-                <input type="text"  placeholder="Pick-up time" value="{{ old('pick_up_time') }}" class="form-control @error('pick_up_time') is-invalid @enderror" style="border-radius:20px;" name="pick_up_time" id="pickupTime" autocomplete="off" >
-              @error('pick_up_time')
-              <small class="form-text text-danger">{{ $message }}</small>
-              @enderror
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-7">
-                <input type="hidden" value="{{$rate->id}}" name="rate">
-                <input type="text" value="{{$rate->weight}}" class="form-control" style="border-radius:20px;" name="weight" id="weight" readonly>
-              @error('weight')
-              <small class="form-text text-danger">{{ $message }}</small>
-              @enderror
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-7">
-                <textarea class="form-control"  id="" cols="30" rows="4" style="border-radius: 20px;" name="delivery_note" placeholder="Delivery Note(optional)"></textarea>
-              @error('delivery_note')
-              <small class="form-text text-danger">{{ $message }}</small>
-              @enderror
-            </div>
-          </div>
+        </div>
     </div>
-    <div class="col-6">   
-        <h4 style="font-weight: 700;margin-top:3rem;">Delivery Location</h4>
-          <div class="form-row">
-            <div class="form-group col-md-8">
-                <input type="text"  placeholder="Recipient Address" value="{{ old('recipient_address') }}" class="form-control @error('recipient_address') is-invalid @enderror" style="border-radius:20px;" name="recipient_address" id="recipientAddress" >
-                @error('recipient_address')
-                 <small class="form-text text-danger">{{ $message }}</small>
-                @enderror
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-8">
-                <input type="text" placeholder="City" value="{{$city}}" class="form-control @error('city') is-invalid @enderror" style="border-radius:20px;" name="city" id="city" readonly >
-              @error('city')
-              <small class="form-text text-danger">{{ $message }}</small>
-              @enderror
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-4">
-                <input type="text"  value="{{$state->name}}" class="form-control @error('state') is-invalid @enderror" style="border-radius:20px;" name="state" id="state" readonly>
-              @error('state')
-              <small class="form-text text-danger">{{ $message }}</small>
-              @enderror
-            </div>
-            <div class="form-group col-md-4">
-                <input type="text"  value="{{$postcode_delivery}}" class="form-control @error('postcode') is-invalid @enderror" style="border-radius:20px;" name="postcode" id="postcode" readonly >
-              @error('postcode')
-              <small class="form-text text-danger">{{ $message }}</small>
-              @enderror
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-8">
-                <input type="text"  placeholder="Delivery Date" value="{{ old('delivery_date') }}" class="form-control @error('delivery_date') is-invalid @enderror" style="border-radius:20px;" name="delivery_date" id="deliveryDate" autocomplete="off" >
-              @error('delivery_date')
-              <small class="form-text text-danger">{{ $message }}</small>
-              @enderror
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-8">
-                <select class="form-control custom-select @error('delivery_time') is-invalid @enderror" name="delivery_time" id="deliveryTime" style="border-radius:20px;" autocomplete="off" >
-                    <option disabled selected>Delivery time</option>
-                   
-                    <option value="xxx">9.00AM-11.00AM</option>
-                    <option value="xxx">11.00AM-1.00PM</option>
-                    <option value="xxx">1.00PM-3.00PM</option>
-                    <option value="xxx">3.00PM-5.00PM</option>
-    
-                  </select>
-                  @error('delivery_time')
-                  <small class="form-text text-danger">{{ $message }}</small>
-                  @enderror
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-8">
-                <input type="text"  placeholder="Recipient Name" value="{{ old('recipient_name') }}" class="form-control @error('recipient_name') is-invalid @enderror" style="border-radius:20px;" name="recipient_name" id="recipientName"  >
-              @error('recipient_name')
-              <small class="form-text text-danger">{{ $message }}</small>
-              @enderror
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-8">
-                <input type="text"  placeholder="Recipient Contact Number (e.g 0135672839)" value="{{ old('recipient_contact_number') }}" class="form-control @error('recipient_contact_number') is-invalid @enderror" style="border-radius:20px;" name="recipient_contact_number" id="recipientContactNumber"  >
-              @error('recipient_contact_number')
-              <small class="form-text text-danger">{{ $message }}</small>
-              @enderror
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-8">
-                <input type="email"  placeholder="Recipient Email" value="{{ old('recipient_email') }}" class="form-control @error('recipient_email') is-invalid @enderror" style="border-radius:20px;" name="recipient_email" id="recipientEmail"  >
-              @error('recipient_email')
-              <small class="form-text text-danger">{{ $message }}</small>
-              @enderror
-            </div>
-          </div>
-       
-          <div class="form-row">
-            <div class="form-group offset-md-3">
-                <button type="button" id="order-btn"  class="btn proceed-button" style="min-width: 200px;">Proceed</button>  
-            </div>   
-          </div>
-          
-    </div>  
-</div>
 
 
+{{--<form method="POST" action="{{route('order.store')}}" id="order-form">--}}
  <!-- Modal -->
  <div class="modal fade" id="confirmOrder" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -192,167 +204,159 @@
     </div>
   </div>
 </div>
-</form> 
-
-<style>
-label.error{
-  color: red;
-  font-size: 13px;
-}
-</style>
-<script>
- 
- // Validate form
-$("#order-form").validate({
-  
-  rules: {
-      schedule_type:{
-           required:true
-      },
-      hub:{
-           required:true
-      },
-      pick_up_date:{
-           required:true
-      },
-      pick_up_time:{
-            required:true
-      },
-      weight:{
-            required:true
-      },
-      recipient_address: {
-          required: true,
-          minlength: 3
-      },
-      city: {
-          required: true
-      },
-      // state: {
-      //     required: true
-      // },
-    
-      // postcode: {
-      //     required: true,
-      //     postcode: true
-      // },
-      delivery_date: {
-          required:true
-      },
-      delivery_time: {
-          required:true
-      },
-      recipient_name:{
-          required:true
-      },
-      recipient_contact_number:{
-         required: true,
-         digits:true,
-         minlength: 10,
-        maxlength: 15
-      },
-      recipient_email: {
-          required: true,
-          email: true
-      }
-   
-},
-  messages: {
-    schedule_type:{
-           required:"Please select a schedule type"
-      },
-      hub:{
-           required:"Please choose a hub"
-      },
-      content: {
-         required: "Please enter name of content"
-      },
-      value_content : {
-         required:"Please enter value of content",
-         digits:"Content value should be in number",
-      },
-      pick_up_date:{
-           required:"Please select a pick up date"
-      },
-      pick_up_time:{
-            required:"Please select a pick up time"
-      },
-      weight:{
-            required:"Please enter the weight"
-      },
-      recipient_address: {
-          required: "Recipient Address is required",
-          minlength: "Address must be more than 3 characters"
-      },
-      city: {
-          required: "Please enter the recipient city"
-      },
-      // state: {
-      //     required: "Please select a state"
-      // },
-    
-      // postcode: {
-      //     required: "Please select a postcode",
-      //     postcode: "Invalid postcode"
-      // },
-      delivery_date: {
-          required: "Please select a delivery date"
-      },
-      delivery_time: {
-          required:"Please select your delivery time range"
-      },
-      recipient_name:{
-          required:"Please provide recipient name"
-      },
-      recipient_contact_number:{
-         required: "Please provide recipient contact number",
-         digits:"Contact number should be in digits",
-         minlength: "Contact number length must be greater than 10",
-         maxlength: "Contact number length must be smaller than 15"
-      },
-      recipient_email: {
-          required: "Please enter recipient's email",
-          email: "Email is not valid"
-      }
-  }
-});
-
-// validate all the fields before showing modal
-$('#order-btn').click(function() {
-if (
-    $("#order-form").validate().element('#scheduleType') &&
-    $("#order-form").validate().element('#hub') &&
-    $("#order-form").validate().element('#content') &&
-    $("#order-form").validate().element('#value_content') &&
-    $("#order-form").validate().element('#pickupDate') &&
-    $("#order-form").validate().element('#pickupTime') &&
-    $("#order-form").validate().element('#weight') &&
-    $("#order-form").validate().element('#recipientAddress') &&
-    $("#order-form").validate().element('#city') &&
-    // $("#order-form").validate().element('#state') &&
-    // $("#order-form").validate().element('#postcode') &&
-    $("#order-form").validate().element('#deliveryDate') &&
-    $("#order-form").validate().element('#deliveryTime') &&
-    $("#order-form").validate().element('#recipientName') &&
-    $("#order-form").validate().element('#recipientContactNumber') &&
-    $("#order-form").validate().element('#recipientEmail') 
-   
-) {
-    //show modal if validation passes
-     $('#confirmOrder').modal('toggle');  
-    // return true;
-} else {
-     return false;
-  }
-});
-
-// $('.confirm-pay-now').click(function(){
-//   $("#order-form").submit();
-// });
-
-</script>
+{{--</form>--}}
 
 
+
+    @push('onpagescript')
+        <!--dashboard/orders/booking--->
+        <script>
+
+            // Validate form
+            $("#order-form").validate({
+                rules: {
+                    schedule_type: {
+                        required: true
+                    },
+                    hub: {
+                        required: true
+                    },
+                    pick_up_date: {
+                        required: true
+                    },
+                    pick_up_time: {
+                        required: true
+                    },
+                    weight: {
+                        required: true
+                    },
+                    recipient_address: {
+                        required: true,
+                        minlength: 3
+                    },
+                    city: {
+                        required: true
+                    },
+                    // state: {
+                    //     required: true
+                    // },
+                    // postcode: {
+                    //     required: true,
+                    //     postcode: true
+                    // },
+                    delivery_date: {
+                        required: true
+                    },
+                    delivery_time: {
+                        required: true
+                    },
+                    recipient_name: {
+                        required: true
+                    },
+                    recipient_contact_number: {
+                        required: true,
+                        digits: true,
+                        minlength: 10,
+                        maxlength: 15
+                    },
+                    recipient_email: {
+                        required: true,
+                        email: true
+                    }
+                },
+                messages: {
+                    schedule_type: {
+                        required: "Please select a schedule type"
+                    },
+                    hub: {
+                        required: "Please choose a hub"
+                    },
+                    content: {
+                        required: "Please enter name of content"
+                    },
+                    value_content: {
+                        required: "Please enter value of content",
+                        digits: "Content value should be in number",
+                    },
+                    pick_up_date: {
+                        required: "Please select a pick up date"
+                    },
+                    pick_up_time: {
+                        required: "Please select a pick up time"
+                    },
+                    weight: {
+                        required: "Please enter the weight"
+                    },
+                    recipient_address: {
+                        required: "Recipient Address is required",
+                        minlength: "Address must be more than 3 characters"
+                    },
+                    city: {
+                        required: "Please enter the recipient city"
+                    },
+                    // state: {
+                    //     required: "Please select a state"
+                    // },
+                    // postcode: {
+                    //     required: "Please select a postcode",
+                    //     postcode: "Invalid postcode"
+                    // },
+                    delivery_date: {
+                        required: "Please select a delivery date"
+                    },
+                    delivery_time: {
+                        required: "Please select your delivery time range"
+                    },
+                    recipient_name: {
+                        required: "Please provide recipient name"
+                    },
+                    recipient_contact_number: {
+                        required: "Please provide recipient contact number",
+                        digits: "Contact number should be in digits",
+                        minlength: "Contact number length must be greater than 10",
+                        maxlength: "Contact number length must be smaller than 15"
+                    },
+                    recipient_email: {
+                        required: "Please enter recipient's email",
+                        email: "Email is not valid"
+                    }
+                }
+            });
+
+            // validate all the fields before showing modal
+            $('#order-btn').click(function () {
+                if ($("#order-form").validate().element('#scheduleType') &&
+                    $("#order-form").validate().element('#hub') &&
+                    $("#order-form").validate().element('#content') &&
+                    $("#order-form").validate().element('#value_content') &&
+                    $("#order-form").validate().element('#pickupDate') &&
+                    $("#order-form").validate().element('#pickupTime') &&
+                    $("#order-form").validate().element('#weight') &&
+                    $("#order-form").validate().element('#recipientAddress') &&
+                    $("#order-form").validate().element('#city') &&
+                    // $("#order-form").validate().element('#state') &&
+                    // $("#order-form").validate().element('#postcode') &&
+                    $("#order-form").validate().element('#deliveryDate') &&
+                    $("#order-form").validate().element('#deliveryTime') &&
+                    $("#order-form").validate().element('#recipientName') &&
+                    $("#order-form").validate().element('#recipientContactNumber') &&
+                    $("#order-form").validate().element('#recipientEmail')
+                ) {
+                    //show modal if validation passes
+                    $('#confirmOrder').modal('toggle');
+                    // return true;
+                } else {
+                    return false;
+                }
+            });
+
+            // $('.confirm-pay-now').click(function(){
+            //   $("#order-form").submit();
+            // });
+
+        </script>
+
+    @endpush
 
 
 @endsection

@@ -44,6 +44,6 @@ class UsersTableSeeder extends Seeder
 
          $user->assignRole('customer');
          $user->assignRole('administrator');
- 
+
     }
 }

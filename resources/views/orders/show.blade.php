@@ -1,34 +1,41 @@
 @extends('layouts.dashboard.app')
 
+@section('page_title', 'Order History')
+
 @section('content')
 
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-<div class="row">
-    <div class="offset-1 col-8">
-        <h4 style="font-weight: 700">Order History</h4>      
-          <table class="table">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col">Date & Time</th>
-                <th scope="col">Order Number</th>
-                <th scope="col">Status</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($orders as $order)
-              <tr>
-                <th scope="row">{{$order->created_at}}</th>
-                <td>{{$order->order_number}}</td>
-                <td>{{$order->status->name}}</td>
-                <td>placeholder</td>         
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-        
+            <div class="p-lg-30 p-md-30 p-sm-30 p-10">
+                <h2 class="title-section">Order History</h2>
+
+                <div class="table-responsive">
+                    <table id="tabledata" class="refresh table table-stripped mb-0" data-filtering="true">
+                        <thead>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>Order Number</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($orders as $order)
+                            <tr>
+                                <th>{{$order->created_at}}</th>
+                                <td>{{$order->order_number}}</td>
+                                <td>{{$order->status->name}}</td>
+                                <td>#</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>
 
 @endsection
 

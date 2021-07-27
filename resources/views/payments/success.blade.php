@@ -1,16 +1,20 @@
 @extends('layouts.dashboard.app')
 
 @section('content')
-<div class="container" style="position: relative; min-height: 85vh;">
-    <div class="card container" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
-        <div class="card-body">
-            <h3 class="text-center">
-                Thank you! Payment Success!
-            </h3>
-            <h5 class="text-center">
-                Your transaction ID is: {{ $transaction_id }}.
-            </h5>
+
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="p-lg-30 p-md-30 p-sm-30 p-10">
+
+                <div class="card text-white bg-success py-30">
+                    <div class="card-body text-center">
+                        <h4 class="font-700 mb-10">Thank you! Payment Success!</h4>
+                        <p class="mb-0">Your transaction ID is: {{ $transaction_id }}.</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
-</div>
+
 @endsection
