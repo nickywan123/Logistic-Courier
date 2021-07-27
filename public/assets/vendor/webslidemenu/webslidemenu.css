@@ -444,7 +444,7 @@ video {
   line-height: 22px;
   padding: 8px 12px;
   text-transform: none;
-  font-size: 13px;
+  /*font-size: 13px;*/
   letter-spacing: normal;
   border-right: 0px solid;
 }

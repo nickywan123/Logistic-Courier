@@ -1,152 +1,82 @@
-
-<footer id="footer-content-collapse-sidebar">
-    <div class="row pl-2 pr-2">
-        <div class="col-6 offset-md-1 col-md-2 text-xs-center text-md-left mb-0">
-            <img class="img-logo-size ml-2"  src="{{asset('/images/footer/icons/fuiyoh_logo.png')}}" alt="fuiyoh_logo">
-            <img class="img-logo-size ml-3"  src="{{asset('/images/footer/icons/mascot_fuiyoh.png')}}" alt="fuiyoh_mascot">
-            <ul class="list-unstyled pr-2 pl-2">
-                <li>
-                    <p class="mb-1 mt-1 text-font-size" style="font-weight: 700">"PLACE WHERE GOOD THINGS MEET"</p>
-                    <p class="mb-1 text-font-size ">
-                        MYKOPENAS SDN BHD(128786-A)
-                    </p>
-                </li>
-                <li>
-                    <p class="mb-1 text-font-size ">
-                         NO 9-1 & 9-2B UKAY BOULEVARD JALAN LINGKARAN TENGAH 2,JALAN ULU KELANG,68000 AMPANG JAYA,SELANGOR.
-                    </p>
-                </li>
-               
-            </ul>
+    <footer class="bg-dark-fuiyoh py-60">
+        <div class="container pb-30">
+            <div class="row row-eq-height d-flex align-items-end">
+                <div class="col-md-3 text-white">
+                    <div class="row mb-20">
+                        <div class="col-md-10">
+                            <img src="{{ asset('assets/images/footer-logo.png') }}" alt="" class="img-fluid">
+                            <h6 class="font-700 text-center mt-0">“Place Where Good Things Meet”</h6>
+                        </div>
+                    </div>
+                    <h6 class="font-700 text-sm-start text-center">MYKOPENAS SDN BHD (128786-A)</h6>
+                    <p class="mb-0 mb-xs-20 text-sm-start text-center">NO. 9-1 & 9-2B UKAY BOULEVARD JALAN LINGKARAN TENGAH 2, JALAN ULU KELANG, 68000 AMPANG JAYA, SELANGOR.</p>
+                </div>
+                <div class="col-md-8 ms-lg-auto ms-sm-auto">
+                    <div class="row mt-20">
+                        <div class="col-md-4">
+                            <h6 class="footer-title text-sm-start text-center">Company</h6>
+                            <ul class="footer-nav list-unstyled text-sm-start text-center">
+                                <li>
+                                    <a href="#">About Us</a>
+                                </li>
+                                <li>
+                                    <a href="#">Deliver Care</a>
+                                </li>
+                                <li>
+                                    <a href="#">Blog</a>
+                                </li>
+                                <li>
+                                    <a href="#">Career</a>
+                                </li>
+                                <li>
+                                    <a href="#">Contact Us</a>
+                                </li>
+                                <li>
+                                    <a href="#">FAQs</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="footer-title text-sm-start text-center">Business</h6>
+                            <ul class="footer-nav list-unstyled text-sm-start text-center">
+                                <li>
+                                    <a href="#">Fuiyoh Delivery</a>
+                                </li>
+                                <li>
+                                    <a href="#">Fuiyoh Market</a>
+                                </li>
+                                <li>
+                                    <a href="#">Fuiyoh Crew</a>
+                                </li>
+                                <li>
+                                    <a href="#">Fuiyoh Pay</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="footer-title text-sm-start text-center">Legal</h6>
+                            <ul class="footer-nav list-unstyled text-sm-start text-center">
+                                <li>
+                                    <a href="#">Privacy Policy</a>
+                                </li>
+                                <li>
+                                    <a href="#">Terms & Condition</a>
+                                </li>
+                            </ul>
+                            <h6 class="footer-title text-sm-start text-center">Follow Us</h6>
+                            <div class="mt-20 text-sm-start text-center">
+                                <a class="btn-social" href="#"><i data-feather="facebook"></i></a>
+                                <a class="btn-social" href="#"><i data-feather="youtube"></i></a>
+                                <a class="btn-social" href="#"><i data-feather="instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-6 col-md-2 offset-md-1 text-xs-center text-md-left mb-0">
-         
-            <ul class="list-unstyled pr-2 pl-2 mt-4">
-                <li>
-                    <p class="m-0 text-font-size" style="font-weight: 700;">Company</p>
-                </li>
-                <li>
-                    <a class="text-light text-font-size" href="#">About Us</a>
-                </li>
-                <li>
-                    <a class="text-light text-font-size" href="#">Deliver Care</a>
-                </li>
-                <li>
-                    <a class="text-light text-font-size" href="">Blog</a>
-                </li>
-                <li>
-                    <a class="text-light text-font-size" href="">Career</a>
-                </li>
-                <li>
-                    <a class="text-light text-font-size" href="">Contact Us</a>
-                </li>       
-            </ul>
+    </footer>
+    <div class="copywrite bg-yellow-fuiyoh py-10">
+        <div class="container">
+            <p class="mb-0 text-center">2021 Fuiyoh All Rights Reserved.</p>
         </div>
-
-        <div class="col-12 col-md-2 text-xs-center text-md-left mb-0">
-            <ul class="list-unstyled pr-2 pl-2 mt-4">
-                <li>
-                    <p class="m-0 text-font-size" style="font-weight:700;">Business</p>
-                </li>
-                <li>
-                    <a class="text-light text-font-size" href="#">Fuiyoh Delivery</a>
-                </li>
-                <li>
-                    <a class="text-light text-font-size" href="#">Fuiyoh Market</a>
-                </li>
-                <li>
-                    <a class="text-light text-font-size" href="">Fuiyoh Crew</a>
-                </li>
-                <li>
-                    <a class="text-light text-font-size" href="">Fuiyoh Pay</a>
-                </li>
-                <li>
-                    <a class="text-light text-font-size" href="">FAQs</a>
-                </li>       
-            </ul>
-        </div>
-
-       
-
-
-        <div class="col-8 col-md-3 text-font-size margin-zero-xs">
-            <ul class="list-unstyled pr-2 pl-2 mt-4">
-                <li>
-                    <p class="m-0 text-font-size" style="font-weight: 700;">Legal</p>
-                </li>
-                <li>
-                    <a class="text-light text-font-size" href="#">Privacy Policy</a>
-                </li>
-                <li>
-                    <a class="text-light text-font-size" href="#">Terms & Condition</a>
-                </li>  
-                <li>
-                    <p class="mt-1 text-font-size" style="font-weight:700;"><b>Follow</b></p>
-                </li> 
-                <li>
-                    <p>
-                        <i class="fa fa-facebook-official fa-3x"></i>
-                        <i class="fa fa-youtube fa-3x ml-2"></i>
-                        <i class="fa fa-instagram fa-3x ml-2"></i>
-                    </p>
-                </li>            
-            </ul>
-        </div>
-
     </div>
-</footer>
-
-
-
-
-<style>
-
-footer{
-    position:absolute;
-    left: 0;
-    bottom: 0;
-    overflow: hidden; 
-    border-top: 1px solid #fbcc34;
-    padding-top: 0.5rem;
-    background-color: #000;
-    width: 100%;
-    min-height: 20%; 
-    color: #ffffff;
-}
-
-
-a:hover{
-     color: grey;
-     text-decoration: none;
-  }
-
-  span:hover{
-     color: grey;
-     text-decoration: none;
-  }
-
-  .text-font-size{
-      font-size: 10px;
-  }
-
-  .text-color{
-      color: #efcc37;
-  }
-
-
-@media(min-width:768px){
-    .padding-top-md{
-        padding-top:100px;
-    }
-}
-
-@media(max-width:768px){
-    .hidden-text{
-        display: none;
-    }
-    .margin-bottom-sm{
-        margin-bottom: 0;
-    }
-}
-
-</style>
