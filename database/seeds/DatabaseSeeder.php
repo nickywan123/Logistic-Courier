@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
          $this->call(StatesTableSeeder::class);
          $this->call(WeightTableSeeder::class);
          $this->call(PostcodesTableSeeder::class);
+
          $this->call(RatesTableSeeder::class);
          $this->call(LocationsTableSeeder::class);
          $this->call(CouriersTableSeeder::class);
@@ -25,5 +26,7 @@ class DatabaseSeeder extends Seeder
          $this->call(StatusTableSeeder::class);
          $this->call(PermissionsTableSeeder::class);
          $this->call(UsersTableSeeder::class);
+
+
     }
 }
