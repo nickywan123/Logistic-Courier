@@ -22,8 +22,6 @@ class ToyyibpayController extends Controller
        
     public function createBill(Request $request){
        
-
-
         $credit = ($request->amount)*100;
         $option = array(
             'userSecretKey'=>config('toyyibpay.key'),
@@ -52,6 +50,8 @@ class ToyyibpayController extends Controller
           $response = Http::asForm()->post($url,$option);
           
           $billCode = $response[0]['BillCode'];
+          //dd($billCode);
+          
 
           //Cache the user
           Cache::add($billCode,auth()->id(),now()->addMinutes(30));
@@ -103,7 +103,7 @@ class ToyyibpayController extends Controller
 
         //update new credit balance for user
         $user_credit = UserInfo::where('user_id',$user_id)->first();
-        $user_credit->credit += $request->amount;
+        $user_credit->credit += $request->amount-1;
         $user_credit->save();
 
         }

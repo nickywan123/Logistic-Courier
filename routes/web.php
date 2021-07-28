@@ -44,6 +44,9 @@ Route::get('dashboard/orders/booking','Dashboard\OrderController@showBooking')->
 //Create new booking
 Route::post('dashboard/orders','Dashboard\OrderController@store')->name('order.store');
 
+//Error page creating order
+Route::get('/dashboard/orders/order-failed','Dashboard\OrderController@createOrderStatus')->name('create.order.failed');
+
 
 //Show order history
 Route::get('dashboard/orders/history','Dashboard\OrderController@show')->name('order.show');
@@ -62,11 +65,11 @@ Route::post('toyyibpay-callback','ToyyibpayController@callback')->name('toyyibpa
 
 
 /**
- * Easy Parcel
+ * Easy Parcel(for testing)
  */
-Route::get('easyparcel-makingOrder','EasyParcelController@makingOrder')->name('easyparcel-makingOrder');
+// Route::get('easyparcel-makingOrder','EasyParcelController@makingOrder')->name('easyparcel-makingOrder');
 
-Route::get('easyparcel-rateChecking','EasyParcelController@rateChecking')->name('easyparcel-rateChecking');
+// Route::get('easyparcel-rateChecking','EasyParcelController@rateChecking')->name('easyparcel-rateChecking');
 
 /**
  * FINANCE REPORT
@@ -79,3 +82,6 @@ Route::get('/dashboard/finance-report','FinanceController@index')->name('finance
 Route::get('/administrator','Administrator\AdministratorController@index')->name('admin.index');
 
 Route::get('/administrator/rates','Administrator\AdministratorController@getRates')->name('admin.index.rates');
+
+
+
