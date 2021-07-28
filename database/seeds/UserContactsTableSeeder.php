@@ -3,7 +3,7 @@
 use App\UserContact;
 use Illuminate\Database\Seeder;
 
-class UserContactTable extends Seeder
+class UserContactsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,7 @@ class UserContactTable extends Seeder
      */
     public function run()
     {
-        // Create user contact (temporarily)
+          // Create user contact (temporarily)
 
         //normal user
         $user_contact = new UserContact();
@@ -26,6 +26,5 @@ class UserContactTable extends Seeder
         $user_contact->user_id = 2;
         $user_contact->contact_num = "0122188219";
         $user_contact->save();
-
     }
 }
