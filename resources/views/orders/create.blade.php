@@ -1,14 +1,11 @@
 @extends('layouts.dashboard.app')
 
 @section('content')
-
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
             <div class="p-lg-30 p-md-30 p-sm-30 p-10">
                 <h2 class="title-section">Regular Order</h2>
                 <p class="subtitle-section">Enter pick-up location & delivery location</p>
-
                 <form action="{{ route('order.store') }}" method="POST" id="order-form" class="row">
                     @csrf
                     <div class="col-md-6">
@@ -174,39 +171,33 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-12">
-                                <input id="order-btn" type="submit" class="btn btn-yellow-hub rounded-pill px-30" value="Proceed">
+                                <button type="button" id="order-btn" class="btn btn-yellow-hub rounded-pill px-30">Procced</button>
                             </div>
                         </div>
                     </div>
-
-                </form>
-
             </div>
         </div>
     </div>
 
 
-{{--<form method="POST" action="{{route('order.store')}}" id="order-form">--}}
  <!-- Modal -->
  <div class="modal fade" id="confirmOrder" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content modal-content-height">
-      <div class="modal-header" style="background-color: #D0D0D0">
-        <h5 class="modal-title">Order Confirmation</h5>
-      </div>
-      <div class="modal-body">
-        <p>Your credit balance will be charge RM{{$rate->cost}} for the invoice. Proceed this order?</p>
-        <div class="text-center">
-          <button type="submit" class="btn btn-primary confirm-pay-now ">Pay Now</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content modal-content-height">
+        <div class="modal-header" style="background-color: #D0D0D0">
+          <h5 class="modal-title">Order Confirmation</h5>
+        </div>
+        <div class="modal-body">
+          <p>Your credit balance will be charge RM{{$rate->cost}} for the invoice. Proceed this order?</p>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary confirm-pay-now ">Pay Now</button>
+            <button type="button" id="closeModalBtn" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-{{--</form>--}}
-
-
+</form>
 
     @push('onpagescript')
         <!--dashboard/orders/booking--->
@@ -348,6 +339,10 @@
                 } else {
                     return false;
                 }
+            });
+
+            $('#closeModalBtn').click(function () {
+                $('#confirmOrder').modal('hide');
             });
 
             // $('.confirm-pay-now').click(function(){
