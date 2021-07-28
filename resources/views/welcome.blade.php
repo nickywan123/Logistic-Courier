@@ -74,63 +74,69 @@
         <div class="container">
             <h1 class="font-700 text-center text-uppercase mb-60">Fuiyoh Hub Services</h1>
 
-            <div class="row row-eq-height">
-                <div class="col-lg-4 col-sm-6 col-12">
-                    <div class="spec-card mb-4">
-                        <div class="spec-card-body p-55 text-center">
-                            <img src="{{ asset('assets/images/cus-icon/icon-dropoff.png') }}" alt="" class="mb-20 w-50 img-fluid">
-                            <h3 class="font-700 mb-20">Drop-off</h3>
-                            <p class="mb-0">Drop your parcel to the nearby drop-off point, or 'drop shop', where the courier collects it later.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-12">
-                    <div class="spec-card mb-4">
-                        <div class="spec-card-body p-55 text-center">
-                            <img src="{{ asset('assets/images/cus-icon/icon-dropout.png') }}" alt="" class="mb-20 w-50 img-fluid">
-                            <h3 class="font-700 mb-20">Pick-up</h3>
-                            <p class="mb-0">Avoid the hassle. Book your delivery and our courier service will come to pick you parcel at your doorstep.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-12">
-                    <div class="spec-card mb-4">
-                        <div class="spec-card-body p-55 text-center">
-                            <img src="{{ asset('assets/images/cus-icon/icon-subtract.png') }}" alt="" class="mb-20 w-50 img-fluid">
-                            <h3 class="font-700 mb-20">Courier</h3>
-                            <p class="mb-0">Deliver your order anywhere including overseas with our top courier partners.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="row">
+                <div class="col-md-10 mx-auto">
 
-                <div class="col-lg-4 col-sm-6 col-12">
-                    <div class="spec-card mb-4">
-                        <div class="spec-card-body p-55 text-center">
-                            <img src="{{ asset('assets/images/cus-icon/icon-book-check.png') }}" alt="" class="mb-20 w-50 img-fluid">
-                            <h3 class="font-700 mb-20">Payment & Renewal</h3>
-                            <p class="mb-0">Get your SSM, road tax or your insurance renewal today. You can even pay your bills fast & easy.</p>
+                    <div class="row">
+                        <div class="col-lg-4 col-sm-6 col-12">
+                            <div class="spec-card mb-4">
+                                <div class="spec-card-body p-55 text-center">
+                                    <img src="{{ asset('assets/images/cus-icon/icon-dropoff.png') }}" alt="" class="mb-20 w-50 img-fluid">
+                                    <h3 class="font-700 mb-20">Drop-off</h3>
+                                    <p class="mb-0">Drop your parcel to the nearby drop-off point, or 'drop shop', where the courier collects it later.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-12">
-                    <div class="spec-card mb-4">
-                        <div class="spec-card-body p-55 text-center">
-                            <img src="{{ asset('assets/images/cus-icon/icon-materials.png') }}" alt="" class="mb-20 w-50 img-fluid">
-                            <h3 class="font-700 mb-20">Vendor Marketplace</h3>
-                            <p class="mb-0">Allow multiple vendors to sell their products at the location provided inside the hub.</p>
+                        <div class="col-lg-4 col-sm-6 col-12">
+                            <div class="spec-card mb-4">
+                                <div class="spec-card-body p-55 text-center">
+                                    <img src="{{ asset('assets/images/cus-icon/icon-dropout.png') }}" alt="" class="mb-20 w-50 img-fluid">
+                                    <h3 class="font-700 mb-20">Pick-up</h3>
+                                    <p class="mb-0">Avoid the hassle. Book your delivery and our courier service will come to pick you parcel at your doorstep.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-12">
-                    <div class="spec-card mb-4">
-                        <div class="spec-card-body p-55 text-center">
-                            <img src="{{ asset('assets/images/cus-icon/icon-order.png') }}" alt="" class="mb-20 w-50 img-fluid">
-                            <h3 class="font-700 mb-20">Print Services</h3>
-                            <p class="mb-0">We also offer services like photocopy and physical documents or hard copies for printing.</p>
+                        <div class="col-lg-4 col-sm-6 col-12">
+                            <div class="spec-card mb-4">
+                                <div class="spec-card-body p-55 text-center">
+                                    <img src="{{ asset('assets/images/cus-icon/icon-subtract.png') }}" alt="" class="mb-20 w-50 img-fluid">
+                                    <h3 class="font-700 mb-20">Courier</h3>
+                                    <p class="mb-0">Deliver your order anywhere including overseas with our top courier partners.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
+                        <div class="col-lg-4 col-sm-6 col-12">
+                            <div class="spec-card mb-4">
+                                <div class="spec-card-body p-55 text-center">
+                                    <img src="{{ asset('assets/images/cus-icon/icon-book-check.png') }}" alt="" class="mb-20 w-50 img-fluid">
+                                    <h3 class="font-700 mb-20">Payment & Renewal</h3>
+                                    <p class="mb-0">Get your SSM, road tax or your insurance renewal today. You can even pay your bills fast & easy.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-12">
+                            <div class="spec-card mb-4">
+                                <div class="spec-card-body p-55 text-center">
+                                    <img src="{{ asset('assets/images/cus-icon/icon-materials.png') }}" alt="" class="mb-20 w-50 img-fluid">
+                                    <h3 class="font-700 mb-20">Vendor Marketplace</h3>
+                                    <p class="mb-0">Allow multiple vendors to sell their products at the location provided inside the hub.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-12">
+                            <div class="spec-card mb-4">
+                                <div class="spec-card-body p-55 text-center">
+                                    <img src="{{ asset('assets/images/cus-icon/icon-order.png') }}" alt="" class="mb-20 w-50 img-fluid">
+                                    <h3 class="font-700 mb-20">Print Services</h3>
+                                    <p class="mb-0">We also offer services like photocopy and physical documents or hard copies for printing.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
 
         </div>
@@ -140,13 +146,46 @@
     <section class="bg-dark-fuiyoh py-110">
         <div class="container">
             <h1 class="font-700 text-center text-uppercase text-yellow-fuiyoh mb-60">Frequently Ask Questions</h1>
-        </div>
-    </section>
 
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Accordion Item #1
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Accordion Item #2
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Accordion Item #3
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <section class="bg-yellow-fuiyoh py-110">
-        <div class="container">
-            <h1 class="font-700 text-center text-uppercase mb-60">Fuiyoh Hub Outlet</h1>
         </div>
     </section>
 

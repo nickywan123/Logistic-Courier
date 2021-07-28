@@ -195,7 +195,7 @@
         <h5 class="modal-title">Order Confirmation</h5>
       </div>
       <div class="modal-body">
-        <p>Your credit balance will be charge RM{{$rate->cost}} for the invoice. Proceed this order?</p>
+        <p>Your credit balance will be charge RM {{ $rate->cost }} for the invoice. Proceed this order?</p>
         <div class="text-center">
           <button type="submit" class="btn btn-primary confirm-pay-now ">Pay Now</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -343,7 +343,8 @@
                     $("#order-form").validate().element('#recipientEmail')
                 ) {
                     //show modal if validation passes
-                    $('#confirmOrder').modal('toggle');
+                    // $('#confirmOrder').modal('show');
+                    confirm('a you sure');
                     // return true;
                 } else {
                     return false;

@@ -5,6 +5,7 @@ let FuiyohHub = {
 		FuiyohHub.puboffcanvas();
 		// FuiyohHub.select2();
 		FuiyohHub.tableData();
+		FuiyohHub.prepaid();
 	},
 
 	feather: function () {
@@ -60,6 +61,15 @@ let FuiyohHub = {
 			"pageLength": 25
 		});
 	},
+
+    prepaid: function (){
+	    let prepaidCard = $('#prepaid').find('.card-input-element')
+        let preInput = $('#prepaidInput').find('.form-control');
+        prepaidCard.on('click', function (){
+            let prepaidVal = $(this).val();
+            preInput.val(prepaidVal);
+        });
+    },
 
 };
 

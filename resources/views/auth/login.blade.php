@@ -40,14 +40,20 @@
                                             <input class="form-control" type="password" name="password" id="password" placeholder="Your password" aria-describedby="password">
                                         </div>
                                         <div class="mb-3">
-                                            @if (Route::has('password.request'))
-                                            <a href="{{ route('password.request') }}" class="text-yellow-fuiyoh">Forgot password?</a>
-                                            @endif
+                                            <div class="form-check">
+                                                <input class="form-check-input remember-check" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                                <label class="form-check-label text-dark" for="remember">
+                                                    Remember me
+                                                </label>
+                                            </div>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <input type="submit" class="btn btn-block btn-yellow-hub px-100 mx-auto rounded-pill text-white" value="Login">
+                                            <input type="submit" class="btn btn-block btn-yellow-hub px-80 mx-auto rounded-pill text-white" value="Login">
                                         </div>
                                         <div class="text-center">
+                                            @if (Route::has('password.request'))
+                                                <p><a href="{{ route('password.request') }}" class="text-yellow-fuiyoh">Forgot password?</a></p>
+                                            @endif
                                             <p class="mb-0">By signing in, you agree to the</p>
                                             <p class="mb-0"><a href="#">terms and conditions</a></p>
                                         </div>
@@ -56,25 +62,41 @@
                                 </div>
                                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 
-                                    <form action="" method="POST">
+                                    <form method="POST" action="{{ route('register') }}">
+                                        @csrf
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="username"><i data-feather="user"></i></span>
-                                            <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="username">
+                                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="{{ __('Name') }}">
+                                            @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="password"><i data-feather="mail"></i></span>
-                                            <input type="text" class="form-control" placeholder="Email Address" aria-label="Password" aria-describedby="password">
+                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="{{ __('E-Mail Address') }}">
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="username"><i data-feather="lock"></i></span>
-                                            <input type="text" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="username">
+                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="{{ __('Password') }}">
+                                            @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="password"><i data-feather="lock"></i></span>
-                                            <input type="text" class="form-control" placeholder="Confirm Password" aria-label="Password" aria-describedby="password">
+                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="{{ __('Confirm Password') }}">
                                         </div>
                                         <div class="input-group mb-3">
-                                            <input type="text" class="btn btn-block btn-yellow-hub px-20 mx-auto rounded-pill text-white" value="Register">
+                                            <button type="submit" class="btn btn-block btn-yellow-hub px-80 mx-auto rounded-pill text-white">{{ __('Register') }}</button>
                                         </div>
                                         <div class="text-center">
                                             <p class="mb-0">By signing in, you agree to the</p>
@@ -116,95 +138,5 @@
             </div>
         </div>
     </section>
-
-
-{{--<div class="container">--}}
-{{--    <div class="row">--}}
-{{--        <div class="col-md-7">--}}
-{{--            <div class="card mt-4 guests-card" style="border-radius: 20px;">--}}
-{{--                <div class="card-header text-center text-white form-card-title p-0 m-0 border-0" style="border-radius: 20px;">--}}
-{{--                    <p style="font-size:40px;">--}}
-{{--                     <img class="img-logo-size" src="{{asset('/images/logo/fuiyoh_hub.png')}}" alt="fuiyoh_logo">--}}
-{{--                    </p>--}}
-{{--                    <p>DASHBOARD</p>--}}
-{{--                    <!-- Nav tabs -->--}}
-{{--                    <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">--}}
-{{--                        <li class="nav-item">--}}
-{{--                        <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                        <a class="nav-link" id="sign-up-tab" data-toggle="tab" href="#sign-up" role="tab" aria-controls="sign-up" aria-selected="false">Sign-up</a>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
-{{--                <!-- Tab panes -->--}}
-{{--                <div class="tab-content">--}}
-{{--                    <div class="tab-pane active" id="login" role="tabpanel" aria-labelledby="login-tab">--}}
-{{--                        <div class="card-body" style="background-color:#ffff; min-height:100%; border-radius:20px;">--}}
-{{--                            <form method="POST" action="{{ route('login') }}">--}}
-{{--                                @csrf--}}
-{{--                                    <div class="form-row mb-2">--}}
-{{--                                        <div class="input-group col-12">--}}
-{{--                                            <div class="input-group-prepend">--}}
-{{--                                                <span class="input-group-text"><i class="fa fa-user"></i></span>--}}
-{{--                                            </div>--}}
-{{--                                            <input class="form-control @error('email') is-invalid @enderror" type="email" name="email" id="email" placeholder="Your email address">--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-12">--}}
-{{--                                            @error('email')--}}
-{{--                                            <span class="text-danger mt-1" role="alert">--}}
-{{--                                                {{ $message }}--}}
-{{--                                            </span>--}}
-{{--                                            @enderror--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-
-{{--                                    <div class="form-row mb-2">--}}
-{{--                                        <div class="input-group col-12">--}}
-{{--                                            <div class="input-group-prepend">--}}
-{{--                                                <span class="input-group-text"><i class="fa fa-key"></i></span>--}}
-{{--                                            </div>--}}
-{{--                                            <input class="form-control" type="password" name="password" id="password" placeholder="Your password">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-
-{{--                                    <div class="row">--}}
-{{--                                        <div class="col-5 mb-1">--}}
-{{--                                            <div class="form-check">--}}
-{{--                                                <input class="form-check-input remember-check" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>--}}
-{{--                                                <label class="form-check-label text-dark" style="padding-top: 1px;" for="remember">--}}
-{{--                                                    Remember me--}}
-{{--                                                </label>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-6 text-right mb-1">--}}
-{{--                                            @if (Route::has('password.request'))--}}
-{{--                                            <a href="{{ route('password.request') }}">Forgot Password?</a>--}}
-{{--                                            @endif--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-
-{{--                                    <div class="row">--}}
-{{--                                        <div class="col-12 text-center mb-1">--}}
-{{--                                            <button type="submit" class="btn login-btn">Login</button>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="row mt-1">--}}
-{{--                                        <div class="col-5 offset-3">--}}
-{{--                                            <p class="text-dark">By signing in, you agree to the--}}
-{{--                                                <a href="#">terms and conditions.</a>--}}
-{{--                                            </p>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                             </form>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="tab-pane" id="sign-up" role="tabpanel" aria-labelledby="sign-up-tab"><h1>PLACEHOLDER</h1></div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}
-
 
 @endsection

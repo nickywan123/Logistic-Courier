@@ -14267,6 +14267,19 @@ input[type=radio].card-courier-element:checked ~ .carrier-card-input .carrier-ca
 .card-courier.is-invalid .carrier-card-txt span:before {
     background-color:#dc3545;
 }
+.card-courier.is-disabled {
+    cursor: not-allowed;
+}
+.card-courier.is-disabled .carrier-card-img {
+    filter: grayscale(100%);
+    border-color:#C4C4C4;
+}
+.card-courier.is-disabled .carrier-card-txt {
+    color:#C4C4C4;
+}
+.card-courier.is-disabled .carrier-card-txt span:before {
+    background-color:#C4C4C4;
+}
 
 /*Custom Icon*/
 .cus-icon:before {
