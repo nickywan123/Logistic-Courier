@@ -1,15 +1,13 @@
 @extends('layouts.dashboard.app')
 
 @section('content')
-
+<form action="{{ route('order.store') }}" method="POST" id="order-form" class="row">
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
             <div class="p-lg-30 p-md-30 p-sm-30 p-10">
                 <h2 class="title-section">Regular Order</h2>
                 <p class="subtitle-section">Enter pick-up location & delivery location</p>
-
-                <form action="{{ route('order.store') }}" method="POST" id="order-form" class="row">
                     @csrf
                     <div class="col-md-6">
                         <h3 class="title-section">Pick-up Location</h3>
@@ -178,7 +176,6 @@
                             </div>
                         </div>
                     </div>
-                </form>
             </div>
         </div>
     </div>
@@ -202,9 +199,7 @@
     </div>
   </div>
 </div>
-{{-- </form> --}}
-
-
+</form>
 
     @push('onpagescript')
         <!--dashboard/orders/booking--->
