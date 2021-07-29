@@ -208,7 +208,7 @@ class OrderController extends Controller
                 $collection = collect($response->json()['result'][0]['rates']);
 
                 $filtered = $collection->where('courier_id',$rate_id->courier->courier_id)->first();
-            
+        
                 if(!$filtered){
                     return redirect()->route('create.order.failed')
                     ->with(['errorMessage' =>'This courier is unavailable at the moment. Please select other courier.'] );

@@ -6,21 +6,19 @@
     <section class="bg-img-network d-flex align-items-center">
         <div class="container py-110">
             <div class="row">
-
                 <div class="col-lg-5 col-sm-12 mt-xs-50">
-
                     <div class="spec-card">
                         <div class="spec-card-title pt-40 px-70 px-xs-30">
                             <img src="assets/images/dashboard-logo.png" alt="" class="d-block mx-auto">
                             <p class="mb-0 text-uppercase text-center text-white">Dashboard</p>
                             <nav class="nav nav-pills fuiyoh-spec nav-justified" id="nav-tab" role="tablist">
-                                <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" href="#">Login</a>
-                                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" href="#">Register</a>
+                                <a class="nav-link {{ ($errors->has('register_name') || $errors->has('register_email')|| $errors->has('register_password')) ? '' : 'active' }} " data-bs-toggle="tab" data-bs-target="#nav-login" type="button" role="tab" aria-controls="nav-login" aria-selected="true" href="#">Login</a>
+                                <a class="nav-link {{ ($errors->has('register_name') || $errors->has('register_email')|| $errors->has('register_password')) ? 'active' : '' }} " data-bs-toggle="tab" data-bs-target="#nav-register" type="button" role="tab" aria-controls="nav-register" aria-selected="false" href="#">Register</a>
                             </nav>
                         </div>
                         <div class="spec-card-body pt-105 pb-60 px-70 pb-xs-40 px-xs-20">
                             <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <div class="tab-pane fade {{ ($errors->has('register_name') || $errors->has('register_email')|| $errors->has('register_password')) ? '' : 'show active' }} " id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
 
                                     <form action="{{ route('login') }}" method="POST">
                                         @csrf
@@ -52,27 +50,43 @@
                                     </form>
 
                                 </div>
-                                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <div class="tab-pane fade  {{ ($errors->has('register_name') || $errors->has('register_email')|| $errors->has('register_password')) ? 'show active' : '' }}" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
 
-                                    <form action="" method="POST">
+                                    <form method="POST" action="{{ route('register') }}">
+                                        @csrf
                                         <div class="input-group mb-3">
-                                            <span class="input-group-text" id="username"><i data-feather="user"></i></span>
-                                            <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="username">
+                                            <span class="input-group-text" id="register-name"><i data-feather="user"></i></span>
+                                            <input type="text" class="form-control @error('register_name') is-invalid @enderror" placeholder="Name" aria-label="register_name" name="register_name" aria-describedby="register_name" value="{{ old('register_name') }}" required>
+                                            @error('register_name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                         </div>
                                         <div class="input-group mb-3">
-                                            <span class="input-group-text" id="password"><i data-feather="mail"></i></span>
-                                            <input type="text" class="form-control" placeholder="Email Address" aria-label="Password" aria-describedby="password">
+                                            <span class="input-group-text" id="register-email"><i data-feather="mail"></i></span>
+                                            <input type="email" class="form-control @error('register_email') is-invalid @enderror" placeholder="Email Address" aria-label="register_email" name="register_email" aria-describedby="register_email" value="{{ old('register_email') }}" required>
+                                            @error('register_email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                         </div>
                                         <div class="input-group mb-3">
-                                            <span class="input-group-text" id="username"><i data-feather="lock"></i></span>
-                                            <input type="text" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="username">
+                                            <span class="input-group-text" id="register_password"><i data-feather="lock"></i></span>
+                                            <input type="password" class="form-control @error('register_password') is-invalid @enderror" placeholder="Password" aria-label="register_password" name="register_password" aria-describedby="register_password" required>
+                                            @error('register_password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                         </div>
                                         <div class="input-group mb-3">
-                                            <span class="input-group-text" id="password"><i data-feather="lock"></i></span>
-                                            <input type="text" class="form-control" placeholder="Confirm Password" aria-label="Password" aria-describedby="password">
+                                            <span class="input-group-text" id="register_password_confirm"><i data-feather="lock"></i></span>
+                                            <input type="password" name="register_password_confirmation" class="form-control" placeholder="Confirm Password" aria-label="register_password_confirmation" aria-describedby="register_password_confirmation" required>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <input type="text" class="btn btn-block btn-yellow-hub px-20 mx-auto rounded-pill text-white" value="Register">
+                                            <button type="submit" class="btn btn-block btn-yellow-hub px-20 mx-auto rounded-pill text-white">Register</button>
                                         </div>
                                         <div class="text-center">
                                             <p class="mb-0">By signing in, you agree to the</p>
