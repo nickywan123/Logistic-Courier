@@ -13524,6 +13524,13 @@ body.sidebar-collapse .sidebar-menu li > a.btn:active > .text {
 .bg-dark-fuiyoh {
     background-color:#2D2D2D;
 }
+.bg-img-yellow-fuiyoh {
+    background-repeat:no-repeat;
+    background-position:top center;
+    background-image:url("../images/body-bg-yellow.png");
+    background-color:#EFCC38;
+    background-size:cover;
+}
 .bg-img-network {
     background-repeat:no-repeat;
     background-position:top center;

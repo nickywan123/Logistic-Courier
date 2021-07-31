@@ -70,14 +70,14 @@
         </div>
     </section>
 
-    <section class="bg-yellow-fuiyoh py-110">
+    <section class="bg-img-yellow-fuiyoh py-110">
         <div class="container">
             <h1 class="font-700 text-center text-uppercase mb-60">Fuiyoh Hub Services</h1>
 
             <div class="row">
-                <div class="col-md-10 mx-auto">
+                <div class="col-md-11 mx-auto">
 
-                    <div class="row">
+                    <div id="hubServices" class="row">
                         <div class="col-lg-4 col-sm-6 col-12">
                             <div class="spec-card mb-4">
                                 <div class="spec-card-body p-55 text-center">
