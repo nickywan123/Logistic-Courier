@@ -88,8 +88,6 @@ class ToyyibpayController extends Controller
         Log::info('callback function is called');
         $response = request()->all();
         Log::info($response);
-        Log::info('This is user id:'.$request->get('user_id'));
-        Log::info('!!!!!!!!!!!!!!!');
 
         if($request->status == 1){
         //store transaction details

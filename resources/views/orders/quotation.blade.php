@@ -14,6 +14,7 @@
                     <div class="row">
 
                         <input type="hidden" name="postcode_delivery" value="{{ $postcode_delivery }}">
+                        <input type="hidden" name="parcel_weight" value="{{ $parcel_weight }}">
 
                         @foreach($rates as $rate)
                             <div class="col-3 col-md-2">

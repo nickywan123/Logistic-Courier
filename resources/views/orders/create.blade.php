@@ -21,10 +21,10 @@
                         </div>
                         <div class="mb-3">
                             <select class="form-select rounded-pill px-20 @error('hub') is-invalid @enderror" name="hub" id="hub" >
-                                <option disabled selected>Choose a hub</option>
-                                <option value="xxx">FUIYOH HUB KAJANG</option>
-                                <option value="xxx">FUIYOH HUB SG BULOH</option>
-                                <option value="xxx">FUIYOH HUB KAJANG</option>
+                                <option disabled selected>Select a hub to dropoff</option>
+                                @foreach($hubs as $hub)
+                                <option value="{{$hub->id}}">{{$hub->hub_name}}</option>
+                                @endforeach
                             </select>
                             @error('hub')
                             <div class="ps-25 invalid-feedback d-block">
@@ -68,8 +68,16 @@
                         </div>
                         <div class="mb-3">
                             <input type="hidden" value="{{ $rate->id }}" name="rate">
-                            <input type="text" class="form-control rounded-pill px-20 @error('weight') is-invalid @enderror" value="{{$rate->weight}}" name="weight" id="weight" readonly>
+                            <input type="text" class="form-control rounded-pill px-20 @error('weight') is-invalid @enderror" value="{{$parcel_weight}}" name="weight" id="weight" readonly>
                             @error('weight')
+                            <div class="ps-25 invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control rounded-pill px-20 @error('sender_contact_num') is-invalid @enderror"  name="sender_contact_num" id="senderContactNumber" placeholder="Sender's Contact Number">
+                            @error('sender_contact_num')
                             <div class="ps-25 invalid-feedback d-block">
                                 {{ $message }}
                             </div>
@@ -131,10 +139,10 @@
                         <div class="mb-3">
                             <select class="form-select rounded-pill px-20 @error('delivery_time') is-invalid @enderror" id="deliveryTime" name="delivery_time" autocomplete="off" >
                                 <option disabled selected>Delivery time</option>
-                                <option value="xxx">9.00AM - 11.00AM</option>
-                                <option value="xxx">11.00AM - 1.00PM</option>
-                                <option value="xxx">1.00PM - 3.00PM</option>
-                                <option value="xxx">3.00PM - 5.00PM</option>
+                                <option value="9.00AM - 11.00AM">9.00AM - 11.00AM</option>
+                                <option value="11.00AM - 1.00PM">11.00AM - 1.00PM</option>
+                                <option value="1.00PM - 3.00PM">1.00PM - 3.00PM</option>
+                                <option value="3.00PM - 5.00PM">3.00PM - 5.00PM</option>
                             </select>
                             @error('delivery_time')
                             <div class="ps-25 invalid-feedback d-block">
@@ -212,6 +220,12 @@
                     hub: {
                         required: true
                     },
+                    content: {
+                        required: true
+                    },
+                    value_content: {
+                        required:true
+                    },
                     pick_up_date: {
                         required: true
                     },
@@ -220,6 +234,12 @@
                     },
                     weight: {
                         required: true
+                    },
+                    sender_contact_num :{
+                        required: true,
+                        digits: true,
+                        minlength: 10,
+                        maxlength: 15
                     },
                     recipient_address: {
                         required: true,
@@ -278,6 +298,12 @@
                     weight: {
                         required: "Please enter the weight"
                     },
+                    sender_contact_num: {
+                        required: "Please enter your contact number",
+                        digits: "Contact number should be in digits",
+                        minlength: "Contact number length must be greater than 10",
+                        maxlength: "Contact number length must be smaller than 15"
+                    },
                     recipient_address: {
                         required: "Recipient Address is required",
                         minlength: "Address must be more than 3 characters"
@@ -323,6 +349,7 @@
                     $("#order-form").validate().element('#pickupDate') &&
                     $("#order-form").validate().element('#pickupTime') &&
                     $("#order-form").validate().element('#weight') &&
+                    $("#order-form").validate().element('#senderContactNumber') &&
                     $("#order-form").validate().element('#recipientAddress') &&
                     $("#order-form").validate().element('#city') &&
                     // $("#order-form").validate().element('#state') &&

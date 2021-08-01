@@ -24,10 +24,12 @@ class DatabaseSeeder extends Seeder
         //  $this->call(CouriersTableSeeder::class);
         //  $this->call(CouriersImagesTableSeeder::class);
         //  $this->call(StatusTableSeeder::class);
-        //  $this->call(PermissionsTableSeeder::class);
-        //  $this->call(UsersTableSeeder::class);
+          $this->call(PermissionsTableSeeder::class);
+          $this->call(UsersTableSeeder::class);
 
-         $this->call(UserContactsTableSeeder::class);
+        //$this->call(UserContactsTableSeeder::class);
+
+        //$this->call(HubsTableSeeder::class);
 
 
     }
