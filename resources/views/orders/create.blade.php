@@ -361,7 +361,9 @@
                     $("#order-form").validate().element('#recipientEmail')
                 ) {
                     //show modal if validation passes
-                    $('#confirmOrder').modal('show');
+                     $('#confirmOrder').modal('toggle');
+                    //confirm('a you sure');
+
                     // return true;
                 } else {
                     return false;

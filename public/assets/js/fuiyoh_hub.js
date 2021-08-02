@@ -5,7 +5,7 @@ let FuiyohHub = {
 		FuiyohHub.feather();
 		FuiyohHub.puboffcanvas();
 		// FuiyohHub.select2();
-		// FuiyohHub.tableData();
+		FuiyohHub.tableData();
 		FuiyohHub.prepaid();
 		FuiyohHub.hubServices();
 	},
