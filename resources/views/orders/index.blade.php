@@ -14,19 +14,20 @@
                 <form action="{{ route('order.quotation') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <select class="form-select rounded-pill px-20 @error('parcel_weight') is-invalid @enderror" name="parcel_weight" id="parcel_weight" required>
-                            <option selected>Weight (kg)</option>
+                        {{-- <select class="form-select rounded-pill px-20 @error('parcel_weight') is-invalid @enderror" name="parcel_weight" id="parcel_weight" required>
+                            <option disabled selected>Weight (kg)</option>
                             @foreach($weights as $weight)
                                 <option value="{{$weight->weight}}">{{$weight->weight}}</option>
                             @endforeach
-                        </select>
-                        @error('parcel_weight')
-                        <div class="ps-25 invalid-feedback d-block">
-                            {{ $message }}
-                        </div>
-                        @enderror
+                        </select> --}}
+                        <input type="text" class="form-control rounded-pill px-20 @error('parcel_weight') is-invalid @enderror" placeholder="Weight(kg e.g:0.1)" name="parcel_weight" id="parcel_weight" value="{{ old('parcel_weight') }}" required>
+                            @error('parcel_weight')
+                            <div class="ps-25 invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <select class="form-select rounded-pill px-20 @error('parcel_size') is-invalid @enderror" name="parcel_size" id="parcel_size" required>
                             <option selected="selected">Parcel Size</option>
                             <option>Box Size</option>
@@ -37,7 +38,7 @@
                             {{ $message }}
                         </div>
                         @enderror
-                    </div>
+                    </div> --}}
                     <div class="row">
                         <div class="col-md mb-3">
                             <input type="text" class="form-control rounded-pill px-20 @error('postcode_pickup') is-invalid @enderror" placeholder="Postcode Pickup" name="postcode_pickup" id="postcode_pickup" value="{{ old('postcode_pickup') }}" required>

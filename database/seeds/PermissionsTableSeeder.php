@@ -16,50 +16,54 @@ class PermissionsTableSeeder extends Seeder
 
         //Permissions
 
-        Permission::create([
+        Permission::firstOrCreate([
             'name' => 'create an order'
         ]);
 
-        Permission::create([
+        Permission::firstOrCreate([
             'name' => 'manage orders'
         ]);
 
-        Permission::create([
+        Permission::firstOrCreate([
             'name' => 'view all orders'
         ]);
 
-        Permission::create([
+        Permission::firstOrCreate([
             'name' => 'manage booking rates'
         ]);
 
-        Permission::create([
+        Permission::firstOrCreate([
             'name' => 'view all users'
         ]);
 
-        Permission::create([
+        Permission::firstOrCreate([
             'name' => 'manage users'
         ]);
 
-        Permission::create([
+        Permission::firstOrCreate([
             'name' => 'create a user'
         ]);
 
-        Permission::create([
+        Permission::firstOrCreate([
             'name' => 'edit a user'
         ]);
 
-        Permission::create([
+        Permission::firstOrCreate([
             'name' => 'delete a user'
         ]);
 
+        Permission::firstOrCreate([
+            'name' => 'manage customer orders'
+        ]);
+
         //ROLES
-        $customer = Role::create([
+        $customer = Role::firstOrCreate([
             'name' => 'customer'
         ]);
 
         $customer->givePermissionTo('create an order');
 
-        $administrator = Role::create([
+        $administrator = Role::firstOrCreate([
             'name' => 'administrator'
         ]);
 
@@ -73,6 +77,12 @@ class PermissionsTableSeeder extends Seeder
         $administrator->givePermissionTo('edit a user');
         $administrator->givePermissionTo('delete a user');
 
+        $hub = Role::firstOrCreate([
+            'name' => 'hub'
+        ]);
+
+        $hub->givePermissionTo('create an order');
+        $hub->givePermissionTo('manage customer orders');
 
     }
 }

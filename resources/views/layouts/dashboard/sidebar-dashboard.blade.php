@@ -40,6 +40,14 @@
                     <span class="text">Finance Report</span>
                 </a>
             </li>
+            @hasrole('hub')
+            <li>
+                <a href="{{ route('hub.index') }}">
+                    <span class="icon"><i data-feather="arrow-right-circle"></i></span>
+                    <span class="text">{{Auth::user()->name}}</span>
+                </a>
+            </li>
+            @endhasrole
             @hasrole('administrator')
             <li>
                 <a href="{{ route('admin.index') }}">
