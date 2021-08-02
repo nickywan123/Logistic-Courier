@@ -32,7 +32,7 @@
                                 <div class="row">
                                     <div class="col-6"><i data-feather="dollar-sign"></i></div>
                                     <div class="col-6 text-end">
-                                        <h3 class="mb-0 font-600">RM {{$user->userInfo->credit}}</h3>
+                                        <h3 class="mb-0 font-600">RM {{Auth::user()->userInfo->credit}}</h3>
                                     </div>
                                 </div>
                                 <hr>
@@ -78,7 +78,7 @@
                                 <div class="row">
                                     <div class="col-6"><i data-feather="list"></i></div>
                                     <div class="col-6 text-end">
-                                        <h3 class="mb-0 font-600">{{ $user->orders->count() }}</h3>
+                                        <h3 class="mb-0 font-600">{{ Auth::user()->orders->count() }}</h3>
                                     </div>
                                 </div>
                                 <hr>
