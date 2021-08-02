@@ -32,9 +32,14 @@
                     <ul class="wsmenu-list">
                         @guest
                         <li aria-haspopup="true"><a href="{{ url('/') }}">Home</a></li>
-                        <li aria-haspopup="true"><a href="#services">Services</a></li>
-                        <li aria-haspopup="true"><a href="#faq">FAQs</a></li>
-                            {{--<li aria-haspopup="true"><a href="#">Outlet</a></li>--}}
+                        @if(Route::current()->getName() == '')
+                        <li aria-haspopup="true"><a class="link-nav" href="#services">Services</a></li>
+                        <li aria-haspopup="true"><a class="link-nav" href="#faq">FAQs</a></li>
+                        @else
+                        <li aria-haspopup="true"><a href="{{ url('/') }}#services">Services</a></li>
+                        <li aria-haspopup="true"><a href="{{ url('/') }}#faq">FAQs</a></li>
+                        @endif
+                        {{--<li aria-haspopup="true"><a href="#">Outlet</a></li>--}}
                         <li aria-haspopup="true">
                             <a href="{{ route('login') }}" class="wssignlinktop">
                                 <i data-feather="user"></i>

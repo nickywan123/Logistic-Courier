@@ -147,20 +147,21 @@
         <div class="container">
             <h1 class="font-700 text-center text-uppercase text-yellow-fuiyoh mb-60">Frequently Ask Questions</h1>
 
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <ul id="fabTab" class="nav nav-pills nav-fill" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">User</button>
+                    <a class="nav-link active" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">User</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Merchant</button>
+                    <a class="nav-link" href="#" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Merchant</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Rider</button>
+                    <a class="nav-link" href="#" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Rider</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#hub" type="button" role="tab" aria-controls="contact" aria-selected="false">Hub</button>
+                    <a class="nav-link" href="#" id="contact-tab" data-bs-toggle="tab" data-bs-target="#hub" type="button" role="tab" aria-controls="contact" aria-selected="false">Hub</a>
                 </li>
             </ul>
+
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade pt-30 show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 

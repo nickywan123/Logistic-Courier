@@ -87,13 +87,17 @@ let FuiyohHub = {
     },
 
     navigator: function() {
-	    let link = $('.wsmenu-list a');
+	    let link = $('.wsmenu-list a.link-nav');
         let header = $('.wsmainfull').outerHeight();
+        let currentTopPosition = $('html').scrollTop();
 	    link.click(function(e) {
-	        // e.preventDefault();
+	        e.preventDefault();
 	        let target = $($(this).attr('href'));
-	        let targetScrollTo = $(target).offset().top - header;
-            $('html, body').animate({
+	        let targetScrollTo = $(target).offset().top - 180;
+	        if (currentTopPosition < targetScrollTo) {
+	            targetScrollTo = targetScrollTo + 120;
+            }
+            $('html').animate({
                 scrollTop: targetScrollTo
             }, 400);
         });

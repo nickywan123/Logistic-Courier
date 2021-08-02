@@ -14353,6 +14353,43 @@ textarea.form-control {
     min-height:150px;
 }
 
+#fabTab.nav-pills .nav-link.active,
+#fabTab.nav-pills .show > .nav-link {
+    color: #2D2D2D;
+    background-color:#EFCC37;
+}
+#fabTab.nav-pills .nav-link {
+    color:#2D2D2D;
+    background:#FFE054;
+}
+#fabTab .nav-item > .nav-link {
+    border-radius: 0;
+}
+#fabTab .nav-item:first-child > .nav-link {
+    border-top-left-radius:.25rem;
+    border-bottom-left-radius:.25rem;
+}
+#fabTab .nav-item:last-child > .nav-link {
+    border-top-right-radius:.25rem;
+    border-bottom-right-radius:.25rem;
+}
+
+/**/
+.accordion-button:not(.collapsed) {
+    color: #2D2D2D;
+    background-color: #FFE054;
+}
 .accordion-button:focus {
     box-shadow: none;
 }
+.accordion-item {
+    background-color: #fff;
+    border-top: 1px solid rgba(0,0,0,.125);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+
+
+
+
+
