@@ -68,8 +68,6 @@
     <!--  Fuiyoh Custom Script  -->
     <script src="{{ asset('assets/js/fuiyoh_hub.js') }}"></script>
 
-    @stack('onpagescript')
-
 	<!-- Optional JavaScript -->
 	<!-- Popper.js first, then CoreUI JS -->{{--
 	<script src="https://unpkg.com/@popperjs/core@2"></script>
@@ -149,7 +147,7 @@
 	//End of Tawk.to Script
 		
 	</script>
-
+    @stack('onpagescript')
 
 </body>
 </html>

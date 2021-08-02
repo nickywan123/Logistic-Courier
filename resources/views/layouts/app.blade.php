@@ -16,13 +16,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title> :: {{ config('app.name', 'Fuiyoh Hub') }}</title>
+    <title>@yield('title') :: {{ config('app.name', 'Fuiyoh Hub') }}</title>
 
     <!--  Vendor  -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('https://use.fontawesome.com/releases/v5.7.2/css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/webslidemenu/dropdown-effects/fade-down.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/webslidemenu/webslidemenu.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/dataTables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/select2/dist/css/select2.min.css') }}">
 
     <!-- Styles -->
@@ -42,6 +43,7 @@
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-3.6.0.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/webslidemenu/webslidemenu.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/vendor/dataTables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/select2/dist/js/select2.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/icons/feather-icons/feather.min.js') }}"></script>
 
