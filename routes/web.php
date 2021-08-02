@@ -84,4 +84,12 @@ Route::get('/administrator','Administrator\AdministratorController@index')->name
 Route::get('/administrator/rates','Administrator\AdministratorController@getRates')->name('admin.index.rates');
 
 
+/**
+ * Fuiyoh Hubs
+ */
+Route::get('/hub/home','Hub\HomeController@index')->name('hub.index');
+
+Route::get('/hub/orders/index','Hub\OrderController@index')->name('hub.orders.index');
+
+
 

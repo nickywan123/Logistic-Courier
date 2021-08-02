@@ -32,4 +32,11 @@ class Order extends Model
     {
         return $this->belongsTo(Status::class, 'order_status', 'id');
     }
+
+    /**
+     * Each order belongs to a hub
+     */
+    public function hub(){
+        return $this->belongsTo(Hub::class);
+    }
 }
