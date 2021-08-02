@@ -23,7 +23,6 @@ class HomeController extends Controller
         $total_delivered = $total_delivered->count();                        
 
         return view('layouts.dashboard.index')
-                    ->with('user',$user)
                     ->with('total_delivered',$total_delivered);
     }
 }
