@@ -8,11 +8,11 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-md-4 col-sm-6">
+                <div class="col-lg-4 col-md-12 col-sm-6">
                     <div class="row d-flex align-items-center">
                         <div class="col-md-12">
                             <div class="row">
-                                <div class="col-lg-12 text-yellow-fuiyoh text-md-start text-sm-center text-center py-60">
+                                <div class="col-lg-12 text-yellow-fuiyoh text-lg-start text-md-center text-sm-center text-center py-60">
                                     <h1 class="font-700 font-lg-size text-uppercase mb-0">Ready when you are.</h1>
                                     <p>Get matched with our delivery crew in just a few seconds. Enjoy faster deliveries, even within an hour.</p>
                                 </div>
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8 col-sm-6">
+                <div class="col-lg-8 col-md-12 col-sm-6">
                     <div class="row d-flex align-items-center">
                         <div class="col-md-5 pe-sm-0 d-sm-block d-none">
                             <img src="{{ asset('assets/images/mascot-02-logo.png') }}" alt="" class="img-fluid">
