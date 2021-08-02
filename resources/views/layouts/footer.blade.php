@@ -65,9 +65,9 @@
                             </ul>
                             <h6 class="footer-title text-sm-start text-center">Follow Us</h6>
                             <div class="mt-20 text-sm-start text-center">
-                                <a class="btn-social" href="#"><i data-feather="facebook"></i></a>
-                                <a class="btn-social" href="#"><i data-feather="youtube"></i></a>
-                                <a class="btn-social" href="#"><i data-feather="instagram"></i></a>
+                                <a class="btn-social" target="_blank" href="https://www.facebook.com/fuiyohmalaysia/"><i data-feather="facebook"></i></a>
+                                <a class="btn-social" target="_blank" href="https://www.youtube.com/channel/UCKRKdqkJp8P5OhitjNx15VQ"><i data-feather="youtube"></i></a>
+                                <a class="btn-social" target="_blank" href="https://www.instagram.com/fuiyoh.my/"><i data-feather="instagram"></i></a>
                             </div>
                         </div>
                     </div>

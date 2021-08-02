@@ -31,17 +31,22 @@
                 <nav class="wsmenu clearfix">
                     <ul class="wsmenu-list">
                         @guest
-                        <li aria-haspopup="true"><a href="#">Home</a></li>
-                        <li aria-haspopup="true"><a href="#">Services</a></li>
-                        <li aria-haspopup="true"><a href="#">FAQs</a></li>
-                        <li aria-haspopup="true"><a href="#">Outlet</a></li>
+                        <li aria-haspopup="true"><a href="{{ url('/') }}">Home</a></li>
+                        @if(Route::current()->getName() == '')
+                        <li aria-haspopup="true"><a class="link-nav" href="#services">Services</a></li>
+                        <li aria-haspopup="true"><a class="link-nav" href="#faq">FAQs</a></li>
+                        @else
+                        <li aria-haspopup="true"><a href="{{ url('/') }}#services">Services</a></li>
+                        <li aria-haspopup="true"><a href="{{ url('/') }}#faq">FAQs</a></li>
+                        @endif
+                        {{--<li aria-haspopup="true"><a href="#">Outlet</a></li>--}}
                         <li aria-haspopup="true">
                             <a href="{{ route('login') }}" class="wssignlinktop">
                                 <i data-feather="user"></i>
                             </a>
                         </li>
                         <li aria-haspopup="true">
-                            <a href="tel:1234567890" class="wsheadphoneno">
+                            <a href="tel:+03-5032 8511" class="wsheadphoneno">
                                 <i data-feather="phone"></i>
                             </a>
                         </li>
@@ -70,3 +75,17 @@
         </div>
     </div>
 </header>
+
+{{--@if (Route::has('login'))--}}
+{{--    <div class="top-right links">--}}
+{{--        @auth--}}
+{{--            <a href="{{ url('/home') }}">Home</a>--}}
+{{--        @else--}}
+{{--            <a href="{{ route('login') }}">Login</a>--}}
+
+{{--            @if (Route::has('register'))--}}
+{{--                <a href="{{ route('register') }}">Register</a>--}}
+{{--            @endif--}}
+{{--        @endauth--}}
+{{--    </div>--}}
+{{--@endif--}}

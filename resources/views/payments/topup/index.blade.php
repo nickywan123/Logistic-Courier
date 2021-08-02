@@ -13,84 +13,43 @@
                     <div class="card-body p-20">
                         <h5 class="card-titl font-700 mb-3">1. Select top up package</h5>
 
-                        <div class="row">
+                        <div id="prepaid" class="row">
                             <div class="col-md-3">
                                 <label class="card-topup mb-3">
-                                    <input class="card-input-element" type="radio" name="topup" value="" />
+                                    <input class="card-input-element" type="radio" name="topup" value="20" />
                                     <div class="card-input">
                                         <div class="card-input-body">
-                                            F10
+                                            EP20
                                         </div>
                                     </div>
                                 </label>
                             </div>
                             <div class="col-md-3">
                                 <label class="card-topup mb-3">
-                                    <input class="card-input-element" type="radio" name="topup" value="" />
+                                    <input class="card-input-element" type="radio" name="topup" value="50" />
                                     <div class="card-input">
                                         <div class="card-input-body">
-                                            F50
+                                            EP50
                                         </div>
                                     </div>
                                 </label>
                             </div>
                             <div class="col-md-3">
                                 <label class="card-topup mb-3">
-                                    <input class="card-input-element" type="radio" name="topup" value="" />
+                                    <input class="card-input-element" type="radio" name="topup" value="100" />
                                     <div class="card-input">
                                         <div class="card-input-body">
-                                            F100
+                                            EP100
                                         </div>
                                     </div>
                                 </label>
                             </div>
                             <div class="col-md-3">
                                 <label class="card-topup mb-3">
-                                    <input class="card-input-element" type="radio" name="topup" value="" />
+                                    <input class="card-input-element" type="radio" name="topup" value="300" />
                                     <div class="card-input">
                                         <div class="card-input-body">
-                                            F300
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-
-                            <div class="col-md-3">
-                                <label class="card-topup mb-3">
-                                    <input class="card-input-element" type="radio" name="topup" value="" />
-                                    <div class="card-input">
-                                        <div class="card-input-body">
-                                            F500
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="col-md-3">
-                                <label class="card-topup mb-3">
-                                    <input class="card-input-element" type="radio" name="topup" value="" />
-                                    <div class="card-input">
-                                        <div class="card-input-body">
-                                            F1000
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="col-md-3">
-                                <label class="card-topup mb-3">
-                                    <input class="card-input-element" type="radio" name="topup" value="" />
-                                    <div class="card-input">
-                                        <div class="card-input-body">
-                                            F2000
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="col-md-3">
-                                <label class="card-topup mb-3">
-                                    <input class="card-input-element" type="radio" name="topup" value="" />
-                                    <div class="card-input">
-                                        <div class="card-input-body">
-                                            F5000
+                                            EP300
                                         </div>
                                     </div>
                                 </label>
@@ -98,20 +57,30 @@
 
                             <div class="col-md-3">
                                 <label class="card-topup mb-3">
-                                    <input class="card-input-element" type="radio" name="topup" value="" />
+                                    <input class="card-input-element" type="radio" name="topup" value="5000" />
                                     <div class="card-input">
                                         <div class="card-input-body">
-                                            F10000
+                                            EP5000
                                         </div>
                                     </div>
                                 </label>
                             </div>
                             <div class="col-md-3">
                                 <label class="card-topup mb-3">
-                                    <input class="card-input-element" type="radio" name="topup" value="" />
+                                    <input class="card-input-element" type="radio" name="topup" value="20000" />
                                     <div class="card-input">
                                         <div class="card-input-body">
-                                            F20000
+                                            EP20000
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="card-topup mb-3">
+                                    <input class="card-input-element" type="radio" name="topup" value="50000" />
+                                    <div class="card-input">
+                                        <div class="card-input-body">
+                                            EP50000
                                         </div>
                                     </div>
                                 </label>
@@ -127,12 +96,12 @@
 
                         <form action="{{route('toyyibpay-create')}}" method="GET">
                         @csrf
-                        <div class="row">
+                        <div id="prepaidInput" class="row">
                             <div class="col-md-6 col-12">
                                 <div class="input-group">
                                     <span class="input-group-text" id="AutoTopup">RM </span>
-                                    <input type="text" class="form-control px-20" placeholder="Enter a threshold amount" aria-label="AutoTopup" aria-describedby="AutoTopup" name="amount">
-                                    <button class="btn btn-primary" type="submit" id="button-addon2">Top Up</button>
+                                    <input type="text" class="form-control px-10" placeholder="Enter a threshold amount" aria-label="AutoTopup" aria-describedby="AutoTopup" name="amount">
+                                    <button class="btn btn-dark" type="submit" id="button-addon2">Top Up</button>
                                 </div>
                             </div>
                         </div>
@@ -140,21 +109,21 @@
                     </div>
                 </div>
 
-                <div class="card bg-yellow-fuiyoh mb-3">
-                    <div class="card-body p-20">
-                        <h5 class="card-titl font-700 mb-3">3. Top up using</h5>
-                        <div class="row">
-                            <div class="col-md-6 col-12">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="card">
-                                        <i data-feather="credit-card"></i>
-                                    </span>
-                                    <input type="text" class="form-control px-20" placeholder="Add new card" aria-label="card" aria-describedby="card">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="card bg-yellow-fuiyoh mb-3">--}}
+{{--                    <div class="card-body p-20">--}}
+{{--                        <h5 class="card-titl font-700 mb-3">3. Top up using</h5>--}}
+{{--                        <div class="row">--}}
+{{--                            <div class="col-md-6 col-12">--}}
+{{--                                <div class="input-group">--}}
+{{--                                    <span class="input-group-text" id="card">--}}
+{{--                                        <i data-feather="credit-card"></i>--}}
+{{--                                    </span>--}}
+{{--                                    <input type="text" class="form-control px-20" placeholder="Add new card" aria-label="card" aria-describedby="card">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
                 <div class="card bg-yellow-fuiyoh">
                     <div class="card-body p-20">
