@@ -32,16 +32,16 @@
                     <ul class="wsmenu-list">
                         @guest
                         <li aria-haspopup="true"><a href="{{ url('/') }}">Home</a></li>
-                        <li aria-haspopup="true"><a href="#">Services</a></li>
-                        <li aria-haspopup="true"><a href="#">FAQs</a></li>
-                        <li aria-haspopup="true"><a href="#">Outlet</a></li>
+                        <li aria-haspopup="true"><a href="#services">Services</a></li>
+                        <li aria-haspopup="true"><a href="#faq">FAQs</a></li>
+                            {{--<li aria-haspopup="true"><a href="#">Outlet</a></li>--}}
                         <li aria-haspopup="true">
                             <a href="{{ route('login') }}" class="wssignlinktop">
                                 <i data-feather="user"></i>
                             </a>
                         </li>
                         <li aria-haspopup="true">
-                            <a href="tel:1234567890" class="wsheadphoneno">
+                            <a href="tel:+03-5032 8511" class="wsheadphoneno">
                                 <i data-feather="phone"></i>
                             </a>
                         </li>

@@ -14352,3 +14352,7 @@ input[type=radio].card-courier-element:checked ~ .carrier-card-input .carrier-ca
 textarea.form-control {
     min-height:150px;
 }
+
+.accordion-button:focus {
+    box-shadow: none;
+}

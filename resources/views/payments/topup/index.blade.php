@@ -16,10 +16,10 @@
                         <div id="prepaid" class="row">
                             <div class="col-md-3">
                                 <label class="card-topup mb-3">
-                                    <input class="card-input-element" type="radio" name="topup" value="10" />
+                                    <input class="card-input-element" type="radio" name="topup" value="20" />
                                     <div class="card-input">
                                         <div class="card-input-body">
-                                            F10
+                                            EP20
                                         </div>
                                     </div>
                                 </label>
@@ -29,7 +29,7 @@
                                     <input class="card-input-element" type="radio" name="topup" value="50" />
                                     <div class="card-input">
                                         <div class="card-input-body">
-                                            F50
+                                            EP50
                                         </div>
                                     </div>
                                 </label>
@@ -39,7 +39,7 @@
                                     <input class="card-input-element" type="radio" name="topup" value="100" />
                                     <div class="card-input">
                                         <div class="card-input-body">
-                                            F100
+                                            EP100
                                         </div>
                                     </div>
                                 </label>
@@ -49,59 +49,18 @@
                                     <input class="card-input-element" type="radio" name="topup" value="300" />
                                     <div class="card-input">
                                         <div class="card-input-body">
-                                            F300
+                                            EP300
                                         </div>
                                     </div>
                                 </label>
                             </div>
 
-                            <div class="col-md-3">
-                                <label class="card-topup mb-3">
-                                    <input class="card-input-element" type="radio" name="topup" value="500" />
-                                    <div class="card-input">
-                                        <div class="card-input-body">
-                                            F500
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="col-md-3">
-                                <label class="card-topup mb-3">
-                                    <input class="card-input-element" type="radio" name="topup" value="1000" />
-                                    <div class="card-input">
-                                        <div class="card-input-body">
-                                            F1000
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="col-md-3">
-                                <label class="card-topup mb-3">
-                                    <input class="card-input-element" type="radio" name="topup" value="2000" />
-                                    <div class="card-input">
-                                        <div class="card-input-body">
-                                            F2000
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
                             <div class="col-md-3">
                                 <label class="card-topup mb-3">
                                     <input class="card-input-element" type="radio" name="topup" value="5000" />
                                     <div class="card-input">
                                         <div class="card-input-body">
-                                            F5000
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-
-                            <div class="col-md-3">
-                                <label class="card-topup mb-3">
-                                    <input class="card-input-element" type="radio" name="topup" value="10000" />
-                                    <div class="card-input">
-                                        <div class="card-input-body">
-                                            F10000
+                                            EP5000
                                         </div>
                                     </div>
                                 </label>
@@ -111,7 +70,17 @@
                                     <input class="card-input-element" type="radio" name="topup" value="20000" />
                                     <div class="card-input">
                                         <div class="card-input-body">
-                                            F20000
+                                            EP20000
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="card-topup mb-3">
+                                    <input class="card-input-element" type="radio" name="topup" value="50000" />
+                                    <div class="card-input">
+                                        <div class="card-input-body">
+                                            EP50000
                                         </div>
                                     </div>
                                 </label>

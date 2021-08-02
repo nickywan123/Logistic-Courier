@@ -21,7 +21,7 @@
                 <img src="{{ asset('assets/images/blank-avatar.jpg') }}" alt="{{ Auth::user()->name }}" class="rounded-circle" width="32" height="32">
             </a>
             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                <li><a class="dropdown-item d-xl-none d-sm-none" href="#">Credit Balance: {{Auth::user()->userInfo->credit}}</a></li>
+                <li><a class="dropdown-item d-xl-none d-sm-none" href="#">Credit Balance: {{ Auth::user()->userInfo->credit }}</a></li>
                 <li><hr class="dropdown-divider d-xl-none d-sm-none"></li>
                 <li>
                     <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

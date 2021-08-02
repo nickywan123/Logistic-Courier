@@ -1,5 +1,6 @@
 let FuiyohHub = {
 	init: function(){
+	    FuiyohHub.navigator();
 		FuiyohHub.setContent();
 		FuiyohHub.feather();
 		FuiyohHub.puboffcanvas();
@@ -84,6 +85,19 @@ let FuiyohHub = {
             $(this).height(maxHeight);
         });
     },
+
+    navigator: function() {
+	    let link = $('.wsmenu-list a');
+        let header = $('.wsmainfull').outerHeight();
+	    link.click(function(e) {
+	        // e.preventDefault();
+	        let target = $($(this).attr('href'));
+	        let targetScrollTo = $(target).offset().top - header;
+            $('html, body').animate({
+                scrollTop: targetScrollTo
+            }, 400);
+        });
+	},
 
 };
 
