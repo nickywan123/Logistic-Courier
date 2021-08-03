@@ -23,7 +23,7 @@
                         <tbody>
                         @foreach($orders as $order)
                             <tr>
-                                <th>{{$order->created_at}}</th>
+                                <td>{{$order->created_at}}</td>
                                 <td>{{$order->order_number}}</td>
                                 <td>{{$order->status->name}}</td>
                                 <td>#</td>

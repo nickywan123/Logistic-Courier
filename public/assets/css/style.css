@@ -13445,6 +13445,7 @@ body.sidebar-collapse .main-header {
 body.sidebar-collapse .main-sidebar {
     background-size:100% auto;
     width:65px;
+    left: 0;
 }
 body.sidebar-collapse .main-sidebar .brand-container {
     margin:.5rem auto;

@@ -34,6 +34,12 @@
                     <span class="text">ACL</span>
                 </a>
             </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><i data-feather="help-circle"></i></span>
+                    <span class="text">FAQ</span>
+                </a>
+            </li>
 
             <li class="mt-50">
                 <a href="{{route('dashboard.index')}}">
