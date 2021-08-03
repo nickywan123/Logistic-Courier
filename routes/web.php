@@ -55,6 +55,10 @@ Route::get('dashboard/orders/history','Dashboard\OrderController@show')->name('o
 //Top Up Page
 Route::get('dashboard/top-up','Dashboard\TopUpController@index')->name('topup.index');
 
+//Top Up History
+Route::get('dashboard/top-up/history','Dashboard\TopUpController@show')->name('topup.show');
+
+
 
 //Toyyibpay request
 Route::get('toyyibpay','ToyyibpayController@createBill')->name('toyyibpay-create');
