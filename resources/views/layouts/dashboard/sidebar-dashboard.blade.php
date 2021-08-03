@@ -35,6 +35,12 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('topup.show') }}">
+                    <span class="icon"><i class="cus-icon icon-finance-light"></i></span>
+                    <span class="text">Topup History</span>
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('finance.index') }}">
                     <span class="icon"><i class="cus-icon icon-finance-light"></i></span>
                     <span class="text">Finance Report</span>
