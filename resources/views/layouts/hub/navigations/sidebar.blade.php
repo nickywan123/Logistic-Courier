@@ -16,6 +16,7 @@
                     <span class="text">Manage Orders</span>
                 </a>
             </li>
+
             <li class="mt-50">
                 <a href="{{route('dashboard.index')}}">
                     <span class="icon"><i data-feather="arrow-left-circle"></i></span>

@@ -23,12 +23,6 @@
                 </a>
             </li>
             <li>
-                <a href="">
-                    <span class="icon"><i class="cus-icon icon-user-light"></i></span>
-                    <span class="text">Fuiyoh Crew</span>
-                </a>
-            </li>
-            <li>
                 <a href="{{ route('topup.index') }}">
                     <span class="icon"><i class="cus-icon icon-wallet-light"></i></span>
                     <span class="text">Topup Credit</span>
@@ -42,8 +36,20 @@
             </li>
             <li>
                 <a href="{{ route('finance.index') }}">
-                    <span class="icon"><i class="cus-icon icon-finance-light"></i></span>
+                    <span class="icon"><i class="cus-icon icon-finance-report-light"></i></span>
                     <span class="text">Finance Report</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('crew') }}">
+                    <span class="icon"><i class="cus-icon icon-user-light"></i></span>
+                    <span class="text">Fuiyoh Crew</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('pos') }}">
+                    <span class="icon"><i class="cus-icon icon-pos-light"></i></span>
+                    <span class="text">P.O.S</span>
                 </a>
             </li>
             @hasrole('hub')
