@@ -131,6 +131,10 @@
                         </div>
                         <div class="tab-pane fade" id="sales" role="tabpanel" aria-labelledby="sales-tab">
 
+                            <div class="mx-auto">
+                                <canvas id="line-chart"></canvas>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -140,3 +144,37 @@
     </div>
 
 @endsection
+
+@push('onpagescript')
+
+    <script>
+        new Chart(document.getElementById("line-chart"), {
+            type: 'bar',
+            data: {
+                labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],
+                datasets: [
+                    {
+                        data: [71.00, 423.00, 273.00, 175.00, 264.00, 25.00, 284.00, 196.00, 264.00, 27.00, 203.00, 350.00, 45.00, 124.00, 198.00, 378.00, 56.00, 133.00, 286.00, 319.00, 291.00, 165.00, 95.00, 192.00, 17.00, 146.00, 98.00, 233.00, 171.00, 625.00],
+                        label: "July",
+                        backgroundColor: "#8e5ea2",
+                        fill: false
+                    },
+                    {
+                        data: [448.00, 416.00, 524.00, 564.00, 494.00, 525.00, 551.00, 456.00, 246.00, 100.00, 271.00, 497.00, 260.00, 66.00, 305.00, 285.00, 307.00, 213.00, 136.00, 575.00, 267.00, 130.00, 283.00, 346.00, 457.00, 512.00, 394.00, 310.00, 554.00, 625.00, 638.00,],
+                        label: "Jun",
+                        backgroundColor: "#3e95cd",
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Sales by products'
+                }
+            }
+        });
+    </script>
+
+@endpush
+
