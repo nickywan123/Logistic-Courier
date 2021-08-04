@@ -45,7 +45,7 @@ class ToyyibpayController extends Controller
           );  
 
     
-          $url = 'https://dev.toyyibpay.com/index.php/api/createBill';
+          $url = 'https://toyyibpay.com/index.php/api/createBill';
           
           $response = Http::asForm()->post($url,$option);
           
@@ -56,7 +56,7 @@ class ToyyibpayController extends Controller
           //Cache the user
           Cache::add($billCode,auth()->id(),now()->addMinutes(30));
          
-          return redirect('https://dev.toyyibpay.com/'.$billCode);
+          return redirect('https://toyyibpay.com/'.$billCode);
     }
 
     public function paymentStatus(Request $request){
