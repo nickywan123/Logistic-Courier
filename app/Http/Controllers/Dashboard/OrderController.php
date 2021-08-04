@@ -90,6 +90,12 @@ class OrderController extends Controller
           $rates = Rate::with('courier.image')
                    ->whereIn('id', session()->get('rate_ids'))
                    ->get();
+         
+            //temporarily display courier from easy parcel only
+            $collection =collect($rates);
+            $filtered = $collection->whereIn('courier_id',[1,2,4,5,6,7])->all(); 
+            $rates = $filtered;
+            //dd($filtered);
           
 
             return view('orders.quotation')
@@ -106,9 +112,11 @@ class OrderController extends Controller
     public function createOrder(Request $request){
         //dd($request->courier);
         $validated = $request->validate([
-            'courier' => 'required',         
+            'courier' => 'required',
+            'postcode_delivery' =>'required',
+            'parcel_weight' => 'required'         
         ]);
-        
+
         $postcode = $request->postcode_delivery;
         $parcel_weight = $request->parcel_weight;
         $rate = Rate::where('id',$request->courier)->first();
@@ -313,12 +321,12 @@ class OrderController extends Controller
                     return redirect()->route('create.order.failed')
                     ->with(['errorMessage' =>'Insufficient credit in Easy Parcel account. Please contact support for help.'] );
                 }
-
+                //dd($order_payment_response->json());
                 //deduct the credit
                 $credit->credit = $credit_balance - $cost;
                 $credit->save();
 
-
+                
                 $order = new Order();
                 $order->order_number = $order_payment_response['result'][0]['orderno'];
                 $order->user_id = auth()->id();
@@ -326,6 +334,9 @@ class OrderController extends Controller
                 $order->hub_id = $request->hub;
                 $order->amount = $cost;
                 $order->order_status = 1000;
+                $order->awb =  $order_payment_response['result'][0]['parcel'][0]['awb'];
+                $order->awb_id_link = $order_payment_response['result'][0]['parcel'][0]['awb_id_link'];
+                $order->tracking_url = $order_payment_response['result'][0]['parcel'][0]['tracking_url'];
                 $order->save();
 
                 $order_details = new OrderDetail();
