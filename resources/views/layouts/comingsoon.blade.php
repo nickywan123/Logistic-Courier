@@ -11,7 +11,7 @@
             <div class="p-lg-30 p-md-30 p-sm-30 p-10 comings-height d-flex align-items-center justify-content-center">
 
                 <div>
-                    <img src="{{ asset('assets/images/coming-soon-logo.png') }}" alt="" class="img-fluid d-block mx-auto">
+                    <img src="{{ asset('assets/images/coming-soon-logo.png') }}" alt="" class="img-fluid d-block mx-auto" style="max-width:800px;">
                 </div>
 
             </div>
