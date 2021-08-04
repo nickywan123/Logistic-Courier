@@ -147,7 +147,7 @@
 		})();
 
 	//End of Tawk.to Script
-		
+
 	</script>
     @stack('onpagescript')
 

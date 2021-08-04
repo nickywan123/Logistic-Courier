@@ -82,14 +82,14 @@
             {{--    </a>--}}
             {{--</li>--}}
 
-            <li class="mt-50">
+            <li class="mt-40">
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <span class="icon"><i class="cus-icon icon-signout-light"></i></span>
                     <span class="text">{{ __('Logout') }}</span>
                 </a>
                 <form id="logout-form-sidebar" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
             </li>
-            <li class="mt-50">
+            <li class="mt-40">
                 <a href="">
                     <span class="icon"></span>
                     <span class="text">Powered by <br> KOPENAS SDN BHD</span>
