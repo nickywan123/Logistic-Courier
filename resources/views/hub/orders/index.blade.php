@@ -18,7 +18,8 @@
                         <th>Order Number</th>
                         <th>Status</th>
                         <th>Amount(RM)</th>
-                        <th>Courier</th>
+                        <th>Tracking Number</th>
+                        <th>Consignment Note</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -26,9 +27,10 @@
                         <tr>
                             <th>{{$order->created_at}}</th>
                             <td>{{$order->order_number}}</td>
-                            <td>{{$order->status->name}}</td>
+                            <td><a href="{{$order->tracking_url}}" target="_blank">Track Shipment</a></td>
                             <td>{{$order->amount}}</td>
-                            <td>{{$order->courier->name}}</td>
+                            <td>{{$order->courier->name}}- {{$order->awb}}</td>
+                            <td><a href="{{$order->awb_id_link}}" target="_blank">Print Consignment Note</a></td>
                         </tr>
                     @endforeach
                     </tbody>

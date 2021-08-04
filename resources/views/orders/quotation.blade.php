@@ -9,7 +9,7 @@
                 <h2 class="title-section">Regular Order</h2>
                 <p class="subtitle-section">Please select one courier:</p>
 
-                <form method="POST" action="{{route('create.quotation')}}">
+                <form method="POST" action="{{route('create.quotation')}}" id="courier-form">
                     @csrf
                     <div class="row">
 
@@ -42,7 +42,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <input type="submit" class="btn btn-yellow-hub rounded-pill px-30" value="Book Delivery">
+                            <input type="submit" class="btn btn-yellow-hub rounded-pill px-30" id="proceedBtn" value="Book Delivery">
                         </div>
                     </div>
                 </form>
@@ -50,5 +50,33 @@
             </div>
         </div>
     </div>
+
+ {{-- @push('onpagescript')
+    <script>
+         // Validate form
+         $("#courier-form").validate({
+                rules: {
+                    courier: {
+                        required: true
+                    }
+                },
+                messages: {
+                    courier: {
+                        required: "Please select a courier"
+                    }       
+                }
+            });
+
+            // validate courier selection before submitting.
+            $('#proceedBtn').click(function () {
+                if ($("#courier-form").validate().element('#courier')) {      
+                       $("#courier-form").submit();
+                     
+                } else {
+                    return false;
+                }
+            });
+    </script>
+ @endpush --}}
 
 @endsection
