@@ -135,7 +135,7 @@
                                 <canvas id="line-chart"></canvas>
                             </div>
 
-                            <div class="table-responsive d-block mx-auto" style="max-width:800px;">
+                            <div class="table-responsive d-block mx-auto mt-50" style="max-width:800px;">
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
