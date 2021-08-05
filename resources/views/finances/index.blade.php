@@ -135,6 +135,31 @@
                                 <canvas id="line-chart"></canvas>
                             </div>
 
+                            <div class="table-responsive d-block mx-auto" style="max-width:800px;">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Month</th>
+                                            <th class="text-end" style="width:250px;">Total Sales (MYR)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Jun</td>
+                                            <td class="text-end">6,944.03</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jun</td>
+                                            <td class="text-end">10,387.35</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-end"><b>Total Sales</b></td>
+                                            <td class="text-end">17,331.38</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
                         </div>
                     </div>
                 </div>
