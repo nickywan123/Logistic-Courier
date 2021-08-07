@@ -9,7 +9,7 @@
                 <h2 class="title-section">Regular Order</h2>
                 <p class="subtitle-section">Please select one courier:</p>
 
-                <form method="POST" action="{{route('create.quotation')}}">
+                <form method="POST" action="{{route('create.quotation')}}" id="courier-form">
                     @csrf
                     <div class="row">
 
@@ -17,6 +17,7 @@
                         <input type="hidden" name="parcel_weight" value="{{ $parcel_weight }}">
 
                         @foreach($rates as $rate)
+                        @if($rate->cost != 0)
                             <div class="col-3 col-md-2">
                                 <label class="card-courier mb-3 @error('courier') is-invalid @enderror">
                                     <input class="card-courier-element" type="radio" name="courier" value="{{ $rate->id }}" required>
@@ -30,6 +31,7 @@
                                     </div>
                                 </label>
                             </div>
+                        @endif
                         @endforeach
 
                         @error('courier')
@@ -42,7 +44,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <input type="submit" class="btn btn-yellow-hub rounded-pill px-30" value="Book Delivery">
+                            <input type="submit" class="btn btn-yellow-hub rounded-pill px-30" id="proceedBtn" value="Book Delivery">
                         </div>
                     </div>
                 </form>
@@ -50,5 +52,33 @@
             </div>
         </div>
     </div>
+
+ {{-- @push('onpagescript')
+    <script>
+         // Validate form
+         $("#courier-form").validate({
+                rules: {
+                    courier: {
+                        required: true
+                    }
+                },
+                messages: {
+                    courier: {
+                        required: "Please select a courier"
+                    }       
+                }
+            });
+
+            // validate courier selection before submitting.
+            $('#proceedBtn').click(function () {
+                if ($("#courier-form").validate().element('#courier')) {      
+                       $("#courier-form").submit();
+                     
+                } else {
+                    return false;
+                }
+            });
+    </script>
+ @endpush --}}
 
 @endsection

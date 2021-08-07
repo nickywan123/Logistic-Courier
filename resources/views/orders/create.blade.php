@@ -23,7 +23,9 @@
                             <select class="form-select rounded-pill px-20 @error('hub') is-invalid @enderror" name="hub" id="hub" >
                                 <option disabled selected>Select a hub to dropoff</option>
                                 @foreach($hubs as $hub)
+
                                 <option value="{{$hub->id}}">{{$hub->hub_name}}</option>
+
                                 @endforeach
                             </select>
                             @error('hub')
@@ -198,7 +200,7 @@
         <div class="modal-body">
           <p>Your credit balance will be charge RM{{$rate->cost}} for the invoice. Proceed this order?</p>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary confirm-pay-now ">Pay Now</button>
+            <button type="submit" class="btn btn-primary confirm-pay-now" id="payNowBtn">Pay Now</button>
             <button type="button" id="closeModalBtn" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
@@ -207,10 +209,31 @@
   </div>
 </form>
 
+<!-- Loading bar page -->
+<div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content modal-content-height">
+        <div class="modal-header" style="background-color: #D0D0D0">
+          <h5 class="modal-title">Processing Order</h5>
+        </div>
+        <div class="modal-body">
+          <div><img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"></div>
+          <div class="text-center">
+           <p>Please wait while your order is processing. Do not refresh or close your browser...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
     @push('onpagescript')
         <!--dashboard/orders/booking--->
-        <script>
-
+    <script>
+        $(document).ready(function() {
+            //hide loading modal before submitting form
+            var loading = $('#loadingModal').hide();
             // Validate form
             $("#order-form").validate({
                 rules: {
@@ -363,7 +386,6 @@
                     //show modal if validation passes
                      $('#confirmOrder').modal('toggle');
                     //confirm('a you sure');
-
                     // return true;
                 } else {
                     return false;
@@ -374,11 +396,18 @@
                 $('#confirmOrder').modal('hide');
             });
 
+            //Show loading progress when submit pay now
+            $('#payNowBtn').click(function () {
+                $('#confirmOrder').modal('hide');
+                $('#loadingModal').modal('toggle');
+            });
+
             // $('.confirm-pay-now').click(function(){
             //   $("#order-form").submit();
             // });
+        });
 
-        </script>
+    </script>
 
     @endpush
 

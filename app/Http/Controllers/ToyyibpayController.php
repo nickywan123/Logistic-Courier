@@ -41,11 +41,11 @@ class ToyyibpayController extends Controller
             'billSplitPaymentArgs'=>'',
             'billPaymentChannel'=>0,
             'billContentEmail'=>'Thank you for using our platform!',
-            'billChargeToCustomer'=>2
+            'billChargeToCustomer'=>""
           );  
 
     
-          $url = 'https://dev.toyyibpay.com/index.php/api/createBill';
+          $url = 'https://toyyibpay.com/index.php/api/createBill';
           
           $response = Http::asForm()->post($url,$option);
           
@@ -56,7 +56,7 @@ class ToyyibpayController extends Controller
           //Cache the user
           Cache::add($billCode,auth()->id(),now()->addMinutes(30));
          
-          return redirect('https://dev.toyyibpay.com/'.$billCode);
+          return redirect('https://toyyibpay.com/'.$billCode);
     }
 
     public function paymentStatus(Request $request){
@@ -101,7 +101,7 @@ class ToyyibpayController extends Controller
 
         //update new credit balance for user
         $user_credit = UserInfo::where('user_id',$user_id)->first();
-        $user_credit->credit += $request->amount-1;
+        $user_credit->credit += $request->amount;
         $user_credit->save();
 
         }
