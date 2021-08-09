@@ -95,5 +95,6 @@ Route::get('/hub/home','Hub\HomeController@index')->name('hub.index');
 
 Route::get('/hub/orders/index','Hub\OrderController@index')->name('hub.orders.index');
 
-
-
+//
+Route::get('crew', 'ComingSoonController@show')->name('crew');
+Route::get('pos', 'ComingSoonController@show')->name('pos');

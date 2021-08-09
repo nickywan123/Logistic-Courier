@@ -25,7 +25,7 @@
                         <tbody>
                         @foreach($orders as $order)
                             <tr>
-                                <th>{{$order->created_at}}</th>
+                                <td>{{$order->created_at}}</td>
                                 <td>{{$order->order_number}}</td>
                                 <td><a href="{{$order->tracking_url}}" target="_blank">Track Shipment</a></td>
                                 <td>{{$order->awb}}</td>

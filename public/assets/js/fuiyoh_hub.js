@@ -4,10 +4,10 @@ let FuiyohHub = {
 		FuiyohHub.setContent();
 		FuiyohHub.feather();
 		FuiyohHub.puboffcanvas();
+		FuiyohHub.hubServices();
 		// FuiyohHub.select2();
 		FuiyohHub.tableData();
 		FuiyohHub.prepaid();
-		FuiyohHub.hubServices();
 	},
 
 	feather: function () {
@@ -75,13 +75,13 @@ let FuiyohHub = {
 
     hubServices: function (){
         let maxHeight = -1;
-        let parent = $('#hubServices .spec-card-body');
+        let containDiv = $('#hubServices .spec-card-body');
 
-	    parent.each(function (){
+	    containDiv.each(function (){
 	        maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
         });
 
-        parent.each(function() {
+        containDiv.each(function() {
             $(this).height(maxHeight);
         });
     },
