@@ -77,8 +77,7 @@ class OrderController extends Controller
                          'postcode_delivery' => $request->input('postcode_delivery'),
                          'parcel_weight'=>$request->parcel_weight
                          ]);
-                        
-       
+                          
     }
 
     //Show quotation

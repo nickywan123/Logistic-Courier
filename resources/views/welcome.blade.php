@@ -29,27 +29,39 @@
                             <div class="spec-card">
                                 <div class="spec-card-body py-70 px-70 pb-xs-40 px-xs-20">
 
-                                    <form action="#" method="POST">
+                                    <form action="{{ route('guest.order.quotation') }}" method="POST">
                                         @csrf
                                         <h3 class="font-700">Get Instant Quotes</h3>
                                         <div class="mb-3">
-                                            <select name="" id="" class="form-select">
-                                                <option value="#">Weight (kg)</option>
-                                                <option value="#">1</option>
-                                            </select>
+                                            <input type="text" class="form-control rounded-pill px-20 @error('parcel_weight') is-invalid @enderror" placeholder="Weight(kg e.g:0.1)" name="parcel_weight" id="parcel_weight" value="{{ old('parcel_weight') }}" required>
+                                            @error('parcel_weight')
+                                            <div class="ps-25 invalid-feedback d-block">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                         </div>
-                                        <div class="mb-3">
+                                        {{-- <div class="mb-3">
                                             <select name="" id="" class="form-select">
                                                 <option selected="selected">Parcel Size</option>
                                                 <option value="#">Box Size</option>
                                                 <option value="#">Rectangular Size</option>
                                             </select>
+                                        </div> --}}
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control rounded-pill px-20 @error('postcode_pickup') is-invalid @enderror" placeholder="Postcode Pickup" name="postcode_pickup" id="postcode_pickup" value="{{ old('postcode_pickup') }}" required>
+                                            @error('postcode_pickup')
+                                            <div class="ps-25 invalid-feedback d-block">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                         </div>
                                         <div class="mb-3">
-                                            <input type="text" class="form-control" placeholder="Postcode Pickup">
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="text" class="form-control" placeholder="Postcode Delivery">
+                                            <input type="text" class="form-control rounded-pill px-20 @error('postcode_delivery') is-invalid @enderror" placeholder="Postcode Delivery" name="postcode_delivery" id="postcode_delivery" value="{{ old('postcode_delivery') }}" required>
+                                            @error('postcode_delivery')
+                                            <div class="ps-25 invalid-feedback d-block">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                         </div>
                                         <div class="d-grid gap-2 mb-3">
                                             <button type="submit" class="btn btn-yellow-hub px-50 text-white">Quote</button>

@@ -16,7 +16,7 @@ class OrderController extends Controller
 
     public function index(){
         //Show all customer orders from this specific hub
-        $hub_orders = Hub::where('hub_name',Auth::user()->name)->first();
+        $hub_orders = Hub::where('email',Auth::user()->email)->first();
 
         return view('hub.orders.index')->with('hub_orders',$hub_orders);
     }
