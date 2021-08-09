@@ -17,6 +17,7 @@
                         <input type="hidden" name="parcel_weight" value="{{ $parcel_weight }}">
 
                         @foreach($rates as $rate)
+                        @if($rate->cost != 0)
                             <div class="col-3 col-md-2">
                                 <label class="card-courier mb-3 @error('courier') is-invalid @enderror">
                                     <input class="card-courier-element" type="radio" name="courier" value="{{ $rate->id }}" required>
@@ -30,6 +31,7 @@
                                     </div>
                                 </label>
                             </div>
+                        @endif
                         @endforeach
 
                         @error('courier')

@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-md-6 d-flex align-items-start justify-content-end">
                         <div>
-                            <a href="#" class="btn btn-yellow-hub">Add New Rate</a>
+                            <a href="{{route('admin.rates.create')}}" class="btn btn-yellow-hub">Add New Rate</a>
                         </div>
                     </div>
                 </div>
@@ -23,9 +23,10 @@
                     <tr>
                         <th>Courier</th>
                         <th>Weight(kg)</th>
-                        <th>Cost</th>
+                        <th>Cost(RM)</th>
+                        <th>Hub Rate(RM)</th>
                         <th>Location</th>
-                        <th></th>
+                        <th>#</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -34,8 +35,9 @@
                             <th scope="row">{{$rate->courier->name}}</th>
                             <td>{{$rate->weight}}</td>
                             <td>{{$rate->cost}}</td>
+                            <td>{{$rate->hub_cost}}</td>
                             <td>{{$rate->location->name}}</td>
-                            <td></td>
+                            <td><a href="{{route('admin.rates.edit',$rate->id)}}">Edit</a></td>
                         </tr>
                     @endforeach
                     </tbody>

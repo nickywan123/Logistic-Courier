@@ -15,11 +15,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('landing.page');
 
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/**
+ * Guest Quotation
+ */
+
+//Generate quotation for guest
+Route::post('/guest/quotation','Guest\OrderController@quotation')->name('guest.order.quotation');
+
+//Show quotation for guest
+Route::get('/guest/quotation','Guest\OrderController@showQuotation')->name('guest.quotation.show');
+
 
 // Dashboard home page
 Route::get('/dashboard/home','Dashboard\HomeController@index')->name('dashboard.index');
@@ -85,7 +96,17 @@ Route::get('/dashboard/finance-report','FinanceController@index')->name('finance
  */
 Route::get('/administrator','Administrator\AdministratorController@index')->name('admin.index');
 
-Route::get('/administrator/rates','Administrator\AdministratorController@getRates')->name('admin.index.rates');
+Route::get('/administrator/rates/create','Administrator\RateController@create')->name('admin.rates.create');
+
+Route::post('administrator/rates','Administrator\RateController@store')->name('admin.rates.store');
+
+Route::get('/administrator/rates','Administrator\RateController@index')->name('admin.rates.index');
+
+Route::get('/administrator/{rate}/edit','Administrator\RateController@edit')->name('admin.rates.edit');
+
+Route::put('/administrator/rates/{rate}','Administrator\RateController@update')->name('admin.rates.update');
+
+Route::get('/administrator/orders','Administrator\AdministratorController@getOrders')->name('admin.index.orders');
 
 
 /**

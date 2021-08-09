@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrator;
 
 use App\Http\Controllers\Controller;
+use App\Order;
 use App\Rate;
 use App\User;
 use Illuminate\Http\Request;
@@ -22,8 +23,9 @@ class AdministratorController extends Controller
         return view('administrator.index')->with('users',$users);
     }
 
-    public function getRates(){
-        $rates = Rate::all();
-        return view('administrator.rates.index')->with('rates',$rates);
+
+    public function getOrders(){
+        $orders = Order::all();
+        return view('administrator.orders.index')->with('orders',$orders);
     }
 }

@@ -19,6 +19,7 @@
                             <th>Status</th>
                             <th>Tracking Number</th>
                             <th>Courier</th>
+                            <th>Consignment Note</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -29,6 +30,7 @@
                                 <td><a href="{{$order->tracking_url}}" target="_blank">Track Shipment</a></td>
                                 <td>{{$order->awb}}</td>
                                 <td>{{$order->courier->name}}</td>
+                                <td><a href="{{$order->awb_id_link}}">Print</a></td>
                             </tr>
                         @endforeach
                         </tbody>

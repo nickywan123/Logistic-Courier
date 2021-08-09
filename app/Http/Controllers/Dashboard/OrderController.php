@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Hub;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class OrderController extends Controller
@@ -76,8 +77,7 @@ class OrderController extends Controller
                          'postcode_delivery' => $request->input('postcode_delivery'),
                          'parcel_weight'=>$request->parcel_weight
                          ]);
-                        
-       
+                          
     }
 
     //Show quotation
@@ -148,8 +148,19 @@ class OrderController extends Controller
         if (!session()->has('rate')) {
             return redirect()->route('order.index');
           }
+          //return selected hub for hub accounts or else all hubs
+          $user = Auth::user()->email;
+          
+          $hub = Hub::where('email',$user)->get();
+          //dd($hub);
+           if($hub->count()){
+            $hubs = $hub;
+           }else{
+            $hubs = Hub::all();
+           }
+           
+          
 
-          $hubs = Hub::all();
           return view('orders.create')->with([
             'rate' => session()->get('rate'),
             'postcode_delivery' => session()->get('postcode_delivery'),
@@ -222,7 +233,7 @@ class OrderController extends Controller
                 )
                 );
 
-                $url = "https://demo.connect.easyparcel.my/?ac=EPRateCheckingBulk";
+                $url = "https://connect.easyparcel.my/?ac=EPRateCheckingBulk";
 
                 $response = Http::asForm()->post($url,$postparam_rate);
 
@@ -285,7 +296,7 @@ class OrderController extends Controller
                 ),
                 );
 
-                $url = "https://demo.connect.easyparcel.my/?ac=EPSubmitOrderBulk";
+                $url = "https://connect.easyparcel.my/?ac=EPSubmitOrderBulk";
 
                 $response = Http::asForm()->post($url,$postparam);
                 
@@ -310,7 +321,7 @@ class OrderController extends Controller
                 ),
                 );
 
-                $order_payment_url = "https://demo.connect.easyparcel.my/?ac=EPPayOrderBulk";
+                $order_payment_url = "https://connect.easyparcel.my/?ac=EPPayOrderBulk";
 
                 $order_payment_response = Http::asForm()->post($order_payment_url,$postparam_order_payment);
                 Log::info($order_payment_response);
