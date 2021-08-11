@@ -1,17 +1,17 @@
 <aside class="main-sidebar">
     <div class="brand-container">
-        <a href="{{ route('admin.index') }}" class="brand">
+        <a href="{{ route('admin.users.index') }}" class="brand">
             <img src="{{ asset('assets/images/dashboard-logo.png') }}" alt="" class="brand-img mx-auto">
             <div class="brand-txt">Admin Dashboard</div>
         </a>
-        <a href="{{ route('admin.index') }}" class="brand-collapse">
+        <a href="{{ route('admin.users.index') }}" class="brand-collapse">
             <img src="{{ asset('assets/images/fuiyohhub-mascot.png') }}" alt="" class="img-fluid">
         </a>
     </div>
     <div class="side-container">
         <ul class="sidebar-menu">
             <li>
-                <a href="{{ route('admin.index') }}">
+                <a href="{{ route('admin.users.index') }}">
                     <span class="icon"><i data-feather="users"></i></span>
                     <span class="text">List of Users</span>
                 </a>

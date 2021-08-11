@@ -233,7 +233,7 @@ class OrderController extends Controller
                 )
                 );
 
-                $url = "https://connect.easyparcel.my/?ac=EPRateCheckingBulk";
+                $url = "https://demo.connect.easyparcel.my/?ac=EPRateCheckingBulk";
 
                 $response = Http::asForm()->post($url,$postparam_rate);
 
@@ -296,7 +296,7 @@ class OrderController extends Controller
                 ),
                 );
 
-                $url = "https://connect.easyparcel.my/?ac=EPSubmitOrderBulk";
+                $url = "https://demo.connect.easyparcel.my/?ac=EPSubmitOrderBulk";
 
                 $response = Http::asForm()->post($url,$postparam);
                 
@@ -321,7 +321,7 @@ class OrderController extends Controller
                 ),
                 );
 
-                $order_payment_url = "https://connect.easyparcel.my/?ac=EPPayOrderBulk";
+                $order_payment_url = "https://demo.connect.easyparcel.my/?ac=EPPayOrderBulk";
 
                 $order_payment_response = Http::asForm()->post($order_payment_url,$postparam_order_payment);
                 Log::info($order_payment_response);
