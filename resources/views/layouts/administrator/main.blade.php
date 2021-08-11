@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/dataTables/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/icons/material-icons/material-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/summernote/summernote-lite.css') }}">
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -55,6 +57,7 @@
     <script src="{{ asset('assets/vendor/jquery/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('assets/vendor/dataTables/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/summernote/summernote-lite.js') }}"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

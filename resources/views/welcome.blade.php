@@ -148,6 +148,14 @@
             <h1 class="font-700 text-center text-uppercase text-yellow-fuiyoh mb-60">Frequently Ask Questions</h1>
 
             <ul id="fabTab" class="nav nav-pills nav-fill" id="myTab" role="tablist">
+                @foreach()
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">User</a>
+                </li>
+                @endforeach
+            </ul>
+
+            <ul id="fabTab" class="nav nav-pills nav-fill" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <a class="nav-link active" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">User</a>
                 </li>

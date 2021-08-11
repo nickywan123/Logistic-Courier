@@ -87,6 +87,8 @@ Route::get('/administrator','Administrator\AdministratorController@index')->name
 
 Route::get('/administrator/rates','Administrator\AdministratorController@getRates')->name('admin.index.rates');
 
+Route::resource('administrator/faq', 'Administrator\Web\Faq\FaqController', ['except' => ['show']]);
+Route::resource('administrator/faq-category', 'Administrator\Web\Faq\FaqCategoryController', ['except' => ['show']]);
 
 /**
  * Fuiyoh Hubs

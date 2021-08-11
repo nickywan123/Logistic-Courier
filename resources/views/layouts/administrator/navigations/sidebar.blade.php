@@ -35,7 +35,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('faq.index') }}">
                     <span class="icon"><i data-feather="help-circle"></i></span>
                     <span class="text">FAQ</span>
                 </a>

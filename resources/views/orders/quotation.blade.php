@@ -18,7 +18,7 @@
 
                         @foreach($rates as $rate)
                         @if($rate->cost != 0)
-                            <div class="col-3 col-md-2">
+                            <div class="col-4 col-sm-2 col-md-2 col-xl-2">
                                 <label class="card-courier mb-3 @error('courier') is-invalid @enderror">
                                     <input class="card-courier-element" type="radio" name="courier" value="{{ $rate->id }}" required>
                                     <div class="carrier-card-input">
@@ -65,15 +65,15 @@
                 messages: {
                     courier: {
                         required: "Please select a courier"
-                    }       
+                    }
                 }
             });
 
             // validate courier selection before submitting.
             $('#proceedBtn').click(function () {
-                if ($("#courier-form").validate().element('#courier')) {      
+                if ($("#courier-form").validate().element('#courier')) {
                        $("#courier-form").submit();
-                     
+
                 } else {
                     return false;
                 }

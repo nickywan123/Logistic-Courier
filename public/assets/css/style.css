@@ -14399,6 +14399,8 @@ textarea.form-control {
     height: calc(100vh - 120px);
 }
 
-
+.material-icons {
+    line-height:inherit;
+}
 
 

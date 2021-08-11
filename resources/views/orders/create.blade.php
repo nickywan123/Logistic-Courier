@@ -194,7 +194,7 @@
  <div class="modal fade" id="confirmOrder" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content modal-content-height">
-        <div class="modal-header" style="background-color: #D0D0D0">
+        <div class="modal-header"   >
           <h5 class="modal-title">Order Confirmation</h5>
         </div>
         <div class="modal-body">
