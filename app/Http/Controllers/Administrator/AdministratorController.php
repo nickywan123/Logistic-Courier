@@ -16,12 +16,6 @@ class AdministratorController extends Controller
         return $this->middleware(['auth','role:administrator']);
     }
 
-    public function index(){
-
-        $users = User::all();
-
-        return view('administrator.index')->with('users',$users);
-    }
 
 
     public function getOrders(){

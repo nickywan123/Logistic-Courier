@@ -56,7 +56,7 @@
             @endhasrole
             @hasrole('administrator')
             <li>
-                <a href="{{ route('admin.index') }}">
+                <a href="{{ route('admin.users.index') }}">
                     <span class="icon"><i data-feather="arrow-right-circle"></i></span>
                     <span class="text">Admin Dashboard</span>
                 </a>

@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-md-6 d-flex align-items-start justify-content-end">
                         <div>
-                            <a href="#" class="btn btn-yellow-hub">Register New User</a>
+                            <a href="{{route('admin.users.create')}}" class="btn btn-yellow-hub">Register New User</a>
                         </div>
                     </div>
                 </div>
@@ -24,9 +24,11 @@
                         <th scope="col">ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Credit(RM)</th>
                         <th scope="col">Date Registered</th>
-                        <th>Email Verified</th>
-                        <th>Role</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">#</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -35,6 +37,7 @@
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
+                            <td>{{$user->userInfo->credit}}</td>
                             <td>{{ $user->created_at }}</td>
                             <td>{{ $user->email_verified_at ? 'Verified' : 'Unverified'  }}</td>
                             <td>
@@ -47,6 +50,7 @@
                                 customer
                                 @endforelse
                             </td>
+                            <td><a href="{{route('admin.users.edit',$user->id)}}" class="btn btn-primary">Edit</a></td>
                         </tr>
                     @endforeach
                     </tbody>

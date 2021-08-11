@@ -54,7 +54,7 @@
                       @enderror
                     </div>
                     <div class="form-group">
-                      <label for="cost">Cost(Retail)</label>
+                      <label for="cost">Cost Retail(RM)</label>
                       <input type="text" name="cost" class="form-control" value="{{ old('cost') }}" required>
                       @error('cost')
                       <div class="ps-25 invalid-feedback d-block">
@@ -63,7 +63,7 @@
                       @enderror
                     </div>
                     <div class="form-group">
-                        <label for="hub_cost">Hub Rate</label>
+                        <label for="hub_cost">Hub Rate(RM)</label>
                         <input type="text" name="hub_cost" class="form-control" value="{{ old('hub_cost') }}" required>
                         @error('hub_cost')
                         <div class="ps-25 invalid-feedback d-block">
