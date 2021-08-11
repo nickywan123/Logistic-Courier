@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -118,7 +119,15 @@ Route::delete('/administrator/rates/{rate}','Administrator\RateController@destro
 
 Route::get('/administrator/orders','Administrator\AdministratorController@getOrders')->name('admin.index.orders');
 
+Route::get('/administrator/hubs','Administrator\HubController@index')->name('admin.hubs.index');
 
+Route::get('/administrator/hubs/{hub}/edit','Administrator\HubController@edit')->name('admin.hubs.edit');
+
+Route::put('/administrator/hubs/{hub}','Administrator\HubController@update')->name('admin.hubs.update');
+
+Route::get('/administrator/hubs/create','Administrator\HubController@create')->name('admin.hubs.create');
+
+Route::post('/administrator/hubs','Administrator\HubController@store')->name('admin.hubs.store');
 
 
 /**
