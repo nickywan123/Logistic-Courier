@@ -13445,6 +13445,7 @@ body.sidebar-collapse .main-header {
 body.sidebar-collapse .main-sidebar {
     background-size:100% auto;
     width:65px;
+    left: 0;
 }
 body.sidebar-collapse .main-sidebar .brand-container {
     margin:.5rem auto;
@@ -14311,6 +14312,12 @@ input[type=radio].card-courier-element:checked ~ .carrier-card-input .carrier-ca
 .icon-wallet-light:before {
     background-image: url("../images/cus-icon/icon-wallet-light.png");
 }
+.icon-finance-report-light:before {
+    background-image: url("../images/cus-icon/icon-finance-report.png");
+}
+.icon-pos-light:before {
+    background-image: url("../images/cus-icon/icon-pos.png");
+}
 
 /*footerstyle*/
 .footer-title {
@@ -14388,8 +14395,12 @@ textarea.form-control {
     border-bottom: 1px solid rgba(0,0,0,.125);
 }
 
+.comings-height {
+    height: calc(100vh - 120px);
+}
 
-
-
+.material-icons {
+    line-height:inherit;
+}
 
 
