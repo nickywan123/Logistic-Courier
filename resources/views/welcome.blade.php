@@ -145,6 +145,7 @@
 
     <section id="faq" class="bg-dark-fuiyoh py-110">
         <div class="container">
+            
             <h1 class="font-700 text-center text-uppercase text-yellow-fuiyoh mb-60">Frequently Ask Questions</h1>
 
             <ul id="fabTab" class="nav nav-pills nav-fill" role="tablist">
@@ -176,9 +177,6 @@
                 </div>
                 @endforeach
             </div>
-
-
-            
 
         </div>
     </section>
