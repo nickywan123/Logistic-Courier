@@ -15,57 +15,78 @@
                 <form action="{{route('admin.hubs.update',$hub->id)}}" method="POST">
                     @csrf
                     @method('PUT')
-                    <div class="form-group">
-                      <label for="hub_name">Hub Name</label>
-                      <input type="text" name="hub_name" class="form-control"  value="{{$hub->hub_name}}" required>
-                      @error('hub_name')
-                        <div class="ps-25 invalid-feedback d-block">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="hub_name">Hub Name</label>
+                                <input type="text" name="hub_name" class="form-control @error('hub_name') is-invalid @enderror"  value="{{$hub->hub_name}}" required>
+                                @error('hub_name')
+                                <div class="invalid-feedback d-block">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="email">Hub Email</label>
+                                <input type="text" name="email" class="form-control @error('address') is-invalid @enderror"  value="{{$hub->email}}" readonly required>
+                                @error('address')
+                                <div class="invalid-feedback d-block">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="form-label" for="address">Hub Address</label>
+                        <input type="text" name="address" class="form-control @error('address') is-invalid @enderror"  value="{{$hub->address}}"  required>
+                        @error('address')
+                        <div class="invalid-feedback d-block">
                             {{ $message }}
                         </div>
                         @enderror
                     </div>
-                    <div class="form-group">
-                      <label for="email">Email</label>
-                      <input type="text" name="email" class="form-control"  value="{{$hub->email}}" readonly required>
-                    </div>
-                    <div class="form-group">
-                      <label for="address">Address</label>
-                      <input type="text" name="address" class="form-control"  value="{{$hub->address}}"  required>
-                      @error('address')
-                        <div class="ps-25 invalid-feedback d-block">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="city">City</label>
-                        <input type="text" name="city" class="form-control"  value="{{$hub->city}}"  required>
+                    <div class="mb-3">
+                        <label class="form-label" for="city">City</label>
+                        <input type="text" name="city" class="form-control @error('city') is-invalid @enderror"  value="{{$hub->city}}"  required>
                         @error('city')
-                        <div class="ps-25 invalid-feedback d-block">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                      </div>
-                    <div class="form-group">
-                        <label for="state">State</label>
-                        <input type="text" name="state" class="form-control"  value="{{$hub->state}}"  required>
-                        @error('state')
-                        <div class="ps-25 invalid-feedback d-block">
+                        <div class="invalid-feedback d-block">
                             {{ $message }}
                         </div>
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="postcode">Postcode</label>
-                        <input type="text" name="postcode" class="form-control"  value="{{$hub->postcode}}" required>
-                        @error('postcode')
-                        <div class="ps-25 invalid-feedback d-block">
-                            {{ $message }}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="state">State</label>
+                                <input type="text" name="state" class="form-control @error('state') is-invalid @enderror"  value="{{$hub->state}}"  required>
+                                @error('state')
+                                <div class="invalid-feedback d-block">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
                         </div>
-                        @enderror
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="postcode">Postcode</label>
+                                <input type="text" name="postcode" class="form-control @error('postcode') is-invalid @enderror"  value="{{$hub->postcode}}" required>
+                                @error('postcode')
+                                <div class="invalid-feedback d-block">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary mt-3">Update Information</button>
-                  </form>       
+                    <div class="mb-0">
+                        <button type="submit" class="btn btn-yellow-hub px-30">Update Information</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

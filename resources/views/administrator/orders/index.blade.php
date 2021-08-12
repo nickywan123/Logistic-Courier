@@ -40,8 +40,8 @@
                             <td>{{$order->hub->hub_name}}</td>
                             <td>{{ $order->amount }}</td>
                             <td>{{$order->awb}}</td>
-                            <td><a href="{{$order->tracking_url}}">Track Parcel</a></td>
-                            <td><a href="{{$order->awb_id_link}}">Print</a></td>
+                            <td><a class="btn btn-secondary" href="{{$order->tracking_url}}">Track Parcel</a></td>
+                            <td><a class="btn btn-info" href="{{$order->awb_id_link}}">Print</a></td>
                         </tr>
                     @endforeach
                     </tbody>

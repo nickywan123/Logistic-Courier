@@ -21,14 +21,14 @@
                 <table class="refresh table table-stripped mb-0">
                     <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Hub Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">City</th>
-                        <th scope="col">State</th>
-                        <th scope="col">Postcode</th>
-                        <th scope="col">#</th>
+                        <th>ID</th>
+                        <th>Hub Name</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Postcode</th>
+                        <th class="text-center">#</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -41,7 +41,7 @@
                             <td>{{ $hub->city }}</td>
                             <td>{{$hub->state  }}</td>
                             <td>{{$hub->postcode}}</td>
-                            <td><a href="{{route('admin.hubs.edit',$hub->id)}}" class="btn btn-primary">Edit</a></td>
+                            <td class="text-center"><a href="{{route('admin.hubs.edit',$hub->id)}}" class="btn btn-secondary">Edit</a></td>
                         </tr>
                     @endforeach
                     </tbody>

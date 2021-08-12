@@ -15,35 +15,48 @@
                 <form action="{{route('admin.users.update',$user->id)}}" method="POST">
                     @csrf
                     @method('PUT')
-                    <div class="form-group mt-2">
-                      <label for="name">Name</label>
-                      <input type="text" name="name" class="form-control"  value="{{$user->name}}"  required>
-                      @error('name')
-                      <div class="ps-25 invalid-feedback d-block">
-                          {{ $message }}
-                      </div>
-                      @enderror
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="mb-3">
+                                <label class="form-label" for="name">Name</label>
+                                <input type="text" name="name" class="form-control"  value="{{$user->name}}"  required>
+                                @error('name')
+                                <div class="invalid-feedback d-block">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="mb-3">
+                                <label class="form-label" for="email">Email</label>
+                                <input type="text" name="email" class="form-control"  value="{{$user->email}}" readonly required>
+                                @error('email')
+                                <div class="invalid-feedback d-block">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group mt-2">
-                      <label for="email">Email</label>
-                      <input type="text" name="email" class="form-control"  value="{{$user->email}}" readonly required>
-                      @error('email')
-                      <div class="ps-25 invalid-feedback d-block">
-                          {{ $message }}
-                      </div>
-                      @enderror
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="mb-3">
+                                <label class="form-label" for="credit">Credit Balance(RM)</label>
+                                <input type="text" name="credit" class="form-control"  value="{{$user->userInfo->credit}}"  required>
+                                @error('credit')
+                                <div class="invalid-feedback d-block">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group mt-2">
-                      <label for="credit">Credit Balance(RM)</label>
-                      <input type="text" name="credit" class="form-control"  value="{{$user->userInfo->credit}}"  required>
-                      @error('credit')
-                      <div class="ps-25 invalid-feedback d-block">
-                          {{ $message }}
-                      </div>
-                      @enderror
+
+                    <div class="mb-0">
+                        <button type="submit" class="btn btn-yellow-hub px-30">Update Information</button>
                     </div>
-                    <button type="submit" class="btn btn-primary mt-3">Update Information</button>
-                  </form>       
+                </form>
             </div>
         </div>
     </div>

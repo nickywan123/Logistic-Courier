@@ -29,7 +29,14 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td><input type="text" class="form-control" id="category" name="category[0][name]"></td>
+                            <td>
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="category" name="category[0][name]">
+                                @error('name')
+                                <div class="invalid-feedback d-block">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </td>
                             <td class="text-center">
                                 <a href="#0" class="btn btn-info py-0 text-white add-row"><span class="material-icons">add</span></a>
                             </td>
