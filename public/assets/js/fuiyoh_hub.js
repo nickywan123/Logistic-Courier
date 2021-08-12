@@ -1,5 +1,6 @@
 let FuiyohHub = {
 	init: function(){
+	    FuiyohHub.faqActive();
 	    FuiyohHub.navigator();
 		FuiyohHub.setContent();
 		FuiyohHub.feather();
@@ -102,6 +103,13 @@ let FuiyohHub = {
             }, 400);
         });
 	},
+
+    faqActive: function () {
+	    let navItem = $('#fabTab .nav-item:first-child');
+	    let tabContent = $('#myTabContent .tab-pane:first-child');
+	    navItem.find('.nav-link').addClass('active');
+	    tabContent.addClass('show active');
+    }
 
 };
 
