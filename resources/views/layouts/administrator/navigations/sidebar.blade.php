@@ -23,8 +23,14 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('admin.index.orders')}}">
+                <a href="{{route('admin.hubs.index')}}">
                     <span class="icon"><i data-feather="map-pin"></i></span>
+                    <span class="text">List of Hubs</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('admin.index.orders')}}">
+                    <span class="icon"><i data-feather="book-open"></i></span>
                     <span class="text">All Orders</span>
                 </a>
             </li>
