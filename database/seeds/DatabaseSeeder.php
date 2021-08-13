@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         //  $this->call(WeightTableSeeder::class);
         //  $this->call(PostcodesTableSeeder::class);
 
-        // $this->call(RatesTableSeeder::class);
+        $this->call(RatesTableSeeder::class);
         //  $this->call(LocationsTableSeeder::class);
         //  $this->call(CouriersTableSeeder::class);
         //  $this->call(CouriersImagesTableSeeder::class);
@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
 
         //  $this->call(UserContactsTableSeeder::class);
 
-        // $this->call(HubsTableSeeder::class);
+        $this->call(HubsTableSeeder::class);
         $this->call(FaqCategorySeeder::class);
         $this->call(FaqSeeder::class);
 
