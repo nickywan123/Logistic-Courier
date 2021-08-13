@@ -40,7 +40,7 @@
                             <div class="btn-group">
                                 <a href="{{ route('faq.edit', $faq) }}" class="btn btn-secondary text-white">Edit</a>
                                 <button class="btn btn-danger" onclick="event.preventDefault(); $('#del-faq-{{ $faq->id }}').submit()"><i data-feather="trash-2"></i></button>
-                                <form action="{{ route('faq.destroy', $faq) }}" id="del-faq-{{ $faq->id }}" method="POST" class="d-none">
+                                <form action="{{ route('faq.destroy', $faq) }}" id="del-faq-{{ $faq->id }}" method="POST" class="d-none" onsubmit="return confirm('Do you really want to delete this?');">
                                     @csrf
                                     @method('DELETE')
                                 </form>

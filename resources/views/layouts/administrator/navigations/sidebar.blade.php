@@ -35,18 +35,6 @@
                 </a>
             </li>
             <li>
-                <a href="#">
-                    <span class="icon"><i data-feather="map-pin"></i></span>
-                    <span class="text">Outlet</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="icon"><i data-feather="lock"></i></span>
-                    <span class="text">ACL</span>
-                </a>
-            </li>
-            <li>
                 <a href="{{ route('faq.index') }}">
                     <span class="icon"><i data-feather="help-circle"></i></span>
                     <span class="text">FAQ</span>

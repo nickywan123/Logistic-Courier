@@ -27,13 +27,13 @@
                         </div>
                         <div class="col-md-7 ps-sm-0">
                             <div class="spec-card">
-                                <div class="spec-card-body py-70 px-70 pb-xs-40 px-xs-20">
+                                <div class="spec-card-body py-80 px-70 pb-xs-40 px-xs-20">
 
                                     <form action="{{ route('guest.order.quotation') }}" method="POST">
                                         @csrf
                                         <h3 class="font-700">Get Instant Quotes</h3>
                                         <div class="mb-3">
-                                            <input type="text" class="form-control rounded-pill px-20 @error('parcel_weight') is-invalid @enderror" placeholder="Weight(kg e.g:0.1)" name="parcel_weight" id="parcel_weight" value="{{ old('parcel_weight') }}" required>
+                                            <input type="text" class="form-control @error('parcel_weight') is-invalid @enderror" placeholder="Weight(kg e.g:0.1)" name="parcel_weight" id="parcel_weight" value="{{ old('parcel_weight') }}" required>
                                             @error('parcel_weight')
                                             <div class="ps-25 invalid-feedback d-block">
                                                 {{ $message }}
@@ -48,7 +48,7 @@
                                             </select>
                                         </div> --}}
                                         <div class="mb-3">
-                                            <input type="text" class="form-control rounded-pill px-20 @error('postcode_pickup') is-invalid @enderror" placeholder="Postcode Pickup" name="postcode_pickup" id="postcode_pickup" value="{{ old('postcode_pickup') }}" required>
+                                            <input type="text" class="form-control @error('postcode_pickup') is-invalid @enderror" placeholder="Postcode Pickup" name="postcode_pickup" id="postcode_pickup" value="{{ old('postcode_pickup') }}" required>
                                             @error('postcode_pickup')
                                             <div class="ps-25 invalid-feedback d-block">
                                                 {{ $message }}
@@ -56,7 +56,7 @@
                                             @enderror
                                         </div>
                                         <div class="mb-3">
-                                            <input type="text" class="form-control rounded-pill px-20 @error('postcode_delivery') is-invalid @enderror" placeholder="Postcode Delivery" name="postcode_delivery" id="postcode_delivery" value="{{ old('postcode_delivery') }}" required>
+                                            <input type="text" class="form-control @error('postcode_delivery') is-invalid @enderror" placeholder="Postcode Delivery" name="postcode_delivery" id="postcode_delivery" value="{{ old('postcode_delivery') }}" required>
                                             @error('postcode_delivery')
                                             <div class="ps-25 invalid-feedback d-block">
                                                 {{ $message }}
@@ -157,7 +157,7 @@
 
     <section id="faq" class="bg-dark-fuiyoh py-110">
         <div class="container">
-            
+
             <h1 class="font-700 text-center text-uppercase text-yellow-fuiyoh mb-60">Frequently Ask Questions</h1>
 
             <ul id="fabTab" class="nav nav-pills nav-fill" role="tablist">

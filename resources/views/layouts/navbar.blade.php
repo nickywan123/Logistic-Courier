@@ -45,11 +45,11 @@
                                 <i data-feather="user"></i>
                             </a>
                         </li>
-                        <li aria-haspopup="true">
-                            <a href="tel:+03-5032 8511" class="wsheadphoneno">
-                                <i data-feather="phone"></i>
-                            </a>
-                        </li>
+{{--                        <li aria-haspopup="true">--}}
+{{--                            <a href="tel:+03-5032 8511" class="wsheadphoneno">--}}
+{{--                                <i data-feather="phone"></i>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                         @else
                         <li aria-haspopup="true">
                             <a href="#">{{ Auth::user()->name }}</a>
