@@ -23,7 +23,9 @@
                             <select class="form-select rounded-pill px-20 @error('hub') is-invalid @enderror" name="hub" id="hub" >
                                 <option disabled selected>Select a hub to dropoff</option>
                                 @foreach($hubs as $hub)
+                               
                                 <option value="{{$hub->id}}">{{$hub->hub_name}}</option>
+                                
                                 @endforeach
                             </select>
                             @error('hub')

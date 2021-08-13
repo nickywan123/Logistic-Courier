@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Hub;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class OrderController extends Controller
@@ -148,8 +149,19 @@ class OrderController extends Controller
         if (!session()->has('rate')) {
             return redirect()->route('order.index');
           }
+          //return selected hub for hub accounts or else all hubs
+          $user = Auth::user()->email;
+          
+          $hub = Hub::where('email',$user)->get();
+          //dd($hub);
+           if($hub->count()){
+            $hubs = $hub;
+           }else{
+            $hubs = Hub::all();
+           }
+           
+          
 
-          $hubs = Hub::all();
           return view('orders.create')->with([
             'rate' => session()->get('rate'),
             'postcode_delivery' => session()->get('postcode_delivery'),
