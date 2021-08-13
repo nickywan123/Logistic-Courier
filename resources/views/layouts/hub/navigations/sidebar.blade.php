@@ -16,7 +16,8 @@
                     <span class="text">Manage Orders</span>
                 </a>
             </li>
-            <li class="mt-50">
+
+            <li class="mt-40">
                 <a href="{{route('dashboard.index')}}">
                     <span class="icon"><i data-feather="arrow-left-circle"></i></span>
                     <span class="text">Fuiyoh Hub Dashboard</span>
@@ -30,7 +31,7 @@
                 <form id="logout-form-sidebar" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
             </li>
 
-            <li class="mt-50">
+            <li class="mt-40">
                 <a href="">
                     <span class="icon"></span>
                     <span class="text">Powered by <br> KOPENAS SDN BHD</span>

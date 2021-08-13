@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('landing.page');
+Route::get('/', 'Web\WelcomeController@welcome')->name('landing.page');
 
 Auth::routes(['verify' => true]);
 
@@ -129,6 +127,8 @@ Route::get('/administrator/hubs/create','Administrator\HubController@create')->n
 
 Route::post('/administrator/hubs','Administrator\HubController@store')->name('admin.hubs.store');
 
+Route::resource('administrator/faq', 'Administrator\Web\Faq\FaqController', ['except' => ['show']]);
+Route::resource('administrator/faq-category', 'Administrator\Web\Faq\FaqCategoryController', ['except' => ['show']]);
 
 /**
  * Fuiyoh Hubs
@@ -137,5 +137,6 @@ Route::get('/hub/home','Hub\HomeController@index')->name('hub.index');
 
 Route::get('/hub/orders/index','Hub\OrderController@index')->name('hub.orders.index');
 
-
-
+//
+Route::get('crew', 'ComingSoonController@show')->name('crew');
+Route::get('pos', 'ComingSoonController@show')->name('pos');

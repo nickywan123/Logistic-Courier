@@ -1,13 +1,14 @@
 let FuiyohHub = {
 	init: function(){
+	    FuiyohHub.faqActive();
 	    FuiyohHub.navigator();
 		FuiyohHub.setContent();
 		FuiyohHub.feather();
 		FuiyohHub.puboffcanvas();
-		// FuiyohHub.select2();
-		// FuiyohHub.tableData();
-		FuiyohHub.prepaid();
 		FuiyohHub.hubServices();
+		// FuiyohHub.select2();
+		FuiyohHub.tableData();
+		FuiyohHub.prepaid();
 	},
 
 	feather: function () {
@@ -75,13 +76,13 @@ let FuiyohHub = {
 
     hubServices: function (){
         let maxHeight = -1;
-        let parent = $('#hubServices .spec-card-body');
+        let containDiv = $('#hubServices .spec-card-body');
 
-	    parent.each(function (){
+	    containDiv.each(function (){
 	        maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
         });
 
-        parent.each(function() {
+        containDiv.each(function() {
             $(this).height(maxHeight);
         });
     },
@@ -102,6 +103,13 @@ let FuiyohHub = {
             }, 400);
         });
 	},
+
+    faqActive: function () {
+	    let navItem = $('#fabTab .nav-item:first-child');
+	    let tabContent = $('#myTabContent .tab-pane:first-child');
+	    navItem.find('.nav-link').addClass('active');
+	    tabContent.addClass('show active');
+    }
 
 };
 

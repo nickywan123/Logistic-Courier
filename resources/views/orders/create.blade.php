@@ -23,9 +23,9 @@
                             <select class="form-select rounded-pill px-20 @error('hub') is-invalid @enderror" name="hub" id="hub" >
                                 <option disabled selected>Select a hub to dropoff</option>
                                 @foreach($hubs as $hub)
-                               
+
                                 <option value="{{$hub->id}}">{{$hub->hub_name}}</option>
-                                
+
                                 @endforeach
                             </select>
                             @error('hub')
@@ -194,7 +194,7 @@
  <div class="modal fade" id="confirmOrder" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content modal-content-height">
-        <div class="modal-header" style="background-color: #D0D0D0">
+        <div class="modal-header"   >
           <h5 class="modal-title">Order Confirmation</h5>
         </div>
         <div class="modal-body">
@@ -217,7 +217,7 @@
           <h5 class="modal-title">Processing Order</h5>
         </div>
         <div class="modal-body">
-          <div><img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"></div> 
+          <div><img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"></div>
           <div class="text-center">
            <p>Please wait while your order is processing. Do not refresh or close your browser...</p>
           </div>
@@ -385,7 +385,7 @@
                 ) {
                     //show modal if validation passes
                      $('#confirmOrder').modal('toggle');
-                    
+                    //confirm('a you sure');
                     // return true;
                 } else {
                     return false;
