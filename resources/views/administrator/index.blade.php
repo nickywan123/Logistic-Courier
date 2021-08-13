@@ -25,7 +25,8 @@
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Date Registered</th>
-                        <th>#</th>
+                        <th>Email Verified</th>
+                        <th>Role</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -35,7 +36,17 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->created_at }}</td>
-                            <td></td>
+                            <td>{{ $user->email_verified_at ? 'Verified' : 'Unverified'  }}</td>
+                            <td>
+                                @forelse($user->getRoleNames() as $role)
+                                {{$role}}
+                                @if(!$loop->last)
+                                 +
+                                @endif
+                                @empty
+                                customer
+                                @endforelse
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>

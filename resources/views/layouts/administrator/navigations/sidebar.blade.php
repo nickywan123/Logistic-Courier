@@ -17,9 +17,15 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('admin.index.rates')}}">
+                <a href="{{route('admin.rates.index')}}">
                     <span class="icon"><i data-feather="refresh-ccw"></i></span>
                     <span class="text">Check rates</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('admin.index.orders')}}">
+                    <span class="icon"><i data-feather="map-pin"></i></span>
+                    <span class="text">All Orders</span>
                 </a>
             </li>
             <li>

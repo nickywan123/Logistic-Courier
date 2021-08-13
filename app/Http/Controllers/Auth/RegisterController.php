@@ -84,6 +84,8 @@ class RegisterController extends Controller
         $userInfo->credit = 0;
         $userInfo->save();
 
+        $user->assignRole('customer');
+
         return $user;
 
     }
