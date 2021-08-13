@@ -28,7 +28,7 @@
                       <input type="text" name="location" class="form-control"  value="{{$rate->location->name}}" readonly required>
                     </div>
                     <div class="form-group">
-                      <label for="cost">Cost(Retail)</label>
+                      <label for="cost">Cost(RM)</label>
                       <input type="text" name="cost" class="form-control"  value="{{$rate->cost}}" required>
                       @error('cost')
                       <div class="ps-25 invalid-feedback d-block">
@@ -37,14 +37,14 @@
                       @enderror
                     </div>
                     <div class="form-group">
-                        <label for="hub_cost">Hub Rate</label>
+                        <label for="hub_cost">Hub Rate(RM)</label>
                         <input type="text" name="hub_cost" class="form-control"  value="{{$rate->hub_cost}}" required>
                         @error('hub_cost')
                         <div class="ps-25 invalid-feedback d-block">
                             {{ $message }}
                         </div>
                         @enderror
-                      </div>
+                    </div>
                     <button type="submit" class="btn btn-primary mt-3">Update Rate</button>
                   </form>       
             </div>

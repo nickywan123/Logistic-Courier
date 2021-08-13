@@ -78,4 +78,11 @@ class RateController extends Controller
 
         return redirect()->route('admin.rates.index');
     }
+
+    public function destroy(Rate $rate){
+        //dd($rate);
+        $rate->delete();
+
+        return back();
+    }
 }

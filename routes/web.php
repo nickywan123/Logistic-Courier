@@ -94,7 +94,15 @@ Route::get('/dashboard/finance-report','FinanceController@index')->name('finance
 /**
  * Administrator
  */
-Route::get('/administrator','Administrator\AdministratorController@index')->name('admin.index');
+Route::get('/administrator/users','Administrator\UserController@index')->name('admin.users.index');
+
+Route::get('/administrator/users/{user}/edit','Administrator\UserController@edit')->name('admin.users.edit');
+
+Route::put('/administrator/users/{user}','Administrator\UserController@update')->name('admin.users.update');
+
+Route::get('administrator/users/create','Administrator\UserController@create')->name('admin.users.create');
+
+Route::post('administrator/users','Administrator\UserController@store')->name('admin.users.store');
 
 Route::get('/administrator/rates/create','Administrator\RateController@create')->name('admin.rates.create');
 
@@ -102,11 +110,15 @@ Route::post('administrator/rates','Administrator\RateController@store')->name('a
 
 Route::get('/administrator/rates','Administrator\RateController@index')->name('admin.rates.index');
 
-Route::get('/administrator/{rate}/edit','Administrator\RateController@edit')->name('admin.rates.edit');
+Route::get('/administrator/rates/{rate}/edit','Administrator\RateController@edit')->name('admin.rates.edit');
 
 Route::put('/administrator/rates/{rate}','Administrator\RateController@update')->name('admin.rates.update');
 
+Route::delete('/administrator/rates/{rate}','Administrator\RateController@destroy')->name('admin.rates.destroy');
+
 Route::get('/administrator/orders','Administrator\AdministratorController@getOrders')->name('admin.index.orders');
+
+
 
 
 /**
