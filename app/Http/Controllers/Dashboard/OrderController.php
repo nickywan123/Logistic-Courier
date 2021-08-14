@@ -201,7 +201,19 @@ class OrderController extends Controller
         $hub = Hub::find($request->hub);
         $sender = User::find(auth()->id());
         $rate_id = Rate::find($request->rate);
-        $cost = $rate_id->cost;
+
+
+        //check if customer or hub is making the order
+        if($sender->hasRole('hub')){
+            //rate assigned is hub rate
+            $cost = $rate_id->hub_cost;
+            //dd("cost from hub:".$cost);
+        }else{
+            //rate assigned is retail rate
+            $cost = $rate_id->cost;
+           // dd("cost from customer:".$cost);
+        }
+
         $credit = UserInfo::where('user_id',auth()->id())->first();
         $credit_balance = $credit->credit;
         
@@ -380,5 +392,8 @@ class OrderController extends Controller
 
         return view('orders.failed')->with('errorMessage',$errorMessage);
     }
+
+
+    
 
 }
