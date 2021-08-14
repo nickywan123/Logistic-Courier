@@ -30,6 +30,9 @@
     {{--<link rel="stylesheet" href="{{ asset('css/app.css') }}">--}}
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
+	<!-- Stripe Payment -->
+	<script src="https://js.stripe.com/v3"></script>
+
 
     <!-- Scripts -->
     {{--<script src="{{ asset('js/app.js') }}"></script>--}}
@@ -68,6 +71,8 @@
 
     <!--  Fuiyoh Custom Script  -->
     <script src="{{ asset('assets/js/fuiyoh_hub.js') }}"></script>
+
+
 
 	<!-- Optional JavaScript -->
 	<!-- Popper.js first, then CoreUI JS -->{{--

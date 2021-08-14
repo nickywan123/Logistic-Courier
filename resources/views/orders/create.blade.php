@@ -6,7 +6,7 @@
             <div class="p-lg-30 p-md-30 p-sm-30 p-10">
                 <h2 class="title-section">Regular Order</h2>
                 <p class="subtitle-section">Enter pick-up location & delivery location</p>
-                <form action="{{ route('order.store') }}" method="POST" id="order-form" class="row">
+                <form action="{{ route('order.store') }}" method="POST" id="order-form-credit" class="row">
                     @csrf
                     <div class="col-md-6">
                         <h3 class="title-section">Pick-up Location</h3>
@@ -181,7 +181,7 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-12">
-                                <button type="button" id="order-btn" class="btn btn-yellow-hub rounded-pill px-30">Procced</button>
+                                <button type="button" id="order-btn" class="btn btn-yellow-hub rounded-pill px-30">Proceed</button>
                             </div>
                         </div>
                     </div>
@@ -235,7 +235,7 @@
             //hide loading modal before submitting form
             var loading = $('#loadingModal').hide();
             // Validate form
-            $("#order-form").validate({
+            $("#order-form-credit").validate({
                 rules: {
                     schedule_type: {
                         required: true
@@ -365,23 +365,23 @@
 
             // validate all the fields before showing modal
             $('#order-btn').click(function () {
-                if ($("#order-form").validate().element('#scheduleType') &&
-                    $("#order-form").validate().element('#hub') &&
-                    $("#order-form").validate().element('#content') &&
-                    $("#order-form").validate().element('#value_content') &&
-                    $("#order-form").validate().element('#pickupDate') &&
-                    $("#order-form").validate().element('#pickupTime') &&
-                    $("#order-form").validate().element('#weight') &&
-                    $("#order-form").validate().element('#senderContactNumber') &&
-                    $("#order-form").validate().element('#recipientAddress') &&
-                    $("#order-form").validate().element('#city') &&
-                    // $("#order-form").validate().element('#state') &&
-                    // $("#order-form").validate().element('#postcode') &&
-                    $("#order-form").validate().element('#deliveryDate') &&
-                    $("#order-form").validate().element('#deliveryTime') &&
-                    $("#order-form").validate().element('#recipientName') &&
-                    $("#order-form").validate().element('#recipientContactNumber') &&
-                    $("#order-form").validate().element('#recipientEmail')
+                if ($("#order-form-credit").validate().element('#scheduleType') &&
+                    $("#order-form-credit").validate().element('#hub') &&
+                    $("#order-form-credit").validate().element('#content') &&
+                    $("#order-form-credit").validate().element('#value_content') &&
+                    $("#order-form-credit").validate().element('#pickupDate') &&
+                    $("#order-form-credit").validate().element('#pickupTime') &&
+                    $("#order-form-credit").validate().element('#weight') &&
+                    $("#order-form-credit").validate().element('#senderContactNumber') &&
+                    $("#order-form-credit").validate().element('#recipientAddress') &&
+                    $("#order-form-credit").validate().element('#city') &&
+                    // $("#order-form-credit").validate().element('#state') &&
+                    // $("#order-form-credit").validate().element('#postcode') &&
+                    $("#order-form-credit").validate().element('#deliveryDate') &&
+                    $("#order-form-credit").validate().element('#deliveryTime') &&
+                    $("#order-form-credit").validate().element('#recipientName') &&
+                    $("#order-form-credit").validate().element('#recipientContactNumber') &&
+                    $("#order-form-credit").validate().element('#recipientEmail')
                 ) {
                     //show modal if validation passes
                      $('#confirmOrder').modal('toggle');

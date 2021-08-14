@@ -52,6 +52,12 @@
                     <span class="text">P.O.S</span>
                 </a>
             </li>
+            {{-- <li>
+                <a href="{{ route('payment.index') }}">
+                    <span class="icon"><i class="cus-icon icon-pos-light"></i></span>
+                    <span class="text">Stripe Testing</span>
+                </a>
+            </li> --}}
             @hasrole('hub')
             <li>
                 <a href="{{ route('hub.index') }}">

@@ -141,3 +141,16 @@ Route::get('/hub/orders/index','Hub\OrderController@index')->name('hub.orders.in
 //
 Route::get('crew', 'ComingSoonController@show')->name('crew');
 Route::get('pos', 'ComingSoonController@show')->name('pos');
+
+
+/****
+ * STRIPE PAYMENT
+ */
+
+Route::get('/payment-page','StripeController@index')->name('payment.index');
+
+Route::post('/charge','StripeController@store')->name('payment.success');
+
+
+//Test order form
+Route::get('/order-form','Dashboard\OrderController@test')->name('test');
