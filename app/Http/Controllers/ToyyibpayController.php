@@ -19,9 +19,9 @@ class ToyyibpayController extends Controller
     // {
     //     return $this->middleware('auth');
     // }
-       
+
     public function createBill(Request $request){
-       
+
         $credit = ($request->amount)*100;
         $option = array(
             'userSecretKey'=>config('toyyibpay.key'),
@@ -42,27 +42,27 @@ class ToyyibpayController extends Controller
             'billPaymentChannel'=>0,
             'billContentEmail'=>'Thank you for using our platform!',
             'billChargeToCustomer'=>""
-          );  
+          );
 
-    
-          $url = 'https://dev.toyyibpay.com/index.php/api/createBill';
-          
+
+          $url = 'https://toyyibpay.com/index.php/api/createBill';
+
           $response = Http::asForm()->post($url,$option);
-          
+
           $billCode = $response[0]['BillCode'];
           //dd($billCode);
-          
+
 
           //Cache the user
           Cache::add($billCode,auth()->id(),now()->addMinutes(30));
-         
-          return redirect('https://dev.toyyibpay.com/'.$billCode);
+
+          return redirect('https://toyyibpay.com/'.$billCode);
     }
 
     public function paymentStatus(Request $request){
 
         //if success save payment record to db
-            
+
           $response = $request->all();
 
           // check if transaction is successful
@@ -78,7 +78,7 @@ class ToyyibpayController extends Controller
             return view('payments.failed')
                    ->with('errorMessage',$request->msg);
           }
-          
+
     }
 
     public function callback(Request $request){
