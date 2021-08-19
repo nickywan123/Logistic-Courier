@@ -48,7 +48,7 @@
     <script type="text/javascript" src="{{ asset('assets/vendor/select2/dist/js/select2.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/icons/feather-icons/feather.min.js') }}"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBVWET9T0"></script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=198572798975697&ev=PageView&noscript=1"/></noscript>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=571342380556948&ev=PageView&noscript=1" /></noscript>
 
     <!--  Fuiyoh Custom Script  -->
     <script type="text/javascript" src="{{ asset('assets/js/fuiyoh_hub.js') }}"></script>
@@ -83,7 +83,7 @@
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '198572798975697');
+        fbq('init', '571342380556948');
         fbq('track', 'PageView');
         // Facebook Pixel Code
     </script>
