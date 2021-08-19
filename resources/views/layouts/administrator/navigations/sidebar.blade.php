@@ -40,6 +40,12 @@
                     <span class="text">FAQ</span>
                 </a>
             </li>
+            <li>
+                <a href="">
+                    <span class="icon"><i class="material-icons-outlined">campaign</i></span>
+                    <span class="text">Announcement</span>
+                </a>
+            </li>
 
             <li class="mt-40">
                 <a href="{{route('dashboard.index')}}">
