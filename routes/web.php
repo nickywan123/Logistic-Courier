@@ -129,6 +129,7 @@ Route::post('/administrator/hubs','Administrator\HubController@store')->name('ad
 
 Route::resource('administrator/faq', 'Administrator\Web\Faq\FaqController', ['except' => ['show']]);
 Route::resource('administrator/faq-category', 'Administrator\Web\Faq\FaqCategoryController', ['except' => ['show']]);
+Route::resource('administrator/announcements', 'Administrator\AnnouncementsController', ['except' => ['show']]);
 
 /**
  * Fuiyoh Hubs

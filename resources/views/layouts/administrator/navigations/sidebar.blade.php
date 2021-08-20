@@ -41,7 +41,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{ route('announcements.index') }}">
                     <span class="icon"><i class="material-icons-outlined">campaign</i></span>
                     <span class="text">Announcement</span>
                 </a>
