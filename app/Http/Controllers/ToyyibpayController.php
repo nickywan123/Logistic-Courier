@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CreditHistory;
 use App\User;
 use App\UserInfo;
 use App\Transaction;
@@ -104,7 +105,18 @@ class ToyyibpayController extends Controller
         $user_credit->credit += $request->amount;
         $user_credit->save();
 
+        //store credit history details
+        $credit_history = new CreditHistory();
+        $credit_history->user_id = $user_id;
+        $credit_history->order_number = '-';
+        $credit_history->description ="Top Up Credit";
+        $credit_history->debit= 0;
+        $credit_history->credit = $request->amount;
+        $credit_history->balance = $user_credit->credit;
+        $credit_history->save();
+
         }
+
         Log::info('successsss');
         return 1;
     }
