@@ -109,6 +109,20 @@
                     </div>
                 </div>
 
+                @hasrole('hub')
+                <div class="card bg-yellow-fuiyoh mb-3">
+                    <div class="card-body p-20">
+                        <h5 class="card-titl font-700 mb-3">3. Manual top up</h5>
+
+                        <div class="row">
+                            <div class="col-md-6 col-12">
+                                <script type="text/javascript" src="https://form.jotform.com/jsform/212310910025033"></script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endhasrole
+
 {{--                <div class="card bg-yellow-fuiyoh mb-3">--}}
 {{--                    <div class="card-body p-20">--}}
 {{--                        <h5 class="card-titl font-700 mb-3">3. Top up using</h5>--}}
