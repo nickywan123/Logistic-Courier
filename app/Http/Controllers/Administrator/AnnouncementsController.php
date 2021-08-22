@@ -63,6 +63,7 @@ class AnnouncementsController extends Controller
             $announcement = new Announcements;
             $announcement->announcement($announcement, $request);
         } else {
+            $attachment = null;
             $hubs = Hub::all();
             if ($request->hasFile('attachment')) {
                 $files = $request->file('attachment');
