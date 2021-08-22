@@ -11,7 +11,7 @@
                     <div class="col-md-6">
                         <h2 class="title-section">Announcements</h2>
                     </div>
-                    <div class="col-md-6 d-flex align-items-start justify-content-end">
+                    <div class="">
 
                     </div>
                 </div>
@@ -19,7 +19,7 @@
                 <table class="refresh table table-stripped mb-0">
                     <thead>
                     <tr>
-                        <th>No.</th>>
+                        <th>No.</th>
                         <th class="w-25">Title</th>
                         <th></th>
                         <th>Time | Date</th>
