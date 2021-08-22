@@ -130,6 +130,7 @@ Route::post('/administrator/hubs','Administrator\HubController@store')->name('ad
 Route::resource('administrator/faq', 'Administrator\Web\Faq\FaqController', ['except' => ['show']]);
 Route::resource('administrator/faq-category', 'Administrator\Web\Faq\FaqCategoryController', ['except' => ['show']]);
 Route::resource('administrator/announcements', 'Administrator\AnnouncementsController', ['except' => ['show']]);
+Route::delete('administrator/denouncements', 'Administrator\AnnouncementsController@deleteall')->name('admin.announcement.delete');
 
 /**
  * Fuiyoh Hubs
@@ -138,6 +139,7 @@ Route::get('/hub/home','Hub\HomeController@index')->name('hub.index');
 
 Route::get('/hub/orders/index','Hub\OrderController@index')->name('hub.orders.index');
 
+Route::get('/hub/announcements', 'Hub\HomeController@announcementscenter')->name('hub.announcements.index');
 //
 Route::get('crew', 'ComingSoonController@show')->name('crew');
 Route::get('pos', 'ComingSoonController@show')->name('pos');

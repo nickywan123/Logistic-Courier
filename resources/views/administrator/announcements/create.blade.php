@@ -18,7 +18,7 @@
                     </div>
                 </div>
 
-                <form action="{{ route('announcements.store') }}" method="POST">
+                <form action="{{ route('announcements.store') }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
                     @include('administrator.announcements.form')
                 </form>
 

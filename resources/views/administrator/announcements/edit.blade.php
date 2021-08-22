@@ -18,9 +18,9 @@
                     </div>
                 </div>
 
-                <form action="" method="POST">
+                <form action="{{ route('announcements.update', $announcement) }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
                     @method('PUT')
-                    @include('administrator.announcements.form')
+                    @include('administrator.announcements.form', ['edit' => true])
                 </form>
 
             </div>

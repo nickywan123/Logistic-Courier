@@ -61,7 +61,8 @@ let FuiyohHub = {
 
 	tableData: function() {
 		$('table.refresh').DataTable({
-			"pageLength": 25
+			"pageLength": 25,
+            "order": [ 3, "desc" ]
 		});
 	},
 
