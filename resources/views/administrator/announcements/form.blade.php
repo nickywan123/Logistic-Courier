@@ -1,6 +1,6 @@
 @csrf
 <div class="mb-3">
-    <label for="category" class="form-label">Category</label>
+    <label for="category" class="form-label">Fuiyoh Hub</label>
     <select class="form-select @error('hub') is-invalid @enderror" id="hub" name="hub">
         @foreach($hubs as $key => $value)
         <option value="{{ $key }}" {{ $key == $announcement->hub_id ? 'selected':'' }}>{{ $value }}</option>
