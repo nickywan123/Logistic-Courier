@@ -40,7 +40,7 @@
                     <span class="text">Finance Report</span>
                 </a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('crew') }}">
                     <span class="icon"><i class="cus-icon icon-user-light"></i></span>
                     <span class="text">Fuiyoh Crew</span>
@@ -52,7 +52,7 @@
                     <span class="text">P.O.S</span>
                 </a>
             </li>
-            {{-- <li>
+            <li>
                 <a href="{{ route('payment.index') }}">
                     <span class="icon"><i class="cus-icon icon-pos-light"></i></span>
                     <span class="text">Stripe Testing</span>
