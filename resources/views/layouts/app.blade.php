@@ -12,6 +12,7 @@
     <link rel="mask-icon" href="{{ asset('assets/images/favicon/safari-pinned-tab.svg') }}" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+    <meta name="facebook-domain-verification" content="nscbwl41wn6oosbqbrcm7f5mdxzatg" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -46,24 +47,46 @@
     <script type="text/javascript" src="{{ asset('assets/vendor/dataTables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/select2/dist/js/select2.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/icons/feather-icons/feather.min.js') }}"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBVWET9T0"></script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=571342380556948&ev=PageView&noscript=1" /></noscript>
 
     <!--  Fuiyoh Custom Script  -->
     <script type="text/javascript" src="{{ asset('assets/js/fuiyoh_hub.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <!--Start of Tawk.to Script-->
     <script type="text/javascript">
+        // Start of Tawk.to Script
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/6108b9ced6e7610a49ae478a/1fc51bjti';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/6108b9ced6e7610a49ae478a/1fc51bjti';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
         })();
+        // End of Tawk.to Script
+
+        // Global site tag (gtag.js) - Google Analytics
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NVBVWET9T0');
+        // Global site tag (gtag.js) - Google Analytics
+
+        // Facebook Pixel Code
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '571342380556948');
+        fbq('track', 'PageView');
+        // Facebook Pixel Code
     </script>
-    <!--End of Tawk.to Script-->
 
 </body>
 </html>

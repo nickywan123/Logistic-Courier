@@ -47,6 +47,9 @@ class FaqCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => ['required']
+        ]);
         foreach ($request->category as $key => $value) {
             FaqCategory::create($value);
         }

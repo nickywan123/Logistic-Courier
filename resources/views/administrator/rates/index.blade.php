@@ -26,24 +26,23 @@
                         <th>Cost(RM)</th>
                         <th>Hub Rate(RM)</th>
                         <th>Location</th>
-                        <th>#</th>
-                        <th>#</th>
+                        <th class="text-center" style="width:150px;">#</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($rates as $rate)
                         <tr>
-                            <th scope="row">{{$rate->courier->name}}</th>
+                            <td>{{$rate->courier->name}}</td>
                             <td>{{$rate->weight}}</td>
                             <td>{{$rate->cost}}</td>
                             <td>{{$rate->hub_cost}}</td>
                             <td>{{$rate->location->name}}</td>
-                            <td><a href="{{route('admin.rates.edit',$rate->id)}}" class="btn btn-primary">Edit</a></td>                       
-                            <td>
-                                <form onsubmit="return confirm('Do you really want to delete this rate?');" action="{{route('admin.rates.destroy',$rate->id)}}" method="POST" id="deleteRateForm">
+                            <td class="text-center">
+                                <a href="{{route('admin.rates.edit',$rate->id)}}" class="btn btn-secondary">Edit</a>
+                                <form onsubmit="return confirm('Do you really want to delete this rate?');" action="{{route('admin.rates.destroy',$rate->id)}}" method="POST" id="deleteRateForm" class="d-inline-block">
                                 @csrf
                                 @method('delete')
-                                <button class="btn btn-danger" type="submit">Delete </button>
+                                <button class="btn btn-danger" type="submit"><i data-feather="trash-2"></i></button>
                                 </form>
                             </td>
                         </tr>

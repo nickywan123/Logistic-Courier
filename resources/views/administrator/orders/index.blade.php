@@ -28,8 +28,8 @@
                         <th scope="col">Hub</th>
                         <th>Amount</th>
                         <th>Tracking Number</th>
-                        <th>Order Status</th>
-                        <th>Consignment Note</th>
+                        <th class="text-center" style="width:150px;">Order Status</th>
+                        <th class="text-center" style="width:150px;">Consignment Note</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -42,8 +42,8 @@
                             <td>{{$order->hub->hub_name}}</td>
                             <td>{{ $order->amount }}</td>
                             <td>{{$order->awb}}</td>
-                            <td><a href="{{$order->tracking_url}}">Track Parcel</a></td>
-                            <td><a href="{{$order->awb_id_link}}">Print</a></td>
+                            <td class="text-center"><a class="btn btn-secondary" href="{{$order->tracking_url}}">Track Parcel</a></td>
+                            <td class="text-center"><a class="btn btn-info text-white" href="{{$order->awb_id_link}}">Print</a></td>
                         </tr>
                     @endforeach
                     </tbody>
