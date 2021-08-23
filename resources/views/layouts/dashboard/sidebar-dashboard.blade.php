@@ -60,6 +60,12 @@
             </li> --}}
             @hasrole('hub')
             <li>
+                <a href="{{ route('hub.announcements.index') }}">
+                    <span class="icon"><i class="material-icons-outlined">campaign</i></span>
+                    <span class="text">Announcements</span>
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('hub.index') }}">
                     <span class="icon"><i data-feather="arrow-right-circle"></i></span>
                     <span class="text">{{Auth::user()->name}}</span>

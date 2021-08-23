@@ -34,25 +34,31 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($announcements as $announcement)
+                    @foreach($announcements as $key => $announcement)
                         <tr>
-                            <td>{{ $announcement->id }}</td>
+                            <td>{{ $announcement[0]->id }}</td>
                             <td>
-                                <input class="form-check-input subChk" type="checkbox" data-id="{{ $announcement->id }}" id="{{ $announcement->id }}">
+                                <input class="form-check-input subChk" type="checkbox" data-id="{{ $announcement[0]->id }}" id="{{ $announcement[0]->id }}">
                             </td>
-                            <td>{{ $announcement->hub->hub_name }}</td>
-                            <td>{{ $announcement->title }}</td>
-                            <td>{{ date('h:iA | D d/m/Y', strtotime($announcement->created_at)) }}</td>
                             <td>
-                                @isset($announcement->attachment)
-                                    <a href="{{ asset('assets/images/upload/'.$announcement->attachment) }}" class="btn btn-outline-success" target="_blank">View Attachment</a>
+                                @if(count($announcement) > 2)
+                                    ALL HUB
+                                @else
+                                {{ $announcement[0]->hub->hub_name }}
+                                @endif
+                            </td>
+                            <td>{{ $announcement[0]->title }}</td>
+                            <td>{{ date('h:iA | D d/m/Y', strtotime($announcement[0]->created_at)) }}</td>
+                            <td>
+                                @isset($announcement[0]->attachment)
+                                    <a href="{{ asset('assets/images/upload/'.$announcement[0]->attachment) }}" class="btn btn-outline-success" target="_blank">View Attachment</a>
                                 @endisset
                             </td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <a href="{{ route('announcements.edit', $announcement->id) }}" class="btn btn-secondary text-white">Edit</a>
-                                    <button class="btn btn-danger" onclick="event.preventDefault(); $('#del-announcement-{{ $announcement->id }}').submit()"><i data-feather="trash-2"></i></button>
-                                    <form action="{{ route('announcements.destroy', $announcement->id) }}" id="del-announcement-{{ $announcement->id }}" method="POST" class="d-none" onsubmit="return confirm('Do you really want to delete this?');">
+                                    <a href="{{ route('announcements.edit', $announcement[0]->id) }}" class="btn btn-secondary text-white">Edit</a>
+                                    <button class="btn btn-danger" onclick="event.preventDefault(); $('#del-announcement-{{ $announcement[0]->id }}').submit()"><i data-feather="trash-2"></i></button>
+                                    <form action="{{ route('announcements.destroy', $announcement[0]->id) }}" id="del-announcement-{{ $announcement[0]->id }}" method="POST" class="d-none" onsubmit="return confirm('Do you really want to delete this?');">
                                         @csrf
                                         @method('DELETE')
                                     </form>
