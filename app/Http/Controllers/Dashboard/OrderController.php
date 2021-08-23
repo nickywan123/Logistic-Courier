@@ -672,10 +672,7 @@ class OrderController extends Controller
                 $credit->credit = $credit_balance - $cost;
                 $credit->save();
 
-
-
-    
-                
+        
 
                 $order = new Order();
                 $order->order_number = $order_payment_response['result'][0]['orderno'];
@@ -707,19 +704,8 @@ class OrderController extends Controller
                 $order_details->save();
 
                 return redirect()->route('order.show');
-                    
 
-
+      }
     }
-
-    //Return error page if order failed
-    public function createOrderStatus(){
-        $errorMessage = session()->get('errorMessage');
-
-        return view('orders.failed')->with('errorMessage',$errorMessage);
-    }
-
-   
-
 
 }
