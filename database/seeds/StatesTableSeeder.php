@@ -15,117 +15,101 @@ class StatesTableSeeder extends Seeder
          /**
          * States
          */
-        State::create([
+        State::updateOrCreate([
             'name' => 'Johor',
             'description' => 'Johor',
-            'abbreviation' => 'JHR',
             'iso_code' => 'MY-01',
-        ]);
+        ],['abbreviation' => 'JHR']);
 
-        State::create([
+        State::updateOrCreate([
             'name' => 'Kedah',
             'description' => 'Kedah',
-            'abbreviation' => 'KDH',
             'iso_code' => 'MY-02',
-        ]);
+        ],[ 'abbreviation' => 'KDH']);
 
-        State::create([
+        State::updateOrCreate([
             'name' => 'Kelantan',
             'description' => 'Kelantan',
-            'abbreviation' => 'KTN',
             'iso_code' => 'MY-03',
-        ]);
+        ],['abbreviation' => 'KTN']);
 
-        State::create([
+        State::updateOrCreate([
             'name' => 'Melaka',
             'description' => 'Melaka',
-            'abbreviation' => 'MLK',
             'iso_code' => 'MY-04',
-        ]);
+        ],[ 'abbreviation' => 'MLK']);
 
-        State::create([
+        State::updateOrCreate([
             'name' => 'Negeri Sembilan',
             'description' => 'Negeri Sembilan',
-            'abbreviation' => 'NSN',
             'iso_code' => 'MY-05',
-        ]);
+        ],['abbreviation' => 'NSN']);
 
-        State::create([
+        State::updateOrCreate([
             'name' => 'Pahang',
             'description' => 'Pahang',
-            'abbreviation' => 'PHG',
             'iso_code' => 'MY-06',
-        ]);
+        ],[ 'abbreviation' => 'PHG']);
 
-        State::create([
+        State::updateOrCreate([
             'name' => 'Penang',
             'description' => 'Penang',
-            'abbreviation' => 'PNG',
             'iso_code' => 'MY-07',
-        ]);
+        ],['abbreviation' => 'PNG']);
 
-        State::create([
+        State::updateOrCreate([
             'name' => 'Perak',
             'description' => 'Perak',
-            'abbreviation' => 'PRK',
             'iso_code' => 'MY-08',
-        ]);
+        ],['abbreviation' => 'PRK']);
 
-        State::create([
+        State::updateOrCreate([
             'name' => 'Perlis',
             'description' => 'Perlis',
-            'abbreviation' => 'PLS',
             'iso_code' => 'MY-09',
-        ]);
+        ],[ 'abbreviation' => 'PLS']);
 
-        State::create([
+        State::updateOrCreate([
             'name' => 'Sabah',
             'description' => 'Sabah',
-            'abbreviation' => 'SBH',
             'iso_code' => 'MY-12',
-        ]);
+        ],['abbreviation' => 'SBH']);
 
-        State::create([
+        State::updateOrCreate([
             'name' => 'Sarawak',
             'description' => 'Sarawak',
-            'abbreviation' => 'SWK',
             'iso_code' => 'MY-13',
-        ]);
+        ], ['abbreviation' => 'SRW']);
 
-        State::create([
+        State::updateOrCreate([
             'name' => 'Selangor',
             'description' => 'Selangor',
-            'abbreviation' => 'SGR',
             'iso_code' => 'MY-10',
-        ]);
+        ],['abbreviation' => 'SGR']);
 
-        State::create([
+        State::updateOrCreate([
             'name' => 'Terengganu',
             'description' => 'Terengganu',
-            'abbreviation' => 'TRG',
             'iso_code' => 'MY-11',
-        ]);
+        ],['abbreviation' => 'TRG']);
 
-        State::create([
+        State::updateOrCreate([
             'name' => 'W.P Kuala Lumpur',
             'description' => 'W.P Kuala Lumpur',
-            'abbreviation' => 'KUL',
             'iso_code' => 'MY-14',
-        ]);
+        ],[ 'abbreviation' => 'KUL']);
 
-        State::create([
+        State::updateOrCreate([
             'name' => 'W.P Labuan',
             'description' => 'W.P Labuan',
-            'abbreviation' => 'LBN',
             'iso_code' => 'MY-15',
-        ]);
+        ],[ 'abbreviation' => 'LBN']);
 
-        State::create([
+        State::updateOrCreate([
             'name' => 'W.P Putrajaya',
             'description' => 'W.P Putrajaya',
-            'abbreviation' => 'PJY',
             'iso_code' => 'MY-16',
-        ]);
+        ],[ 'abbreviation' => 'PJY']);
 
     }
 }

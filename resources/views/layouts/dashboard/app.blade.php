@@ -96,22 +96,10 @@
 		            date2.setDate(date2.getDate() + 1);
 		            //sets minDate to pick up date + 1
 		            $('#deliveryDate').datepicker('option', 'minDate', date2);
+					
+					//auto add 3 days after user select pickup date
+					$('#deliveryDate').datepicker('setDate',  date2.setDate(date2.getDate() + 2));
 
-		            // check if current date is today
-		            //set timepicker to be later range of time
-		            // var current_date = $('#pickupDate').datepicker('getDate');
-		            // var today = new Date();
-		            // var dd = String(today.getDate()).padStart(2, '0');
-		            // var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-		            // var yyyy = today.getFullYear();
-		            // //today = dd + '-' + mm + '-' + yyyy;
-		            // //console.log(today.toUTCString());
-		            // console.log(today);
-		            // console.log(current_date);
-
-		            // // if(current_date == today.toUTCString()){
-		            // //     console.log('today is the day');
-		            // // }
 
 		          }
 		        });
@@ -135,9 +123,7 @@
 		            maxTime: '5:00pm',
 			    });
 
-		        function alertme(){
-		    alert('ok');
-		  }
+		      
 
 		});
 	// Start of Tawk.to script

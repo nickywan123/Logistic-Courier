@@ -146,13 +146,17 @@ Route::get('pos', 'ComingSoonController@show')->name('pos');
 
 
 /****
- * STRIPE PAYMENT
+ * STRIPE PAYMENT(testing)
  */
 
-Route::get('/payment-page','StripeController@index')->name('payment.index');
+// Route::get('/payment-page','StripeController@index')->name('payment.index');
 
-Route::post('/charge','StripeController@store')->name('payment.success');
+// Route::post('/charge','StripeController@store')->name('payment.success');
 
 
-//Test order form
-Route::get('/order-form','Dashboard\OrderController@test')->name('test');
+Route::get('/payment-checkout','Dashboard\OrderController@checkout')->name('orders.payment.checkout');
+
+Route::post('/payment/gateway','Dashboard\OrderController@makeOrder')->name('orders.payment.gateway-request');
+
+
+
