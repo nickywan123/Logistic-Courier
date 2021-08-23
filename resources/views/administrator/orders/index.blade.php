@@ -21,6 +21,7 @@
                 <table class="refresh table table-stripped mb-0">
                     <thead>
                     <tr>
+                        <th scope="col">Date</th>
                         <th scope="col">Order Number</th>
                         <th scope="col">User</th>
                         <th scope="col">Courier</th>
@@ -34,6 +35,7 @@
                     <tbody>
                     @foreach($orders as $order)
                         <tr>
+                            <td>{{ $order->created_at}}</td>
                             <td>{{ $order->order_number }}</td>
                             <td>{{ $order->user->name }}</td>
                             <td>{{ $order->courier->name }}</td>

@@ -33,34 +33,27 @@
                                 <table id="tabledata" class="refresh table table-stripped mb-0" data-filtering="true">
                                     <thead>
                                     <tr>
-                                        <th>Date/Time</th>
-                                        <th>Order ID</th>
+                                        <th>Date & Time</th>
+                                        <th>Order No.</th>
                                         <th>Description</th>
-                                        <th>Debits</th>
-                                        <th>Credits</th>
+                                        <th>Debits(RM)</th>
+                                        <th>Credits(RM)</th>
                                         <th>Balance(RM)</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($credit_histories as $credit_history)
                                     <tr>
-                                        <td>2021-07-07 12:52:03</td>
-                                        <td>EI-4JJD</td>
-                                        <td>Order - EI-4JJD</td>
-                                        <td>-5.00</td>
-                                        <td>32</td>
-                                        <td>50 403.00</td>
+                                        <td>{{$credit_history->created_at}}</td>
+                                        <td>{{$credit_history->order_number}}</td>
+                                        <td>{{$credit_history->description}}</td>
+                                        <td>{{$credit_history->debit}}</td>
+                                        <td>{{$credit_history->credit}}</td>
+                                        <td>{{$credit_history->balance}}</td>
                                         <td></td>
                                     </tr>
-                                    <tr>
-                                        <td>2021-07-03 14:52:03</td>
-                                        <td>-</td>
-                                        <td>Topup Bonus- Topup Bonus(RM500)</td>
-                                        <td>-0.00</td>
-                                        <td>500.00</td>
-                                        <td>50 000.00</td>
-                                        <td></td>
-                                    </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -105,25 +98,22 @@
                                 <table id="tabledata" class="refresh table table-stripped mb-0" data-filtering="true">
                                     <thead>
                                     <tr>
-                                        <th>Date/Time</th>
-                                        <th>Transaction No.</th>
-                                        <th>Package</th>
-                                        <th>Amount</th>
-                                        <th>Actions</th>
+                                        <th>Date & Time</th>
+                                        <th>BillCode</th>
+                                        <th>Transaction ID</th>
+                                        <th>Top Up Amount(RM)</th>
+                                        {{-- <th>Actions</th> --}}
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>2021-07-07 12:52:03</td>
-                                        <td>45728203953</td>
-                                        <td>F50000</td>
-                                        <td>RM50000</td>
-                                        <td>
-                                            <a href="#" class="btn btn-sm btn-primary">
-                                                <i data-feather="download"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach($transactions as $transaction)
+                                        <tr>
+                                            <th>{{$transaction->created_at}}</th>
+                                            <td>{{$transaction->billcode}}</td>
+                                            <td>{{$transaction->transaction_id}}</td>
+                                            <td>{{$transaction->amount}}</td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

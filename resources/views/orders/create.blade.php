@@ -6,7 +6,7 @@
             <div class="p-lg-30 p-md-30 p-sm-30 p-10">
                 <h2 class="title-section">Regular Order</h2>
                 <p class="subtitle-section">Enter pick-up location & delivery location</p>
-                <form action="{{ route('order.store') }}" method="POST" id="order-form-credit" class="row">
+                <form action="{{ route('order.store') }}" method="POST" id="order-form" class="row">
                     @csrf
                     <div class="col-md-6">
                         <h3 class="title-section">Pick-up Location</h3>
@@ -52,7 +52,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <input type="text" class="form-control rounded-pill px-20 @error('pick_up_date') is-invalid @enderror" id="pickupDate" name="pick_up_date" value="{{ old('pick_up_date') }}" autocomplete="off" placeholder="Pick-up date">
+                                <input type="text" class="form-control rounded-pill px-20 @error('pick_up_date') is-invalid @enderror" id="pickupDate" name="pick_up_date" value="{{ old('pick_up_date') }}" autocomplete="off" placeholder="Drop Off Date">
                                 @error('pick_up_date')
                                 <div class="ps-25 invalid-feedback d-block">
                                     {{ $message }}
@@ -60,7 +60,7 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <input type="text" class="form-control rounded-pill px-20 @error('pick_up_time') is-invalid @enderror" id="pickupTime" name="pick_up_time" value="{{ old('pick_up_time') }}" autocomplete="off" placeholder="Pick-up time">
+                                <input type="text" class="form-control rounded-pill px-20 @error('pick_up_time') is-invalid @enderror" id="pickupTime" name="pick_up_time" value="{{ old('pick_up_time') }}" autocomplete="off" placeholder="Drop Off Time">
                                 @error('pick_up_time')
                                 <div class="ps-25 invalid-feedback d-block">
                                     {{ $message }}
@@ -180,9 +180,14 @@
 
                     <div class="col-md-12">
                         <div class="row">
-                            <div class="col-md-12">
-                                <button type="button" id="order-btn" class="btn btn-yellow-hub rounded-pill px-30">Proceed</button>
+                            <div class="col-md-6">
+                                <button type="button" id="order-btn-credit" class="btn btn-yellow-hub rounded-pill px-30">Pay by Credit Wallet</button>
                             </div>
+                            @unlessrole('hub')
+                            {{-- <div class="col-md-6">
+                                <button type="submit" id="order-btn-card" name="paymentMethod" value="card" class="btn btn-yellow-hub rounded-pill px-30">Pay by Card</button>
+                            </div> --}}
+                            @endunlessrole
                         </div>
                     </div>
             </div>
@@ -198,9 +203,13 @@
           <h5 class="modal-title">Order Confirmation</h5>
         </div>
         <div class="modal-body">
-          <p>Your credit balance will be charge RM{{$rate->cost}} for the invoice. Proceed this order?</p>
+            @hasrole('hub')
+            <p>Your retail price will be RM{{$rate->cost}}. Your credit balance will be charge RM{{$rate->hub_cost}} for the invoice. Proceed this order?</p>
+            @else
+            <p>Your credit balance will be charge RM{{$rate->cost}} for the invoice. Proceed this order?</p>
+            @endhasrole
           <div class="text-center">
-            <button type="submit" class="btn btn-primary confirm-pay-now" id="payNowBtn">Pay Now</button>
+            <button type="submit" class="btn btn-primary confirm-pay-now" name="paymentMethod" value="credit" id="payNowBtn">Pay Now</button>
             <button type="button" id="closeModalBtn" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
@@ -235,7 +244,7 @@
             //hide loading modal before submitting form
             var loading = $('#loadingModal').hide();
             // Validate form
-            $("#order-form-credit").validate({
+            $("#order-form").validate({
                 rules: {
                     schedule_type: {
                         required: true
@@ -363,28 +372,56 @@
                 }
             });
 
-            // validate all the fields before showing modal
-            $('#order-btn').click(function () {
-                if ($("#order-form-credit").validate().element('#scheduleType') &&
-                    $("#order-form-credit").validate().element('#hub') &&
-                    $("#order-form-credit").validate().element('#content') &&
-                    $("#order-form-credit").validate().element('#value_content') &&
-                    $("#order-form-credit").validate().element('#pickupDate') &&
-                    $("#order-form-credit").validate().element('#pickupTime') &&
-                    $("#order-form-credit").validate().element('#weight') &&
-                    $("#order-form-credit").validate().element('#senderContactNumber') &&
-                    $("#order-form-credit").validate().element('#recipientAddress') &&
-                    $("#order-form-credit").validate().element('#city') &&
-                    // $("#order-form-credit").validate().element('#state') &&
-                    // $("#order-form-credit").validate().element('#postcode') &&
-                    $("#order-form-credit").validate().element('#deliveryDate') &&
-                    $("#order-form-credit").validate().element('#deliveryTime') &&
-                    $("#order-form-credit").validate().element('#recipientName') &&
-                    $("#order-form-credit").validate().element('#recipientContactNumber') &&
-                    $("#order-form-credit").validate().element('#recipientEmail')
+            // validate all the fields before showing modal for credit
+            $('#order-btn-credit').click(function () {
+                if ($("#order-form").validate().element('#scheduleType') &&
+                    $("#order-form").validate().element('#hub') &&
+                    $("#order-form").validate().element('#content') &&
+                    $("#order-form").validate().element('#value_content') &&
+                    $("#order-form").validate().element('#pickupDate') &&
+                    $("#order-form").validate().element('#pickupTime') &&
+                    $("#order-form").validate().element('#weight') &&
+                    $("#order-form").validate().element('#senderContactNumber') &&
+                    $("#order-form").validate().element('#recipientAddress') &&
+                    $("#order-form").validate().element('#city') &&
+                    // $("#order-form").validate().element('#state') &&
+                    // $("#order-form").validate().element('#postcode') &&
+                    $("#order-form").validate().element('#deliveryDate') &&
+                    $("#order-form").validate().element('#deliveryTime') &&
+                    $("#order-form").validate().element('#recipientName') &&
+                    $("#order-form").validate().element('#recipientContactNumber') &&
+                    $("#order-form").validate().element('#recipientEmail')
                 ) {
                     //show modal if validation passes
                      $('#confirmOrder').modal('toggle');
+                    //confirm('a you sure');
+                    // return true;
+                } else {
+                    return false;
+                }
+            });
+            //validate all fields before show checkout for card payment
+            $('#order-btn-card').click(function () {
+                if ($("#order-form").validate().element('#scheduleType') &&
+                    $("#order-form").validate().element('#hub') &&
+                    $("#order-form").validate().element('#content') &&
+                    $("#order-form").validate().element('#value_content') &&
+                    $("#order-form").validate().element('#pickupDate') &&
+                    $("#order-form").validate().element('#pickupTime') &&
+                    $("#order-form").validate().element('#weight') &&
+                    $("#order-form").validate().element('#senderContactNumber') &&
+                    $("#order-form").validate().element('#recipientAddress') &&
+                    $("#order-form").validate().element('#city') &&
+                    // $("#order-form").validate().element('#state') &&
+                    // $("#order-form").validate().element('#postcode') &&
+                    $("#order-form").validate().element('#deliveryDate') &&
+                    $("#order-form").validate().element('#deliveryTime') &&
+                    $("#order-form").validate().element('#recipientName') &&
+                    $("#order-form").validate().element('#recipientContactNumber') &&
+                    $("#order-form").validate().element('#recipientEmail')
+                ) {
+                    //show modal if validation passes
+                     $('#order-form').submit();
                     //confirm('a you sure');
                     // return true;
                 } else {

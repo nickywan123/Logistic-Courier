@@ -17,8 +17,8 @@
     <!-- We'll put the error messages in this element -->
     <div id="card-errors" role="alert" class="text-danger"></div>
 
-    <button  name="payment" value="paymentbycredit" type="submit">Pay by Credit</button>
-    <button  name="payment" value="paymentbycard" type="submit">Pay by Card</button>
+    {{-- <button  name="payment" value="paymentbycredit" type="submit">Pay by Credit</button> --}}
+    <button  name="payment"  value="paymentbycard" type="submit">Pay Now</button>
 </form>
 
 <script>
@@ -47,6 +47,7 @@
         });
 
         var form = document.getElementById('payment-form');
+        //var payButton = document.getElementById('payStripe');
 
         form.addEventListener('submit', function(ev) {
             ev.preventDefault();
@@ -62,7 +63,10 @@
             }).then(function(result) {
                 if (result.error) {
                     // Show error to your customer (e.g., insufficient funds)
+                    let displayError = document.getElementById('card-errors');
+                    displayError.textContent = result.error.message;
                     console.log(result.error.message);
+
                 } else {
                     // The payment has been processed!
                     if (result.paymentIntent.status === 'succeeded') {
