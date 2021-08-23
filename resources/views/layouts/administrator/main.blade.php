@@ -67,7 +67,7 @@
     <!--  Fuiyoh Custom Script  -->
     <script src="{{ asset('assets/js/fuiyoh_hub.js') }}"></script>
     <script src="{{ asset('assets/js/fuiyoh_admin.js') }}"></script>
-
+    @stack('onpagescript')
 
 </body>
 </html>

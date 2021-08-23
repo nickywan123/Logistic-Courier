@@ -14062,6 +14062,9 @@ img.img-grayscale {
 .box-body ul li {
 	line-height: 24px;
 }
+.box-body.announcement p {
+	margin-bottom:0;
+}
 .box-title {
 	z-index: auto;
 }

@@ -21,14 +21,14 @@
                 <table class="refresh table table-stripped mb-0">
                     <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Credit(RM)</th>
-                        <th scope="col">Date Registered</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">#</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Credit(RM)</th>
+                        <th>Date Registered</th>
+                        <th>Status</th>
+                        <th>Role</th>
+                        <th class="text-center" style="width:150px;">#</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -37,7 +37,7 @@
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{$user->userInfo->credit}}</td>
+                            <td>{{ $user->userInfo->credit }}</td>
                             <td>{{ $user->created_at }}</td>
                             <td>{{ $user->email_verified_at ? 'Verified' : 'Unverified'  }}</td>
                             <td>
@@ -50,7 +50,7 @@
                                 customer
                                 @endforelse
                             </td>
-                            <td><a href="{{route('admin.users.edit',$user->id)}}" class="btn btn-primary">Edit</a></td>
+                            <td class="text-center"><a href="{{route('admin.users.edit',$user->id)}}" class="btn btn-secondary">Edit</a></td>
                         </tr>
                     @endforeach
                     </tbody>

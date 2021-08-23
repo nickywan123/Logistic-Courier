@@ -88,7 +88,49 @@
                             </div>
                         </div>
                     </div>
-
+                    @hasrole('hub')
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="box bg-light">
+                            <div class="box-header">
+                                <h5 class="box-title">Announcements Center</h5>
+                                <div class="box-controls pull-right">
+                                    <a class="btn btn-sm btn-outline-info d-none d-sm-block" href="{{ route('hub.announcements.index') }}">Show More</a>
+                                </div>
+                            </div>
+                            <div class="box-body announcement">
+                                @if(count($announcements) > 0)
+                                    @foreach($announcements as $key => $announcement)
+                                        <div>
+                                            <div class="row d-flex justify-content-between align-items-center align-items-sm-start">
+                                                <div class="col-md-9 col-6">
+                                                    <h5 class="my-5">{{ $announcement->title }}</h5>
+                                                </div>
+                                                <div class="col-md-3 col-6 text-end">
+                                                    <p>{{ date('D d/m/Y', strtotime($announcement->created_at)) }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="mb-15 pb-10 border-bottom">
+                                                {!! $announcement->description !!}
+                                                @isset($announcement->attachment)
+                                                    <a class="mt-15" target="_blank" href="{{ asset('assets/images/upload/'.$announcement->attachment) }}">See attachment</a>
+                                                @endisset
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <div>
+                                        <div class="row d-flex justify-content-center align-items-center">
+                                            <h3 class="text-center py-30 mb-0">No announcement available</h3>
+                                        </div>
+                                    </div>
+                                @endif
+                                <div class="d-grid gap-2">
+                                    <a class="btn btn-sm btn-outline-info d-block d-sm-none" href="{{ route('hub.announcements.index') }}">Show More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endhasrole
                 </div>
 
             </div>

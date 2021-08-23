@@ -52,6 +52,11 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'category' => 'required|gt:0',
+            'question' => 'required',
+            'answer' => 'required',
+        ]);
         $faq = new Faq;
         $faq->saveEdit($faq, $request);
         return redirect()->route($this->route.'index');

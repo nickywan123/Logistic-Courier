@@ -40,7 +40,7 @@ class OrderController extends Controller
         return view('orders.show')->with('orders',$orders);
     }
 
-    
+
     //Create quotation
     public function quotation(Request $request){
         //check if parcel weight is numeric value
@@ -49,8 +49,8 @@ class OrderController extends Controller
             'postcode_pickup' => 'required|postal_code:MY|exists:postcodes,postcode',
             'postcode_delivery' => 'required|postal_code:MY|exists:postcodes,postcode'
         ]);
-      
-    
+
+
 
         //logic to compute the quotation rate for each courier based on the inputs
         //default - postcode belongs to Penisular Malaysia
@@ -70,16 +70,16 @@ class OrderController extends Controller
         $rateIds=Rate::where('weight',ceil($request->parcel_weight))
                     ->where('location_id',$location_id)
                     ->pluck('id');
-        
-        
-        
+
+
+
         return redirect()->route('quotation.show')
                          ->with([
                          'rate_ids' => $rateIds,
                          'postcode_delivery' => $request->input('postcode_delivery'),
                          'parcel_weight'=>$request->parcel_weight
                          ]);
-                          
+
     }
 
     //Show quotation
@@ -88,17 +88,17 @@ class OrderController extends Controller
         if (!session()->has('rate_ids')) {
             return redirect()->route('order.index');
           }
-         
+
           $rates = Rate::with('courier.image')
                    ->whereIn('id', session()->get('rate_ids'))
                    ->get();
-         
+
             //temporarily display courier from easy parcel only
             $collection =collect($rates);
             $filtered = $collection->whereIn('courier_id',[1,2,4,5])->all(); 
             $rates = $filtered;
             //dd($filtered);
-          
+
 
             return view('orders.quotation')
                         ->with([
@@ -106,8 +106,8 @@ class OrderController extends Controller
                             'postcode_delivery' => session()->get('postcode_delivery'),
                             'parcel_weight' => session()->get('parcel_weight')
                         ]);
-        
-       
+
+
     }
 
     //Handle post request for courier quotation page
@@ -116,7 +116,7 @@ class OrderController extends Controller
         $validated = $request->validate([
             'courier' => 'required',
             'postcode_delivery' =>'required',
-            'parcel_weight' => 'required'         
+            'parcel_weight' => 'required'
         ]);
 
         $postcode = $request->postcode_delivery;
@@ -124,7 +124,7 @@ class OrderController extends Controller
         $rate = Rate::where('id',$request->courier)->first();
 
         //retrieve state based on postcode
-           
+
         $state_postcode = Postcode::where('postcode',$postcode)->first();
         
 
@@ -154,7 +154,7 @@ class OrderController extends Controller
           }
           //return selected hub for hub accounts or else all hubs
           $user = Auth::user()->email;
-          
+
           $hub = Hub::where('email',$user)->get();
           //dd($hub);
            if($hub->count()){
@@ -162,8 +162,8 @@ class OrderController extends Controller
            }else{
             $hubs = Hub::all();
            }
-           
-          
+
+
 
           return view('orders.create')->with([
             'rate' => session()->get('rate'),
@@ -175,7 +175,7 @@ class OrderController extends Controller
           ]);
 
        // return view('orders.create');
-         
+
     }
 
 
@@ -200,7 +200,7 @@ class OrderController extends Controller
             'delivery_time' => 'required',
             'recipient_name' => 'required',
             'recipient_contact_number' => 'required|digits_between:9,11',
-            'recipient_email' => 'required|email'         
+            'recipient_email' => 'required|email'
         ]);
 
        // dd($request->all());
@@ -532,9 +532,16 @@ class OrderController extends Controller
         }
     
        
+
+        $credit = UserInfo::where('user_id',auth()->id())->first();
+        $credit_balance = $credit->credit;
+
+
+        //check if sufficient credit to create new order
+        if($credit_balance > $cost){
             //Verify Easy Parcel API can create order + make payment success
             //get the rate checking to obtain the service id from EasyParcel
-        
+
             $postparam_rate = array(
                 'api'	=> config('easyparcel.key'),
                 'bulk'	=> array(
@@ -557,14 +564,14 @@ class OrderController extends Controller
                 )
                 );
 
-                $url = "https://demo.connect.easyparcel.my/?ac=EPRateCheckingBulk";
+                $url = "https://connect.easyparcel.my/?ac=EPRateCheckingBulk";
 
                 $response = Http::asForm()->post($url,$postparam_rate);
 
                 $collection = collect($response->json()['result'][0]['rates']);
-                
+
                 $filtered = $collection->where('courier_id',$rate_id->courier->courier_id)->first();
-                
+
                 if(!$filtered){
                     return redirect()->route('create.order.failed')
                     ->with(['errorMessage' =>'This courier is unavailable at the moment. Please select other courier.'] );
@@ -620,15 +627,15 @@ class OrderController extends Controller
                 ),
                 );
 
-                $url = "https://demo.connect.easyparcel.my/?ac=EPSubmitOrderBulk";
+                $url = "https://connect.easyparcel.my/?ac=EPSubmitOrderBulk";
 
                 $response = Http::asForm()->post($url,$postparam);
-                
+
                 if($response['result'][0]['status'] !='Success'){
                     dd($response['result'][0]['remarks']);
-                
+
                 }
-            
+
                 Log::info($response->json());
                 // dd($response->json());
 
@@ -645,19 +652,25 @@ class OrderController extends Controller
                 ),
                 );
 
-                $order_payment_url = "https://demo.connect.easyparcel.my/?ac=EPPayOrderBulk";
+                $order_payment_url = "https://connect.easyparcel.my/?ac=EPPayOrderBulk";
 
                 $order_payment_response = Http::asForm()->post($order_payment_url,$postparam_order_payment);
                 Log::info($order_payment_response);
                 //dd($order_payment_response->json());
                 //check payment order is fully paid
-                
+
                 if($order_payment_response['result'][0]['messagenow'] == 'Insufficient Credit'){
                     return redirect()->route('create.order.failed')
                     ->with(['errorMessage' =>'Insufficient credit in Easy Parcel account. Please contact support for help.'] );
                 }
     
                 
+                //dd($order_payment_response->json());
+                //deduct the credit
+                $credit->credit = $credit_balance - $cost;
+                $credit->save();
+
+
                 $order = new Order();
                 $order->order_number = $order_payment_response['result'][0]['orderno'];
                 $order->user_id = auth()->id();
@@ -694,5 +707,18 @@ class OrderController extends Controller
         
     }
     
+            return redirect()->route('create.order.failed')
+            ->with(['errorMessage' =>'Insufficient Credit Balance in your account. Please top up credit balance.'] );
+    }
+
+    //Return error page if order failed
+    public function createOrderStatus(){
+        $errorMessage = session()->get('errorMessage');
+
+        return view('orders.failed')->with('errorMessage',$errorMessage);
+    }
+
+
+
 
 }
