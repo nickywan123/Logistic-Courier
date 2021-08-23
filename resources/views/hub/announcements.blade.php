@@ -19,7 +19,7 @@
                 <table class="refresh table table-stripped mb-0">
                     <thead>
                     <tr>
-                        <th>No.</th>>
+                        <th>No.</th>
                         <th class="w-25">Title</th>
                         <th></th>
                         <th>Time | Date</th>

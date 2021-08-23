@@ -28,8 +28,11 @@ class AnnouncementsController extends Controller
      */
     public function index()
     {
+        $announcements = Announcements::with('hub')->get()->groupBy(function($item) {
+            return $item->created_at->format('h:i d-m-Y');
+        });
         return view($this->view.'index', [
-            'announcements' => Announcements::with('hub')->get()
+            'announcements' => $announcements
         ]);
     }
 
