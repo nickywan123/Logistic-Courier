@@ -11,7 +11,7 @@
                     <div class="col-md-6">
                         <h2 class="title-section">Announcements</h2>
                     </div>
-                    <div class="">
+                    <div class="col-md-6 d-flex align-items-start justify-content-end">
 
                     </div>
                 </div>
@@ -19,7 +19,7 @@
                 <table class="refresh table table-stripped mb-0">
                     <thead>
                     <tr>
-                        <th>No.</th>
+                        <th>No.</th>>
                         <th class="w-25">Title</th>
                         <th></th>
                         <th>Time | Date</th>
@@ -35,7 +35,7 @@
                             <td>{{ date('D d/m/Y', strtotime($announcement->created_at)) }}</td>
                             <td>
                                 @isset($announcement->attachment)
-                                    <a class="mt-15" target="_blank" href="{{ asset('assets/images/upload/'.$announcement->attachment) }}">See attachment</a>
+                                    <a class="mt-15" target="_blank" href="{{ asset('assets/images/upload/'.$announcement->attachment) }}" >See attachment</a>
                                 @endisset
                             </td>
                         </tr>

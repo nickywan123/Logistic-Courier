@@ -94,7 +94,7 @@
                             <div class="box-header">
                                 <h5 class="box-title">Announcements Center</h5>
                                 <div class="box-controls pull-right">
-                                    <a class="btn btn-sm btn-outline-info d-none d-sm-block" href="{{ route('hub.announcements.index') }}">Show More</a>
+
                                 </div>
                             </div>
                             <div class="box-body announcement">
@@ -102,10 +102,10 @@
                                     @foreach($announcements as $key => $announcement)
                                         <div>
                                             <div class="row d-flex justify-content-between align-items-center align-items-sm-start">
-                                                <div class="col-md-9 col-6">
+                                                <div class="col-md-7 col-sm-12 col-6">
                                                     <h5 class="my-5">{{ $announcement->title }}</h5>
                                                 </div>
-                                                <div class="col-md-3 col-6 text-end">
+                                                <div class="col-md-5 col-sm-12 col-6 text-end">
                                                     <p>{{ date('D d/m/Y', strtotime($announcement->created_at)) }}</p>
                                                 </div>
                                             </div>
@@ -125,7 +125,7 @@
                                     </div>
                                 @endif
                                 <div class="d-grid gap-2">
-                                    <a class="btn btn-sm btn-outline-info d-block d-sm-none" href="{{ route('hub.announcements.index') }}">Show More</a>
+                                    <a class="btn btn-sm btn-outline-info" href="{{ route('hub.announcements.index') }}">Show More</a>
                                 </div>
                             </div>
                         </div>

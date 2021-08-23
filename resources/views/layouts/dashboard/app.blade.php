@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/dataTables/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/icons/material-icons/material-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/summernote/summernote-lite.css') }}">
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
