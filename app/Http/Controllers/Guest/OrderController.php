@@ -28,7 +28,7 @@ class OrderController extends Controller
             $location_id = 2;
         }
 
-        if((930000<= $request->postcode_delivery) && ($request->postcode_delivery <= 98859) ){
+        if((93000<= $request->postcode_delivery) && ($request->postcode_delivery <= 98859) ){
             //check postcode belongs to Sarawak
             $location_id = 2;
         }
@@ -61,7 +61,7 @@ class OrderController extends Controller
          
             //temporarily display courier from easy parcel only
             $collection =collect($rates);
-            $filtered = $collection->whereIn('courier_id',[1,2,4,5,6,7])->all(); 
+            $filtered = $collection->whereIn('courier_id',[1,2,4,5])->all(); 
             $rates = $filtered;
             //dd($filtered);
           

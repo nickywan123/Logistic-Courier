@@ -8,17 +8,20 @@ use App\User;
 use App\Order;
 use App\State;
 use App\Weight;
+use ZipArchive;
 use App\Courier;
 use App\Postcode;
 use App\UserInfo;
 use Carbon\Carbon;
 use App\OrderDetail;
+use ZanySoft\Zip\Zip;
 use App\CreditHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 
 class OrderController extends Controller
 {
@@ -259,14 +262,14 @@ class OrderController extends Controller
                         )
                         );
 
-                        $url = "https://demo.connect.easyparcel.my/?ac=EPRateCheckingBulk";
+                        $url = env('EASYPARCEL_RATE_CHECK_URL');
 
                         $response = Http::asForm()->post($url,$postparam_rate);
 
                         $collection = collect($response->json()['result'][0]['rates']);
                         
                         $filtered = $collection->where('courier_id',$rate_id->courier->courier_id)->first();
-                        //dd($filtered);
+                        //dd($collection);
                         
                         if(!$filtered){
                             return redirect()->route('create.order.failed')
@@ -323,7 +326,7 @@ class OrderController extends Controller
                         ),
                         );
 
-                        $url = "https://demo.connect.easyparcel.my/?ac=EPSubmitOrderBulk";
+                        $url = env('EASYPARCEL_RATE_SUBMIT_ORDER_URL');
 
                         $response = Http::asForm()->post($url,$postparam);
                         
@@ -348,7 +351,7 @@ class OrderController extends Controller
                         ),
                         );
 
-                        $order_payment_url = "https://demo.connect.easyparcel.my/?ac=EPPayOrderBulk";
+                        $order_payment_url = env('EASYPARCEL_PAY_ORDER_URL');
 
                         $order_payment_response = Http::asForm()->post($order_payment_url,$postparam_order_payment);
                         Log::info($order_payment_response);
@@ -708,4 +711,6 @@ class OrderController extends Controller
       }
     }
 
+
+   
 }

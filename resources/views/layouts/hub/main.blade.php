@@ -65,6 +65,36 @@
     <script src="{{ asset('assets/js/fuiyoh_hub.js') }}"></script>
     <script src="{{ asset('assets/js/fuiyoh_admin.js') }}"></script>
 
+    <script>
+          $('#allCheckHub').on('click', function (e) {
+            if($(this).is(':checked',true)) {
+                $(".subChkOrderHub").prop('checked', true);
+            } else {
+                $(".subChkOrderHub").prop('checked',false);
+            }
+        });
+
+        $('.download_bulk_hub').on('click', function(e) {
+            e.preventDefault();
+            let allVals = [];
+            
+            $(".subChkOrderHub:checked").each(function() {
+                allVals.push($(this).attr('data-id'));
+            });
+            if( allVals.length <= 1 ) {
+                alert("Please select more than 1 row.");
+            } else {            
+                    //let join_selected_values = allVals.join(",");
+                    //const newUrl = "{{route('order.print.bulk')}}?ids=" + allVals.join(",")
+                   // window.location = newUrl;
+                    $(".subChkOrderHub:checked").each(function() {
+                        window.open($(this).attr('data-id'));
+            });
+                
+            }
+        });
+    </script>
+
 
 </body>
 </html>
