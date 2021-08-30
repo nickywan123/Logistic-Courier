@@ -68,7 +68,8 @@ Route::get('dashboard/top-up','Dashboard\TopUpController@index')->name('topup.in
 //Top Up History
 Route::get('dashboard/top-up/history','Dashboard\TopUpController@show')->name('topup.show');
 
-
+//Retrieve user activity
+Route::get('dashboard/activities','Dashboard\ActivityController@index')->name('activity.index');
 
 
 

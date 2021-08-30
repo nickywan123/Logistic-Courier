@@ -3,12 +3,39 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Contracts\Activity;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Order extends Model
 {
+    use LogsActivity;
+
     protected $guarded =[];
     // // Set primary key
     // protected $primaryKey = 'order_number';
+
+      /**
+     * The attributes that should be given to activity logs
+     * 
+     */
+    protected static $logAttributes = ['user_id','user.name','order_number','courier_id','hub_id','amount'];
+
+
+    protected static $recordEvents = ['created','updated'];
+
+    protected static $logName = 'order';
+
+    protected static $logOnlyDirty = true;
+
+    public function getDescriptionForEvent(string $eventName): string
+    {   
+            return "Order-{$this->order_number} has been {$eventName}";   
+    }
+
+    public function tapActivity(Activity $activity, string $eventName)
+    {
+        $activity->causer_id = auth()->id();
+    }
 
 
     // each order has order details

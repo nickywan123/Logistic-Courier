@@ -23,6 +23,11 @@ class OrderController extends Controller
         //default - postcode belongs to Penisular Malaysia
         $location_id = 1;
 
+        if((87000<= $request->postcode_delivery) && ($request->postcode_delivery <= 87033)){
+            //check postcode belongs Labuan
+            $location_id = 2;
+        }
+
         if((88000<= $request->postcode_delivery) && ($request->postcode_delivery <= 91309) ){
             //check postcode belongs Sabah
             $location_id = 2;

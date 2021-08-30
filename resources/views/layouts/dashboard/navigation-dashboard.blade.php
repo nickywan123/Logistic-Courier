@@ -24,6 +24,9 @@
                 <li><a class="dropdown-item d-xl-none d-sm-none" href="#">Credit Balance: {{ Auth::user()->userInfo->credit }}</a></li>
                 <li><hr class="dropdown-divider d-xl-none d-sm-none"></li>
                 <li>
+                    <a class="dropdown-item" href="{{route('activity.index')}}">
+                        {{ __('My Activity') }}
+                    </a>
                     <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>

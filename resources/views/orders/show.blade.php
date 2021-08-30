@@ -74,8 +74,6 @@
                 alert("Please select more than 1 row.");
             } else {            
                     //let join_selected_values = allVals.join(",");
-                    //const newUrl = "{{route('order.print.bulk')}}?ids=" + allVals.join(",")
-                   // window.location = newUrl;
                     $(".subChkOrder:checked").each(function() {
                         window.open($(this).attr('data-id'));
             });
