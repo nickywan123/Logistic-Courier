@@ -161,5 +161,8 @@ Route::get('/payment-checkout','Dashboard\OrderController@checkout')->name('orde
 
 Route::post('/payment/gateway','Dashboard\OrderController@makeOrder')->name('orders.payment.gateway-request');
 
+//Generate PDF download for courier rates
+Route::get('/dashboard/rates/pdf','Dashboard\RateController@createPDF')->name('rates.download');
+
 
 

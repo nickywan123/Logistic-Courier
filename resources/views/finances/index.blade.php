@@ -16,7 +16,7 @@
                                 <button class="nav-link active" id="credithistory-tab" data-bs-toggle="tab" data-bs-target="#credithistory" type="button" role="tab" aria-controls="credithistory" aria-selected="true">Credit History</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="invoice-tab" data-bs-toggle="tab" data-bs-target="#invoice" type="button" role="tab" aria-controls="invoice" aria-selected="false">Invoice</button>
+                                <button class="nav-link" id="invoice-tab" data-bs-toggle="tab" data-bs-target="#invoice" type="button" role="tab" aria-controls="invoice" aria-selected="false">Order Invoice</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="topupinvoice-tab" data-bs-toggle="tab" data-bs-target="#topupinvoice" type="button" role="tab" aria-controls="topupinvoice" aria-selected="false">Top Up Invoice</button>
@@ -39,7 +39,7 @@
                                         <th>Debits(RM)</th>
                                         <th>Credits(RM)</th>
                                         <th>Balance(RM)</th>
-                                        <th>Actions</th>
+                                        
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -51,7 +51,7 @@
                                         <td>{{$credit_history->debit}}</td>
                                         <td>{{$credit_history->credit}}</td>
                                         <td>{{$credit_history->balance}}</td>
-                                        <td></td>
+                                       
                                     </tr>
                                     @endforeach
                                     </tbody>
@@ -68,25 +68,18 @@
                                         <th>Date/Time</th>
                                         <th>Order ID</th>
                                         <th>Description</th>
-                                        <th>Amount</th>
-                                        <th>Actions</th>
+                                        <th>Amount(RM)</th>                        
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($orders as $order)
                                     <tr>
-                                        <td>2021-07-07 12:52:03</td>
-                                        <td>EI-4JJD</td>
-                                        <td>Order Payment: Shipment from Selangor to Johor by Pos Laju - ERB10234274MY</td>
-                                        <td>RM5.70</td>
-                                        <td><a href="#" class="btn btn-sm btn-primary"><i data-feather="download"></i></a></td>
+                                        <td>{{$order->created_at}}</td>
+                                        <td>{{$order->order_number}}</td>
+                                        <td>Order Payment: Shipment by {{$order->courier->name}} - {{$order->awb}}</td>
+                                        <td>{{$order->amount}}</td>      
                                     </tr>
-                                    <tr>
-                                        <td>2021-07-03 14:52:03</td>
-                                        <td>EI-4HAIT</td>
-                                        <td>Order Payment: Shipment from Selangor to Selangor by Aramex - 4623746135</td>
-                                        <td>RM6.20</td>
-                                        <td><a href="#" class="btn btn-sm btn-primary"><i data-feather="download"></i></a></td>
-                                    </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

@@ -32,10 +32,10 @@ class Order extends Model
             return "Order-{$this->order_number} has been {$eventName}";   
     }
 
-    public function tapActivity(Activity $activity, string $eventName)
-    {
-        $activity->causer_id = auth()->id();
-    }
+    // public function tapActivity(Activity $activity, string $eventName)
+    // {
+    //     $activity->causer_id = auth()->id();
+    // }
 
 
     // each order has order details

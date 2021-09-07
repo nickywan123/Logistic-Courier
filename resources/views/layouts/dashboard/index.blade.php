@@ -9,8 +9,14 @@
 
             <!-- box start -->
             <div class="p-lg-30 p-md-30 p-sm-30 p-10">
-
-                <h2 class="title-section">Dashboard</h2>
+                <div class="row">
+                    <div class="col-lg-4 col-md-3 col-sm-6">
+                        <h2 class="title-section">Dashboard</h2>
+                    </div>
+                    <div class="col-lg-4 offset-md-3 col-md-3 col-sm-3">
+                        <a href="{{route('rates.download')}}" class="btn btn-primary" style="float: right;">Check courier rates</a>
+                    </div>
+                </div>
 
                 <div class="alert alert-warning" role="alert">
                     <p class="mb-0"><span class="font-700">Notice:</span> <span class="font-700">Pick up and deliveries will remain as usual</span> during the FMCO period <a href="http://covid-19.moh.gov.my/faqsop/sop-perintah-kawalan-pergerakan-diperketatkan-pkpd-emco" target="_blank" class="font-700">except for areas under EMCO</a>. Kindly ensure the <span class="font-700">address booked is available for pick up/delivery. Facemask is prohibited for international delivery</span> for all couriers at the moment. Kindly expect <span class="font-700">slight delay in pick up and delivery</span> due to the restricted operation hour and high parcel volume during this pandemic period. Stay safe and stay home.</p>

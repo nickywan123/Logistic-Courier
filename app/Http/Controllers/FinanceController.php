@@ -16,13 +16,16 @@ class FinanceController extends Controller
     }
 
     public function index(){
-        $transactions = Transaction::where('user_id',Auth::user()->id)->get();
+        $transactions = Transaction::where('user_id',Auth::user()->id)->latest()->get();
 
-        $credit_histories = CreditHistory::where('user_id',Auth::user()->id)->get();
+        $credit_histories = CreditHistory::where('user_id',Auth::user()->id)->latest()->get();
+
+        $orders = Order::where('user_id',Auth::user()->id)->latest()->get();
 
         return view('finances.index')
                 ->with(['transactions' =>$transactions,
-                        'credit_histories' => $credit_histories
+                        'credit_histories' => $credit_histories,
+                        'orders' => $orders
                         ]);
     }
 }
