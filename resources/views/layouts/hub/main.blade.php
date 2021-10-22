@@ -34,9 +34,7 @@
     <!-- Scripts -->
     {{--<script src="{{ asset('js/app.js') }}"></script>--}}
 
-	<!--Google Map Autocomplete -->
-	<!---BILLING IS REQUIRED TO USE AUTOCOMPLETE GOOGLE MAP API---->{{--
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGuk0kb5FQ24LflR1C7BtGIE24xaQHfOg&libraries=places"></script>--}}
+	
 
 </head>
 <body>
